@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>协议打印</title>
+</head>
+<style>
+    .box {
+        width: 900px;
+        margin: 0 auto;
+    }
+
+    .head {
+        text-align: center;
+    }
+
+    a {
+        color: #000;
+        font-weight: bolder;
+    }
+
+    .no-print {
+        position: fixed;
+        right: 15px;
+        bottom: 15px;
+        width: 120px;
+        height: 80px;
+        font-size: 20px;
+        background-color: #eee;
+    }
+
+    #close {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        font-size: 20px;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        background-color: #eee;
+        cursor: pointer;
+        color: #333
+    }
+
+    @media print {
+        /*隐藏不打印的元素*/
+        .no-print {
+            display: none;
+        }
+        /*其他打印样式*/
+    }
+</style>
+
+<body>
+    <div class="no-print" id="close" onclick="CloseWebPage()">
+        关闭窗口
+    </div>
+    <div class="box">
+        <!-- <h2 class="head"></h2> -->
+        <div class="content"></div>
+    </div>
+    <button class="no-print" onclick="window.print()">打印协议</button>
+</body>
+<script src="../superscreen/js/jquery-1.8.3.min.js"></script>
+<script>
+    $(document).ready(function (argument) {
+        var startprotocol = sessionStorage.getItem("startprotocol");//协议开始时间
+        var endprotocol = sessionStorage.getItem("endprotocol");//协议结束时间
+        var username = sessionStorage.getItem("username"); //用户名称
+        var usersex = sessionStorage.getItem("usersex");	//用户性别
+        console.log('username', usersex)
+        var userphone = sessionStorage.getItem("userphone"); //用户电话
+        console.log('userphone', userphone)
+        var cardName = sessionStorage.getItem("cardName");	// 会员卡
+        var protocolTime = sessionStorage.getItem("protocolTime");//签订时间
+        var protocolLongName = sessionStorage.getItem("protocolLongName");//协议标题
+        var editorHtml = sessionStorage.getItem("editorHtml");//协议内容
+
+        $(".head").html(protocolLongName);
+        $(".content").html(editorHtml);
+        $(".zkname>a").html(username);
+        $(".sex>a").html(usersex);
+        // $(".sex>a")[0].style = ''
+        $(".phone>a").html(userphone);
+        $(".card>a").html(cardName);
+        $(".protocol>a").html(protocolTime);
+        $(".startprotocol>a").html(startprotocol);
+        // $(".protocol>a")[0].style = ''
+        $(".endprotocol>a").html(endprotocol);
+        $('.zheng>a').html(new Date().getTime());
+
+    });
+    function CloseWebPage() {
+        window.close();
+    }
+</script>
+
+</html>

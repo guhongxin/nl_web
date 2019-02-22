@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>体测结果</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/iconfont.css">
+  <link rel="stylesheet" href="./css/style.css?t={vision}">
+</head>
+<body>
+<div class="app-container">
+  <div class="header-box">
+    <img src="http://niulang-v2.oss-cn-beijing.aliyuncs.com/default_head.png" class="user-avator">
+    <span id="userName">-</span>
+    <div class="time-select">
+      <span id="dataTime"></span>
+      <ul id="timeSelectList">
+        <li>123</li>
+      </ul>
+    </div>
+  </div>
+  <div class="three-tab">
+    <span onclick="alerttextFunction('healthGrade')">
+      <span class="base-grade" id="health_score">0</span>
+      <div><i class="iconfont icon-yonghu"></i> <span>健康评分</span></div>
+    </span>
+    <span onclick="alerttextFunction('bodyAge')">
+      <span class="base-grade" id="body_age">0</span>
+      <div><i class="iconfont icon-sousuo"></i> <span>身体年龄</span></div>
+    </span>
+    <span onclick="alerttextFunction('baseAmr')">
+      <span class="base-grade" id="body_bmr">0</span>
+      <div><i class="iconfont icon-pingguo"></i> <span>基础代谢</span></div>
+    </span>
+  </div>
+  <div class="table-baseinfo">
+    <dl>
+      <dt>
+        <span></span>
+        <span>项目</span>
+        <span>测量结果</span>
+        <span>正常范围</span>
+      </dt>
+      <dd>
+        <span></span>
+        <span>体重(kg)</span>
+        <span>0</span>
+        <span>--</span>
+      </dd>
+      <dd>
+        <span></span>
+        <span>脂肪(kg)</span>
+        <span>0</span>
+        <span>--</span>
+      </dd>
+      <dd>
+        <span></span>
+        <span onclick="alerttextFunction('PBF')">体脂率(%) <i class="iconfont icon-gantanhao"></i></span>
+        <span>0</span>
+        <span>--</span>
+      </dd>
+      <dd>
+        <span></span>
+        <span>水分</span>
+        <span>0</span>
+        <span>--</span>
+      </dd>
+      <dd>
+        <span></span>
+        <span>肌肉(kg)</span>
+        <span>0</span>
+        <span>--</span>
+      </dd>
+      <dd>
+        <span></span>
+        <span>蛋白质(kg)</span>
+        <span>0</span>
+        <span>--</span>
+      </dd>
+      <dd>
+        <span></span>
+        <span>骨质(kg)</span>
+        <span>0</span>
+        <span>--</span>
+      </dd>
+      <dd>
+        <span></span>
+        <span onclick="alerttextFunction('BMI')">体质指数 <i class="iconfont icon-gantanhao"></i></span>
+        <span>0</span>
+        <span>--</span>
+      </dd>
+      <dd>
+        <span></span>
+        <span onclick="alerttextFunction('VFI')">内脏脂肪指数 <i class="iconfont icon-gantanhao"></i></span>
+        <span>0</span>
+        <span>--</span>
+      </dd>
+      <dd>
+        <span></span>
+        <span onclick="alerttextFunction('LiverRisk')">脂肪肝风险度(%) <i class="iconfont icon-gantanhao"></i></span>
+        <span>0</span>
+        <span>--</span>
+      </dd>
+      <dd>
+        <span></span>
+        <span>体型判断</span>
+        <span></span>
+        <span></span>
+      </dd>
+    </dl>
+  </div>
+  <div class="echarts-date">
+    <div class="echarts-item">
+      <p class="item-title">基本成分评价</p>
+      <div id="BasicComponents" class="echarts-box"></div>
+    </div>
+    <div class="echarts-item">
+      <p class="item-title">肥胖分析</p>
+      <div id="Analysis_of_obesity" class="echarts-box"></div>
+      <div class="body-img" id="Analysis_of_obesity_date">
+        <p>节段脂肪量(kg)</p>
+        <div class="flex-body">
+          <div class="flex-left">
+            <div>
+              <p>0</p>
+              <p>左上肢脂肪</p>
+            </div>
+            <div>
+              <p>0</p>
+              <p>左下肢脂肪</p>
+            </div>
+          </div>
+          <img src="./img/jd2.png">
+          <div class="flex-right">
+            <div>
+              <p>0</p>
+              <p>右上肢脂肪</p>
+            </div>
+            <div>
+              <p>0</p>
+              <p>右下肢脂肪</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="echarts-item">
+      <p class="item-title">肌肉分析</p>
+      <div id="Analysis_of_muslc" class="echarts-box" style="height: 200px;"></div>
+      <div class="body-img" id="Analysis_of_muslc_date">
+        <p>节段肌肉量(kg)</p>
+        <div class="flex-body">
+          <div class="flex-left">
+            <div>
+              <p>2.8</p>
+              <p>左上肢肌肉</p>
+            </div>
+            <div>
+              <p>2.8</p>
+              <p>左下肢肌肉</p>
+            </div>
+          </div>
+          <img src="./img/jd2.png">
+          <div class="flex-right">
+            <div>
+              <p>2.8</p>
+              <p>右上肢肌肉</p>
+            </div>
+            <div>
+              <p>2.8</p>
+              <p>右下肢肌肉</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="echarts-item">
+      <p class="item-title">体重管理</p>
+      <ul class="body-weight" id="bodyWeight">
+        <li><span>目标体重(kg)</span><span>71</span></li>
+        <li><span>体重控制(kg)</span><span>71</span></li>
+        <li><span>脂肪控制量(kg)</span><span>71</span></li>
+        <li><span>肌肉控制量(kg)</span><span>71</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="background-box">
+  <div class="text-box clearfix">
+    <p id="alertText"></p>
+    <span id="closeModel">确定</span>
+  </div>
+</div>
+</body>
+</html>
+<script src="../home/js/jQuery.min.js"></script>
+<script src="./js/echarts.min.js"></script>
+<script src="./js/appindex.js?t={vision}"></script>
+<script>
+  /* 时间选择 */
+  $('#dataTime').off('click').on('click', function (e) {
+    e.stopPropagation()
+    $('#timeSelectList').fadeToggle(200)
+  })
+  $(document).on('click', function () {
+    $('#timeSelectList').fadeOut(200)
+  })
+
+  /* 弹窗文字 */
+  function alerttextFunction(text) {
+    $('#alertText').text(alertText[text])
+    $('.background-box').fadeIn(100)
+  }
+  $('#closeModel').on('click',function () {
+    $('.background-box').fadeOut(100)
+  })
+  var alertText = {
+    healthGrade: '由身体各项成分加权平均计算出的综合健康评分，是从身体成分角度对您健康状况的一种评价。一般高于80分属于良好，70-80分属于平均水平，低于70分则较低',
+    bodyAge: '身体年龄是根据身体成分评分计算出您的身体相当于哪个年龄段的平均体成分。一般评分越高您的身体年龄就会显得越年轻',
+    baseAmr: '基础代谢是人体每日所需的基础能量，用于千卡(kcal)作单位。指人在安静状态下身体维持自身新陈代谢所需的最基本的能量。用于计算每日膳食热量需要时还需要考虑日常活动所需的能量',
+    PBF: '身体内脂肪质量所占体重的百分比。是衡量肥胖的指标之一。体脂肪较高会导致肥胖和心脑血管疾病风险增高，但脂肪也有很多生理功能，并不是越少越好，应维持合理的体脂率。',
+    BMI: '缩写为BMI，是衡量体型的常用指标。用体重除以身高的平方计算，BMI较高者相对较胖，但BMI无法区分肌肉和脂肪，所以应结合体脂率来看我们提供的体型判定功能是更科学的体型划分方法。',
+    VFI: '是衡量内脏脂肪含量的指标。与脐断面内脏脂肪面积成正比。内脏脂肪相对于心脑血管疾病有直接关系，高于10则提示腹部内部脂肪较高，高于14则提示心脑血管疾病风险显著增高。',
+    LiverRisk: '衡量人患有脂肪肝的风险，可理解为患脂肪肝的可能性有多大。脂肪肝是肝脏组织脂肪华导致肝功能损害的一种慢性疾病，有可能变为肝硬化等其他肝脏疾病。'
+  }
+</script>

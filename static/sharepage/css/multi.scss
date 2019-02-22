@@ -1,0 +1,105 @@
+@function toRem($n) {
+  @return $n * 10 / 375 + rem
+}
+.app-container {
+  width: 100%;
+  height: 100%;
+  .head-model {
+    width: 100%;
+    height: toRem(120);
+    padding: toRem(30) 0;
+    box-sizing: border-box;
+    background: url("https://niulang-v2.oss-cn-beijing.aliyuncs.com/res/sys_medal/%E7%81%B0-3x.png") white no-repeat center;
+    background-size: 100% 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: white;
+    .user-avtor {
+      position: absolute;
+      /*top: toRem(25);*/
+      left: toRem(10);
+      img {
+        display: block;
+        width: toRem(60);
+        height: toRem(60);
+      }
+    }
+    .head-title {
+      font-size: toRem(16);
+      left: toRem(90);
+      position: absolute;
+      line-height: toRem(30);
+      text-align: center;
+      P:first-child {
+        border-bottom: 1px solid white;
+      }
+      P:last-child {
+
+      }
+    }
+    .head-right {
+      position: absolute;
+      right: toRem(15);
+      font-size: toRem(14);
+      text-align: right;
+      line-height: toRem(20);
+    }
+  }
+  .multiplayer-model {
+    padding: 0 5% 0 5%;
+    box-sizing: border-box;
+    padding-top: toRem(140);
+    height: 100%;
+    ul {
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      font-size: 0;
+      li {
+        display: inline-block;
+        font-size: 0;
+        width: 33.3%;
+        box-sizing: border-box;
+        padding: 0 10px;
+        padding-bottom: toRem(15);
+        >div {
+          height: toRem(100);
+          position: relative;
+          left: 0;
+          top: 0;
+          >img {
+            display: block;
+            width: 100%;
+            height: auto;
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+          }
+        }
+        .bottom-gray {
+          display: block;
+          margin: toRem(10) auto toRem(5);
+          width: 80%;
+          height: 7px;
+          background: #f7f7f7;
+          border-radius: 50% / 50%;
+        }
+        p {
+          height: toRem(30);
+          line-height: toRem(14);
+          font-size: toRem(12);
+          text-align: center;
+          margin: 10px 0 5px 0;
+          /*word-break:keep-all;
+          white-space:nowrap;
+          overflow:hidden;
+          text-overflow:ellipsis;*/
+        }
+      }
+    }
+  }
+}

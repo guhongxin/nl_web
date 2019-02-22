@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>员工业绩概览表</title>
+</head>
+<style>
+    body,
+    html {
+      padding: 0;
+      height: 100%;
+      margin: 0;
+    }
+
+    .box {
+      width: 1366px;
+      margin: 0 auto;
+      height: 100%;
+    }
+
+    /* .head {
+        text-align: center;
+        font-size: 20px;
+        font-weight: bolder;
+        line-height: 40px;
+        height: 6.8%;
+    } */
+
+    a {
+      color: #000;
+      font-weight: bolder;
+    }
+
+    .no-print {
+      position: fixed;
+      right: 15px;
+      bottom: 15px;
+      width: 120px;
+      height: 80px;
+      font-size: 20px;
+      background-color: #eee;
+    }
+
+    #close {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      font-size: 20px;
+      height: 40px;
+      text-align: center;
+      line-height: 40px;
+      background-color: #eee;
+      cursor: pointer;
+      color: #333
+    }
+
+    @media print {
+      /*隐藏不打印的元素*/
+      .no-print {
+        display: none;
+      }
+      .header-box .title-box .buttonBox {
+        display: none;
+      }
+      /*其他打印样式*/
+    }
+
+    * {
+      margin: none;
+      padding: none;
+    }
+    .header-box {
+      background: #D7E0E6;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+    .header-box .title-box {
+      height: 70px;
+      line-height: 70px;
+    }
+    .header-box .title-box .logo {
+      float: left;
+      display: inline-block;
+      width: 340px;
+      height: 50px;
+      line-height: 50px;
+      margin-top: 10px;
+      margin-left: 10px;
+      background: url('../../src/assets/icon/LOGO@3x.png') no-repeat center;
+      background-size: cover;
+    }
+    .header-box .title-box .title {
+      font-size: 30px;
+      color: #333;
+      margin-left: -340px;
+    }
+    .header-box .title-box .buttonBox {
+      display: none;
+    }
+    .titleMessage {
+      background: #fff;
+    }
+    .titleMessage tr {
+      height: 69px;
+    }
+    .titleMessage tr td {
+      border: 1px solid #ddd;
+      border-left: none;
+      border-bottom: none;
+    }
+    .gray {
+      background: #F7F9FA;
+    }
+    
+    .boxff {
+      width: 1366px;
+      overflow: auto;
+      margin: 40px 0;
+    }
+    /* .boxff .check-table {
+      width: 1366px !important;
+    } */
+    .check-table {
+      margin-top: 20px;
+    }
+    .check-table thead {
+      color: #333;
+    }
+    .check-table thead tr th {
+      background-color: #f5f5f5;
+      padding: 12px 0;
+      border: 1px solid #ddd;
+    }
+    .check-table tbody tr td {
+      text-align: center;
+      border: 1px solid #cccccc;
+    }
+
+    .boxff .title {
+      font-size: 16px;
+      color: #333;
+      font-weight: bold;
+      margin-bottom: 10px;
+      margin-left: 5px;
+    }
+    .boxff .title .spTitle {
+      display: inline-block;
+      width: 200px;
+    }
+    .boxff .title .mysapn {
+      margin-left: 50px;
+    }
+    .boxff .title .mysapn .myI {
+      color: #EE6723;
+      font-style: normal;
+      margin-right: 5px;
+    }
+    .mytdTotal {
+      line-height: 40px;
+      background: #fff;
+    }
+    .box .pageBox {
+      display: none;
+    }
+    .mytd {
+      border-bottom: 1px solid #ddd;
+      line-height: 30px;
+      background: #E7EAEC;
+    }
+</style>
+
+<body>
+    <div class="no-print" id="close" onclick="CloseWebPage()">
+      关闭窗口
+    </div>
+    <div class="box">
+      <div class="content"></div>
+    </div>
+    <button class="no-print" onclick="window.print()">打印此表</button>
+</body>
+<script src="../superscreen/js/jquery-1.8.3.min.js"></script>
+<script>
+    $(document).ready(function (argument) {
+      var achivetext = sessionStorage.getItem("employeeAchivementtext");//课表内容
+      $(".content").html(achivetext);
+    });
+    function CloseWebPage() {
+      window.close();
+    }
+</script>
+
+</html>

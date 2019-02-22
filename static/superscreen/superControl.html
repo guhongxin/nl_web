@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+	<title>牛啦 FITNESS - 前台投屏</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <!-- <link rel="stylesheet" href="css/new.css?v={version}">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="js/msgbox/msgbox.css"> -->
+		<link rel="stylesheet" type="text/css" href="css/superControl.css?t={vision}">
+</head>
+<body onselectstart="return false" oncontextmenu="return false" v-cloak>
+	 <!-- onselectstart="return false" oncontextmenu="return false" v-cloak -->
+    <div class="super-content" style="height: 100%;overflow: hidden;">
+    	<div class="curHeader">
+			<span class="logo">
+				<img src="img/LOGOwhite.svg" />
+			</span>
+	        <span class="todayTime" id="todayTime"></span>
+	    </div>
+	    <div class="row" style="height:92%;">
+	    	<!--入场记录-->
+	    	<div class="col-record">
+	    		<h2 class="title">入场实况</h2>
+	    		<div class="content-box">
+					<div class="box-list" id="inGym">
+					</div>
+	    		</div>
+	    	</div>
+	    	<!--出场记录-->
+	    	<div class="col-record">
+	    		<h2 class="title">出场实况</h2>
+	    		<div class="content-box">
+					<div class="box-list" id="outGym">
+					</div>
+	    		</div>
+	    	</div>
+	    	<!--入场详情-->
+	    	<div class="col-4" style="width:57%;">
+				<!-- 入场情况折线图 -->
+				<div style="background: #292D31;box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);height: 48%;width:54vw;margin: 20px 0 0 20px;">
+					<h2 class="title">今日入场</h2>
+					<div class="content-box" style="height: 100%;padding: 0;border-right: 0;">
+						<div id="inChart" style="width:100%;height:100%;"></div>
+					</div>
+				</div>
+				<!--总签到排行-->
+				<div class="col-rank">
+					<h2 class="title">总签到排行</h2>
+					<div class="content-box">
+						<div class="box-list" id="rankAll">
+						</div>
+					</div>
+				</div>
+				<!--总签到排行-->
+				<div class="col-rank">
+					<h2 class="title">月签到排行</h2>
+					<div class="content-box">
+						<div class="box-list" id="rankMonth">
+						</div>
+					</div>
+				</div>
+				<!--总签到排行-->
+				<div class="col-rank">
+					<h2 class="title">周签到排行</h2>
+					<div class="content-box">
+						<div class="box-list" id="rankWeek">
+						</div>
+					</div>
+				</div>
+	    	</div>
+	    </div>	    
+        <div id="imgbox" style="display: none;overflow: hidden;"><img style="width: 100%;height: 100%;" src="" alt=""></div>
+	</div>
+   	<script src="js/jquery-1.8.3.min.js"></script>
+	<script src="js/echarts.common.min.js"></script>
+	<script src="js/newsuper.js?t={vision}"></script>
+	<script type="text/javascript">
+		function loadScript(url, apikey) {
+			var script = document.createElement("script");
+			script.type = "text/javascript";
+			script.src = url;
+			script.setAttribute("apikey", apikey);
+			document.body.appendChild(script);
+		}
+		loadScript("https://js.fundebug.cn/fundebug.1.1.2.min.js", "248e06b488f5a46d2d9eb84c2bc2082a6251b0015154f753894dc9340746b2ed")
+	</script>
+</body>
+</html>

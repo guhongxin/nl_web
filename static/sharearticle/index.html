@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>牛啦</title>
+</head>
+<style>
+  body{
+    background: #fff;
+  }
+  .message {
+    padding: 0 6%;
+    width: 88%;
+    height: 100%;
+    margin: 0 auto;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .foot {
+    font-family: "Microsoft YaHei" !important;
+    background: url(bg.png) #fff;
+    background-size: 100% 100%;
+    margin: 0 5%;
+    width: 90%;
+    height: 7em;
+  }
+
+  .foot h2 {
+    color: #333;
+    /* letter-spacing: .6em; */
+    font-size: 1.1em;
+    margin: 0;
+  }
+
+  .foot h4 {
+    color: #666;
+    letter-spacing: .3em;
+    font-size: .8em;
+    margin: .4em 0;
+  }
+
+  .foot h3 {
+    color: #333;
+    /* letter-spacing: .2em; */
+    font-size: .8em;
+    margin: 0;
+  }
+
+  .tophead {
+    overflow: hidden;
+    margin-bottom: 30px;
+  }
+
+  .tophead .left {
+    float: left;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 10px 0 15px;
+    border: 1px solid #ccc;
+  }
+
+  .tophead .left img {
+    width: 100%;
+    height: 100%;
+    float: left;
+  }
+
+  .tophead .right {
+    float: left;
+  }
+
+  .gymname {
+    height: 30px;
+    line-height: 30px;
+  }
+
+  .time {
+    line-height: 30px;
+    height: 30px;
+    color: #999999;
+  }
+  .mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #f0f0f0;
+    background-image: url('img/lost3x.png');
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-position: center center;
+    display: none;
+  }
+</style>
+<body style="line-height: 1.4em;font-size: 0.9em;margin:0;padding-top:15px;">
+<div class="mask"></div>
+<h3 style="margin: 5px 20px 20px 20px;" id="title"></h3>
+<div class="tophead">
+  <div class="left"><img id="gymheadicon" src="" alt=""></div>
+  <div class="right">
+    <div class="gymname" id="gymname"></div>
+    <div class="time" id="creattime"></div>
+  </div>
+</div>
+<img id="banner" src="" style="max-width: 100%; width: 100%;margin: 0 auto;">
+<div style="padding:10px;box-sizing: border-box;width: 100%;word-wrap:break-word;" id="content"></div>
+<div style="width:100%;height:30px;"></div>
+<div class="foot">
+  <div id="message" class="message">
+    <img id="photo" src="https://www.nlfit.cn/static/home/img/guanwng.png"
+         style="width:auto;height:6em;float:left;">
+    <div id="text" style="float:right;height:5.2em;margin-left:0em;">
+      <h2>牛啦社区</h2>
+      <h4>全面分析您的身体指数</h4>
+      <h4>一款你必备的健身神器</h4>
+      <h3>扫一扫,下载牛啦 APP</h3>
+    </div>
+  </div>
+</div>
+<div style="width:100%;height:30px;"></div>
+</body>
+<script src="../superscreen/js/jquery-1.8.3.min.js"></script>
+<script>
+  function getQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var reg_rewrite = new RegExp("(^|/)" + name + "/([^/]*)(/|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    var q = window.location.pathname.substr(1).match(reg_rewrite);
+    if (r != null) {
+      return unescape(r[2]);
+    } else if (q != null) {
+      return unescape(q[2]);
+    } else {
+      return null;
+    }
+  }
+  function isHttps(icon) {
+    if (icon.indexOf('http') < 0) {
+      return
+    }
+    if (icon) {
+      if (window.location.protocol.split(':')[0] === 'https') {
+        return 'https:' + icon.split(':')[1]
+      }
+    }
+    return icon
+  }
+  var id = getQueryString('id')
+  if(document.location.protocol == 'http:') {
+    var BASE_HEAD_PROTOCOL = 'http://';
+  }else {
+    var BASE_HEAD_PROTOCOL = 'https://';
+  }
+  if(window.location.host == 'www.nlfit.cn' || window.location.host == 'nlfit.cn'){
+    /* online */
+    var BASE_HEAD_URL = (BASE_HEAD_PROTOCOL + 'h5.nlfit.cn');
+  }else {
+    /* test */
+    var BASE_HEAD_URL = (BASE_HEAD_PROTOCOL + 'h5-ceshi.nlfit.com');
+  }
+  $.ajax({
+    // url: 'http://www.nlfit.cn' + '/v1/gym/push_articles/' + id,
+    /*url: '../..' + '/v1/gym/push_articles/' + id,*/
+    url: BASE_HEAD_URL + '/web_proxy/ArticleShare/' + id,
+    datatype: 'json',
+    type: 'get',
+    success: function (res) {
+      // $('title').text(res.title)
+      var res = res.data
+      $('#title').text(res.title)
+      $('#gymheadicon').attr('src', isHttps(res.gym.logo))
+      $('#gymname').text(res.gym.name)
+      $('#creattime').text(res.updated_at)
+      var result = res.article ? res.article : res
+      if (!result.content.length) {
+        $('.mask').show()
+      }
+      $('#banner').attr('src', result.image)
+      var html = "<div style='color: #ccc;margin-top:30px;'>声明：本文由入驻俱乐部的作者撰写，除牛啦官方账号外，观点仅代表作者本人，不代表牛啦立场。</div>"
+      $('#content').html(result.content + html)
+      $.each($('img'), function (index, item) {
+        $(item).attr('src', isHttps($(item).attr('src')))
+      })
+    }
+  })
+</script>
+</html>

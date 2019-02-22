@@ -1,0 +1,296 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+html{
+    height: 100%;
+}
+body{
+	position: relative;
+	color: #ffffff;
+	height: 100%;
+	width: 100%;
+	min-width: 900px;
+	/*min-height: 740px;*/
+    background: #25282B;
+    font-family:'微软雅黑';
+}
+
+.curHeader{
+    overflow: hidden;
+    height: 80px;
+    line-height: 80px;
+    background: #2D3033;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+}
+.curHeader>.logo{
+    width: 250px;
+    display: inline-block;
+    position: relative;
+    top: 15%;
+    left: 1%;
+}
+.curHeader>.logo>img{
+    width: 100%;
+}
+.curHeader>.todayTime{
+    float: right;
+    margin-right: 40px;
+    font-family: PingFangSC-Semibold;
+    font-size: 16px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+}
+div.row{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+div.row>div.col-record{
+	width: 20%;
+	float: left;
+	overflow: hidden;
+    height: 100%;
+    background: #292D31;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+    margin: 20px 0 0 20px;
+    font-weight: 550;
+}
+div.row>div.col-2{
+	width: 20%;
+    float: right;
+    text-align: right;
+    /* float: left;
+    margin-right: 20px; */
+    overflow: hidden;
+    height: 70px;
+    line-height: 60px;
+}
+div.row>div.col-2>span{
+    font-size: 20px;
+}
+div.row>div.col-3{
+	width: 30%;
+	float: left;
+	overflow: hidden;
+	height: 100%;
+}
+div.row>div.col-4{
+	width: 40%;
+	height: 100%;
+	float: left;
+	overflow: hidden;
+}
+div.row>div.col-6{
+	width: 55%;
+	float: left;
+    overflow: hidden;
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+h2.title{
+	box-sizing: content-box;
+    padding: 0 20px;
+    font-size: 18px;
+    font-weight: 540;
+    height: 50px;
+    line-height: 50px;
+}
+.col-record>.content-box{
+	height: 91%;
+    padding: 5px 0 0 8px;
+}
+.col-record>.content-box>.box-list{
+    height: 100%;
+    overflow: auto;
+}
+.content-box>.box-list::-webkit-scrollbar {
+	width: 6px;
+}
+.content-box>.box-list::-webkit-scrollbar-thumb {
+    background: #23C6C8;
+    border-radius: 10px;
+}
+.col-record>.content-box>.box-list>.box{
+    overflow: hidden;
+    margin: 10px 0;
+    background: #393E44;
+    padding: 4px 20px 4px 10px;
+}
+.col-record>.content-box>.box-list>.box:last-child{
+    margin-bottom:0;
+}
+.col-record>.content-box>.box-list>.box:first-child{
+    margin-top: 0;
+}
+.col-record>.content-box>.box-list>.box>.box-top{
+	height: 40px;
+    line-height: 40px;
+    padding-left: 10px;
+}
+.col-record>.content-box>.box-list>.box>.box-top>b{
+	font-size: 26px;
+    font-weight: 450;
+}
+.col-record>.content-box>.box-list>.box>.box-top>span{
+	font-size: 16px;
+    color: #3f3f3f;
+    margin-left: 5px;
+}
+.imgPosition{
+    position: relative;
+    width: 20%;
+    float: left;
+	overflow: hidden;
+	height: 100%;
+	text-align: center;
+    padding: 10px 0;
+    /* margin-left: 10px; */
+}
+.headimg{
+	display: inline-block;
+	width: 3vw;
+    height: 3vw;
+	text-align: center;
+	overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    margin-top: 5px;
+}
+.imgPosition>.sex{
+    position: absolute;
+    top: 17px;
+    right: 0;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 50%;
+    /* background: #51A9CA; */
+}
+.imgPosition>.sex.female{
+    /* background: #F1A1D0; */
+}
+.imgPosition>.sex>img{
+    width: 20px;
+    height: 20px;
+}
+.headimg>i{
+    position: absolute;
+    display: block;
+    width: 4vh;
+    height: 4vh;
+    right: 0;
+    top: 0;
+}
+.headimg>i>img{
+    display: block;
+    float: left;
+    width: 100%;
+    height: 100%;
+}
+.headimg>img{
+	width: 100%;
+	height: 100%;
+    border-radius: 50%;
+}
+.top-name{
+	height: 2vw;
+    line-height: 2vw;
+    padding-top: 6px;
+    padding-left: 10px;
+    display: inline-block;
+}
+.top-name>span{
+	font-size: 26px;
+    font-weight: 500;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 7vw;
+    vertical-align: top;
+}
+.top-phone{
+	height: 1.8vw;
+    line-height: 1.8vw;
+    padding-left: 10px;
+    color: #cccccc;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 10vw;
+    vertical-align: top;
+}
+.col-record .top-phone>span{
+    font-size: 14px;
+	display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 7vw;
+    vertical-align: top;
+}
+textarea {
+    resize: none;
+}
+div.col-rank{
+	width: 17.3vw;
+	float: left;
+	overflow: hidden;
+    height: 100%;
+    background: #292D31;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+    margin: 20px 0 0 20px;
+}
+.col-rank>.content-box{
+	height: 38vh;
+    padding: 5px 0 0 8px;
+}
+.col-rank>.content-box>.box-list{
+    height: 100%;
+    overflow: auto;
+}
+div.col-rank div.row{
+	border-bottom: 1px solid #606469;
+}
+div.col-rank div.box:last-child>div.row{
+	border-bottom: 0;
+}
+div.col-rank>.content-box>.box-list>.box{
+    overflow: hidden;
+    margin:0;
+    background: #393E44;
+    padding: 4px 10px 0 10px;;
+}
+div.col-rank .headimg{
+    width: 2vw;
+    height: 2vw;
+}
+div.col-rank .top-name{
+    height: 1.7vw;
+    line-height: 1.7vw;
+}
+div.col-rank .top-name>span{
+    font-size: 18px;
+}
+div.col-rank div.row>div.col-6{
+    padding-left: 0;
+}
+div.col-rank .imgPosition{
+    width: 15%;
+}
+div.col-rank div.row>div.col-2{
+    text-align: center;
+}
+div.col-rank div.row>div.col-2>span.rank-medal{
+    display: inline-block;
+    width: 35px;
+    vertical-align: -webkit-baseline-middle;
+    position: relative;
+    top: 6px;
+}
+div.col-rank div.row>div.col-2>span.rank-medal>img{
+    width: 100%;
+    height: 100%;
+}

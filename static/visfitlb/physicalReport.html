@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>体测报告</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/report.css?t={vision}">
+</head>
+<body>
+<button class="no-print" id="close" onclick="CloseWebPage()">关闭窗口</button>
+<button class="no-print" onclick="window.print()">打印报告</button>
+<div class="app-container">
+  <div class="header">
+    <img src="./css/header.png" alt="">
+  </div>
+  <div class="content">
+    <div class="base-info clearfix">
+      <ul class="left-userInfo">
+        <li>姓名：<span id="userName"></span></li>
+        <li>性别：<span id="userSex"></span></li>
+        <li>年龄：<span id="userAge"></span></li>
+        <li>身高：<span id="userHeight"></span></li>
+      </ul>
+      <span class="right-grade">健康评估 <span><span class="font16" id="bodyCore">0</span> / <span>100</span></span></span>
+    </div>
+    <div class="dimension-information">
+      <div class="item-title">维度信息</div>
+      <div class="dimension-content clearfix">
+        <div class="left-tableList">
+          <ul class="result-list">
+            <li><span>围度</span><span>本次测量（cm）</span><span>上次对比（cm）</span></li>
+            <!--基本数据 -->
+            <li><span>左上臂围</span><span id="leftArm"></span><span id="last_leftArm">--</span></li>
+            <li><span>右上臂围</span><span id="rigthArm"></span><span id="last_rigthArm">--</span></li>
+            <li><span>胸围</span><span id="xiongWei"></span><span id="last_xiongWei">--</span></li>
+            <li><span>腰围</span><span id="yaoWei"></span><span id="last_yaoWei">--</span></li>
+            <li><span>臀围</span><span id="hipWei"></span><span id="last_hipWei">--</span></li>
+            <li><span>左大腿围</span><span id="leftThigh"></span><span id="last_leftThigh">--</span></li>
+            <li><span>有大腿围</span><span id="rightThigh"></span><span id="last_rightThigh">--</span></li>
+            <li><span>左小腿围</span><span id="leftLeg"></span><span id="last_leftLeg">--</span></li>
+            <li><span>右小腿围</span><span id="rightLeg"></span><span id="last_rightLeg">--</span></li>
+          </ul>
+          <!-- 身体成份结果 -->
+          <div class="item-title">身体成份结果</div>
+          <ul class="result-list">
+            <li><span>项目</span><span>测量值（kg）</span><span>标准范围</span></li>
+            <!--基本数据 -->
+            <li><span>体重</span><span id="bodyComposition_weight"></span><span id="range_weight"></span></li>
+            <!--<li><span>去脂体重</span><span id="">27.4</span><span>&#45;&#45;</span></li>-->
+            <li><span>身体总水分</span><span id="bodyComposition_water"></span><span id="range_water"></span></li>
+            <li><span>体脂肪量</span><span id="bodyComposition_volume"></span><span id="range_volume"></span></li>
+            <li><span>肌肉量</span><span id="bodyComposition_muscle"></span><span id="range_muscle"></span></li>
+          </ul>
+          <div class="item-title">身体成份分析</div>
+          <ul class="result-list body-composition-analysis">
+            <li class="clearfix">
+              <span>项目</span><span>低标准</span><span>正常</span><span>偏高</span><span></span><span>标准范围</span></li>
+            <!--基本数据 -->
+            <li class="clearfix"><span>体脂率</span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span id="range_fatrate"></span>
+            </li>
+            <li class="clearfix"><span>BMI</span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span id="range_bmi"></span></li>
+            <li class="clearfix"><span>基础代谢</span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span id="range_metabolism"></span></li>
+            <li class="clearfix"><span>腰臀比</span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span id="range_hipratio"></span></li>
+          </ul>
+        </div>
+        <div class="rigth-model">
+          <div class="modelimg" id="model"></div>
+          <div class="item-title">身体成份定义</div>
+          <ul class="body-definition">
+            <li>1、【体重】身体所含所有物质的总重量。</li>
+            <li>2、【身体总水分】身体总水分包含细胞内液和细胞外液。</li>
+            <li>3、【体脂肪量】人体脂肪组织的重量，为皮下脂肪和 内脏脂肪的总和。</li>
+            <li>4、【肌肉量】非脂肪物质中去除掉约占体重6%的无 机质后的质量。</li>
+            <li>5、【体脂率】脂肪组织所占体重的比率，脂肪率比单 纯的体重更能反映我们身体的肥胖程度。</li>
+            <li>6、【BMI】身体质量指数(Body mass Index)是国际 上常用的衡量人体肥胖程度和是否健康的重要标准。</li>
+            <li>7、【基础代谢量】人体在清醒而又极端安静的状态 下，不受肌肉活动、环境温度、食物及精神紧张等影响 时的能量代谢。</li>
+            <li>8、【腰臀比】腰围和臀围的比值，也是判定中心性肥 胖的重要指标。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="item-title">体测建议</div>
+      <div class="report-suggest">
+        <span class="coaching-signature">教练签名：</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="backgroundBox">
+  <div class="spinner">
+    <div class="rect1"></div>
+    <div class="rect2"></div>
+    <div class="rect3"></div>
+    <div class="rect4"></div>
+    <div class="rect5"></div>
+  </div>
+</div>
+</body>
+</html>
+<script src="js/jquery.min.js"></script>
+<script id="vs" type="x-shader/x-vertex">
+		#define PHYSICAL
+
+		uniform float uVertexOffset;
+		varying vec2 vUv;
+
+		vec3 defaultRimColor = vec3(0.4);
+		varying vec3 vRimColor;
+
+		varying vec3 vViewPosition;
+		#ifndef FLAT_SHADED
+			varying vec3 vNormal;
+		#endif
+
+		#include <common>
+		#include <uv_pars_vertex>
+		#include <uv2_pars_vertex>
+		#include <displacementmap_pars_vertex>
+		#include <color_pars_vertex>
+		#include <fog_pars_vertex>
+		#include <morphtarget_pars_vertex>
+		#include <skinning_pars_vertex>
+		#include <shadowmap_pars_vertex>
+		#include <specularmap_pars_fragment>
+		#include <logdepthbuf_pars_vertex>
+		#include <clipping_planes_pars_vertex>
+
+		void main() {
+			#include <uv_vertex>
+			#include <uv2_vertex>
+			#include <color_vertex>
+			#include <beginnormal_vertex>
+			#include <morphnormal_vertex>
+			#include <skinbase_vertex>
+			#include <skinnormal_vertex>
+			#include <defaultnormal_vertex>
+
+		#ifndef FLAT_SHADED // Normal computed with derivatives when FLAT_SHADED
+			vNormal = normalize( transformedNormal );
+		#endif
+			#include <begin_vertex>
+			#include <displacementmap_vertex>
+			#include <morphtarget_vertex>
+			#include <skinning_vertex>
+
+
+		#ifdef USE_MEASURE
+		    transformed += normalize(objectNormal) * uVertexOffset;
+		#endif
+		    vUv = uv;
+
+
+			#include <project_vertex>
+
+
+
+			vec4 mvNormal =  normalize(modelViewMatrix * vec4(objectNormal, 0.0));
+		    float rim = 1.0 - saturate(dot(-normalize(mvPosition.xyz / mvPosition.w), mvNormal.xyz));
+		    vRimColor = defaultRimColor * pow(rim, 4.0);
+
+			#include <logdepthbuf_vertex>
+			#include <clipping_planes_vertex>
+			vViewPosition = - mvPosition.xyz;
+			#include <worldpos_vertex>
+			#include <shadowmap_vertex>
+			#include <fog_vertex>
+		}
+
+
+
+
+</script>
+<script id="fs" type="x-shader/x-fragment">
+		#define PHYSICAL
+
+		varying vec3 vRimColor;
+		varying vec2 vUv;
+		vec3 powThreshold = vec3(0.001);
+		uniform sampler2D uFullTextureMapTex;
+		uniform float uTextureMapSwitch;
+
+		uniform sampler2D uRulerTexSelected;
+		uniform float uRulerUVScale;
+		uniform vec3 uRulerControl;
+
+		uniform vec3 diffuse;
+		uniform vec3 emissive;
+		uniform float roughness;
+		uniform float metalness;
+		uniform float opacity;
+
+		#ifndef STANDARD
+			uniform float clearCoat;
+			uniform float clearCoatRoughness;
+		#endif
+
+		varying vec3 vViewPosition;
+
+		#ifndef FLAT_SHADED
+			varying vec3 vNormal;
+		#endif
+
+		#include <common>
+		#include <packing>
+		#include <color_pars_fragment>
+		#include <uv_pars_fragment>
+		#include <uv2_pars_fragment>
+		#include <map_pars_fragment>
+		#include <alphamap_pars_fragment>
+		#include <aomap_pars_fragment>
+		#include <lightmap_pars_fragment>
+		#include <emissivemap_pars_fragment>
+		#include <envmap_pars_fragment>
+		#include <fog_pars_fragment>
+		#include <bsdfs>
+		#include <cube_uv_reflection_fragment>
+		#include <lights_pars>
+		#include <lights_physical_pars_fragment>
+		#include <shadowmap_pars_fragment>
+		#include <bumpmap_pars_fragment>
+		#include <normalmap_pars_fragment>
+		#include <roughnessmap_pars_fragment>
+		#include <metalnessmap_pars_fragment>
+		#include <logdepthbuf_pars_fragment>
+		#include <clipping_planes_pars_fragment>
+
+		void main() {
+			#include <clipping_planes_fragment>
+
+			vec4 diffuseColor = vec4( diffuse, opacity );
+			ReflectedLight reflectedLight = ReflectedLight( vec3( 0.0 ), vec3( 0.0 ), vec3( 0.0 ), vec3( 0.0 ) );
+			vec3 totalEmissiveRadiance = emissive;
+
+			#include <logdepthbuf_fragment>
+			#include <map_fragment>
+			#include <color_fragment>
+			#include <alphamap_fragment>
+			#include <alphatest_fragment>
+			#include <specularmap_fragment>
+			#include <roughnessmap_fragment>
+			#include <metalnessmap_fragment>
+			#include <normal_flip>
+			#include <normal_fragment>
+			#include <emissivemap_fragment>
+
+			// accumulation
+			#include <lights_physical_fragment>
+			#include <lights_template>
+
+			// modulation
+			#include <aomap_fragment>
+
+			vec3 outgoingLight = reflectedLight.directDiffuse + reflectedLight.indirectDiffuse + reflectedLight.directSpecular + reflectedLight.indirectSpecular + totalEmissiveRadiance;
+		    vec3 c = outgoingLight + vRimColor;
+		    float alpha = diffuseColor.a;
+
+		#ifdef USE_TEXTUREMAP
+		    vec3 col = texture2D(uFullTextureMapTex, vUv).xyz;
+		    c *= pow(clamp(col, vec3(0.0001), vec3(1.0)), vec3(uTextureMapSwitch));
+		#endif
+
+		    //sampling girth ruler texture
+		#ifdef USE_MEASURE
+			vec3 selectedRulerCol = texture2D(uRulerTexSelected, vec2(-vUv.x * uRulerUVScale, -vUv.y)).xyz;
+		    // vec3 selectedRulerCol = texture2D(uRulerTexSelected, vec2(vUv.x * uRulerUVScale, vUv.y)).xyz;
+		    c =  selectedRulerCol * uRulerControl + (vec3(1.0) - uRulerControl);
+		    alpha = clamp(uRulerControl.x, 0.2, 0.6);
+		#endif
+
+			gl_FragColor = vec4( c, alpha);
+			#include <premultiplied_alpha_fragment>
+			#include <tonemapping_fragment>
+			#include <encodings_fragment>
+			#include <fog_fragment>
+		}
+
+
+
+</script>
+<script src="./js/three.min.js"></script>
+<script src="./js/OBJLoader.js"></script>
+<script src="./js/OrbitControls.js"></script>
+<script src="./js/model.js"></script>
+<script>
+  var jsonPath = '';
+  var modelPath = '';
+  function setPeopleModel(jsonPaths, modelPaths) {
+    //console.log(jsonPaths, modelPaths);
+    jsonPath = jsonPaths;
+    modelPath = modelPaths;
+    // 加载模型
+    loadOBJ(modelPath);
+  }
+  //模型加载完成回调
+  function loadOBJOver() {
+    console.log('模型加载完毕');
+    $('#backgroundBox').fadeOut()
+    $('#modelLoad').fadeOut(500)
+    initMeasureCurveFromJSON(jsonPath);
+  }
+  /*基本函数*/
+  function CloseWebPage() {
+    window.close();
+  }
+  /* 获取URL参数 */
+  function getQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]);
+    return null;
+  }
+  /* 错误弹窗提示 */
+  function arrorTip(text) {
+    $('body').append('<div id="toastModel"><div class="icon"><div class="icon_box"><div class="line_left"></div><div class="line_right"></div></div></div><p>' + text + '</p></div>')
+    $('#toastModel').fadeIn()
+    setTimeout(function () {
+      $('#toastModel').fadeOut(500, function () {
+        $('#toastModel').remove()
+      })
+    }, 1500)
+  }
+  /* 计算高亮长度 */
+  function setActivelist(data, data1, data2, id) {
+    var leng = 0
+    if (data1 && data2) {
+      var itemone = data1 / 10
+      var itemtwo = (data2 - data1) / 10
+      var itemthe = data2 / 10
+      if (data <= data1) {
+        leng = Math.ceil(data / itemone)
+      }
+      if (data > data1 && data <= data2) {
+        leng = 10 + Math.ceil((data - data1) / itemtwo)
+      }
+      if (data > data2 && data <= data * 2) {
+        leng = 20 + Math.ceil((data - data2) / itemthe)
+      }
+      if (data > data * 2) {
+        leng = 29
+      }
+    } else if (!data1 && data2) { /* 无低标准 */
+      var itemone = data2 / 20
+      if (data <= data2) {
+        leng = Math.ceil(data / itemone)
+      } else {
+        leng = 20 + Math.ceil((data - data2) / itemone)
+      }
+    } else if (data1 && !data2) { /* 无高标准 */
+      var itemone = data1 / 10
+      if (data <= data1) {
+        leng = Math.ceil(data / itemone)
+      } else {
+        leng = 10 + Math.ceil((data - data1) / itemone)
+      }
+    }
+    if(leng >= 30) {
+      leng = 30
+    }
+    return leng
+  }
+</script>
+<script src="./js/report.js?t={vision}"></script>

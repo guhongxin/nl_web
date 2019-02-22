@@ -1,0 +1,107 @@
+#six{
+width: 100%;
+height: 14.9rem;
+background: url(./../../img/10pic.png) no-repeat;
+/* background-position: 405px; */
+overflow: hidden;
+background-size: 100%;
+}
+.scenarios{
+    float: left;
+    height: 54px;
+    padding-left: 54px;
+}
+.bgsix {
+    background: url('../../img/09bar.png') no-repeat left center;
+    background-size: 54px;
+}
+.bgabout {
+    background: url('../../img/25bar.png') no-repeat left center;
+    background-size: 54px;
+}
+.bgadeng {
+    background: url('../../img/06bar.png') no-repeat left center;
+    background-size: 54px;
+}
+.scenarios p:first-child {
+    font-size: 23px;
+    color: #1BB695;
+    margin-top: 4px;
+    font-weight: 700;
+}
+.six-app{
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 1.3rem;
+    clear: both;
+}
+.six-app div{
+    width: 22.13%;
+    float: left;
+    height: 88px;
+    margin-bottom: 4%;
+    line-height: 25px;
+    /* margin-top: 4px; */
+
+    font-size: 19px;
+    box-shadow: 1px 1px 5px #EAF9F4;
+    text-align: center;
+    margin-right: 4%;
+}
+.six-app p:first-child {
+    padding-top: 20px !important;
+    color: #21B696 !important;
+    font-size: 21px !important;
+}
+.six-app p{
+    color: #939393;
+    font-size: 12px
+}
+.swiper-container {
+	padding-bottom:14px;
+}
+@media screen and (max-width: 751px) {
+.six-app div{
+width: 35.13%;
+float: left;
+height: 88px;
+margin-bottom: 4%;
+line-height: 25px;
+font-size: -23px;
+box-shadow: 1px 1px 5px #EAF9F4;
+text-align: center;
+margin-left: 0.2rem;
+}
+.six-app {
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 1.3rem;
+}
+.tuilse {
+    width: 100%;
+    overflow: hidden;
+}
+.scenarios{
+    margin: 0 auto;
+    width: 60%;
+}
+.nobody{
+    width: 51.93% !important;
+}
+.six-app p:first-child {
+    padding-top: 18px !important;
+    color: #21B696 !important;
+    font-size: 15px !important;
+}
+.six-app p {
+    color: #939393;
+    font-size: 13px;
+}
+#six {
+    width: 100%;
+    height: 14.9rem;
+    background: url(./../../img/10pic.png) no-repeat;
+    background-position: bottom;
+    background-size: 100%;
+}
+}

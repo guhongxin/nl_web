@@ -1,0 +1,112 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "vue-js-grid@^1.0.1",
+        "scope": null,
+        "escapedName": "vue-js-grid",
+        "name": "vue-js-grid",
+        "rawSpec": "^1.0.1",
+        "spec": ">=1.0.1 <2.0.0",
+        "type": "range"
+      },
+      "C:\\work\\project\\nl_web"
+    ]
+  ],
+  "_cnpm_publish_time": 1506431996421,
+  "_from": "vue-js-grid@>=1.0.1 <2.0.0",
+  "_hasShrinkwrap": false,
+  "_id": "vue-js-grid@1.0.1",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/vue-js-grid",
+  "_nodeVersion": "8.2.1",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/vue-js-grid-1.0.1.tgz_1506431995422_0.794367725495249"
+  },
+  "_npmUser": {
+    "name": "euvl",
+    "email": "yev.vlasenko@gmail.com"
+  },
+  "_npmVersion": "5.3.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "vue-js-grid@^1.0.1",
+    "scope": null,
+    "escapedName": "vue-js-grid",
+    "name": "vue-js-grid",
+    "rawSpec": "^1.0.1",
+    "spec": ">=1.0.1 <2.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npm.taobao.org/vue-js-grid/download/vue-js-grid-1.0.1.tgz",
+  "_shasum": "3d09314d7e8108a5a585ff02bea8ef5a7aefd1ec",
+  "_shrinkwrap": null,
+  "_spec": "vue-js-grid@^1.0.1",
+  "_where": "C:\\work\\project\\nl_web",
+  "author": {
+    "name": "euvl",
+    "email": "yev.vlasenko@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/euvl/vue-js-grid/issues"
+  },
+  "dependencies": {},
+  "description": "Vue.js responsive grid plugin",
+  "devDependencies": {
+    "babel-core": "^6.0.0",
+    "babel-loader": "^6.0.0",
+    "babel-preset-latest": "^6.0.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "cross-env": "^3.0.0",
+    "css-loader": "^0.25.0",
+    "file-loader": "^0.9.0",
+    "node-sass": "^4.5.0",
+    "sass-loader": "^5.0.1",
+    "uglifyjs-webpack-plugin": "^0.4.6",
+    "vue": "^2.0.0",
+    "vue-loader": "^11.1.4",
+    "vue-template-compiler": "^2.0.0",
+    "webpack": "^2.2.0",
+    "webpack-dev-server": "^2.2.0"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "3d09314d7e8108a5a585ff02bea8ef5a7aefd1ec",
+    "size": 11147,
+    "noattachment": false,
+    "tarball": "http://registry.npm.taobao.org/vue-js-grid/download/vue-js-grid-1.0.1.tgz"
+  },
+  "gitHead": "54fcf67deaf037db7072cd9337c411b54b52d47c",
+  "homepage": "https://github.com/euvl/vue-js-grid#readme",
+  "keywords": [
+    "vue"
+  ],
+  "main": "dist/index.js",
+  "maintainers": [
+    {
+      "name": "euvl",
+      "email": "yevheniy.vlasenko@gmail.com"
+    }
+  ],
+  "name": "vue-js-grid",
+  "optionalDependencies": {},
+  "peerDependencies": {
+    "vue": "^2.0.0"
+  },
+  "private": false,
+  "publish_time": 1506431996421,
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/euvl/vue-js-grid.git"
+  },
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
+  },
+  "version": "1.0.1"
+}

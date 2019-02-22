@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>人体成分分析报告</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/bodyReport.css?t={vision}">
+</head>
+
+<body>
+
+  
+    <button class="no-print" id="close" onclick="CloseWebPage()">
+        关闭窗口
+      </button>
+      <button class="no-print" onclick="window.print()">打印报告</button>
+
+  <div class="box">
+    <!-- 头部 -->
+    <div class="header">
+    </div>
+    <div class="content">
+      <div class="content-left">
+
+        <div class="name">
+          <div class="name-top">
+            <span class="name-num">编号/姓名：
+              <span></span>
+            </span>
+
+            <span class="gender">性别：
+              <span class="check-box">
+                <i class="man hid">✔</i>
+              </span> 男
+              <span class="check-box">
+                <i class="woman hid">✔</i>
+              </span> 女
+            </span>
+          </div>
+          <div class="name-bottom">
+            <span class="age">年龄：
+              <i></i>
+            </span>
+            <span class="height">身高：
+              <i></i>cm</span>
+            <span class="time">测试时间：
+              <i></i>
+            </span>
+          </div>
+        </div>
+        <!-- 人体成分 -->
+        <div class="ingredient">
+          <h4>人体成分</h4>
+          <div class="body-box">
+            <ul>
+              <li>
+                <p>脂肪</p>
+                <p>骨质</p>
+                <p>蛋白质</p>
+                <p>水分</p>
+              </li>
+              <li class="percent">
+                <p id="p-fat"></p>
+                <p id="p-bone"></p>
+                <p id="p-pro"></p>
+                <p id="p-wat"></p>
+              </li>
+              <li>
+                <p class="one-color"></p>
+                <p class="two-color"></p>
+                <p class="three-color"></p>
+                <p class="four-color"><span></span><i>kg</i></p>
+              </li>
+              <li class="body-scope">
+                <p>正常范围</p>
+                <p id="body-scope1"></p>
+                <p id="body-scope2"></p>
+                <p id="body-scope3"></p>
+                <p id="body-scope4"></p>
+              </li>
+              <li>
+                <div class="body-weight">
+                  <span>体重</span>
+                  <p></p>
+                  <br>
+                  <span style="line-height:40px">kg</span>
+                </div>
+                <div class="body-fat-weight">
+                  <span>去脂体重</span>
+                    <p></p>
+                </div>
+                <div class="body-muscle">
+                  <span>肌肉</span>
+                  <p></p>
+                </div>
+                <div class="body-wet">
+                  <span>总水分</span>
+                  <p id="wet1"></p>
+                  <br>
+                  <span >细胞外液</span>
+                  <p id="wet2"></p>
+                </div>
+                <div class="body-cell">
+                  <span>细胞内液</span>
+                  <p></p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- 肌肉分析 -->
+        <div class="muscle">
+          <h4>肌肉分析</h4>
+          <div class="muscle-content">
+            <div class="title">
+              <ul>
+                <li></li>
+                <li>低</li>
+                <li>正常</li>
+                <li>高</li>
+                <li>正常范围</li>
+              </ul>
+            </div>
+            <div class="one public">
+              <div class="m-name">
+                <div class="name-left">肌 肉</div>
+                <div class="name-right">kg</div>
+              </div>
+              <div class="m-scale" >
+                <ul id="muscle_plan">
+                  <li>
+                    <span>38</span>
+                  </li>
+                  <li>
+                    <span>42</span>
+                  </li>
+                  <li>
+                    <span>46</span>
+                  </li>
+                  <li>
+                    <span>50</span>
+                  </li>
+                  <li>
+                    <span>54</span>
+                  </li>
+                  <li>
+                    <span>58</span>
+                  </li>
+                  <li>
+                    <span>62</span>
+                  </li>
+                  <li>
+                    <span>66</span>
+                  </li>
+                  <li>
+                    <span>70</span>
+                  </li>
+                  <li class="last-scale">
+                    <span>74</span>
+                  </li>
+                </ul>
+                <div class="percente-box"></div>
+               
+              </div>
+              <div class="m-norm" id="muscle-norm"></div>
+              
+            </div>
+            <div class="two public">
+              <div class="m-name ">
+                <div class="name-left special">
+                  <div class="tit1">骨骼肌</div>
+                  <div class="tit2">SMM</div>
+                </div>
+                <div class="name-right">kg</div>
+              </div>
+              <div class="m-scale">
+                <ul id="smm_plan">
+                  <li>
+                    <span>60</span>
+                  </li>
+                  <li>
+                    <span>70</span>
+                  </li>
+                  <li>
+                    <span>80</span>
+                  </li>
+                  <li>
+                    <span>90</span>
+                  </li>
+                  <li>
+                    <span>100</span>
+                  </li>
+                  <li>
+                    <span>110</span>
+                  </li>
+                  <li>
+                    <span>120</span>
+                  </li>
+                  <li>
+                    <span>130</span>
+                  </li>
+                  <li>
+                    <span>140</span>
+                  </li>
+                  <li class="last-scale">
+                    <span>150</span>
+                  </li>
+                </ul>
+                <div class="percente-box"></div>
+              </div>
+              <div class="m-norm" id="skeletal-norm"></div>
+            </div>
+            <div class="three public">
+              <div class="m-name">
+                <div class="name-left">蛋白质</div>
+                <div class="name-right">kg</div>
+              </div>
+              <div class="m-scale">
+                <ul id="protein_plan">
+                  <li>
+                    <span>60</span>
+                  </li>
+                  <li>
+                    <span>70</span>
+                  </li>
+                  <li>
+                    <span>80</span>
+                  </li>
+                  <li>
+                    <span>90</span>
+                  </li>
+                  <li>
+                    <span>100</span>
+                  </li>
+                  <li>
+                    <span>110</span>
+                  </li>
+                  <li>
+                    <span>120</span>
+                  </li>
+                  <li>
+                    <span>130</span>
+                  </li>
+                  <li>
+                    <span>140</span>
+                  </li>
+                  <li class="last-scale">
+                    <span>150</span>
+                  </li>
+                </ul>
+                <div class="percente-box"></div>
+              </div>
+              <div class="m-norm" id="protein-norm"></div>
+            </div>
+
+            <!-- 正常范围 -->
+            <div class="zcfw">
+
+              </div>
+          </div>
+        </div>
+
+        <!-- 脂肪分析 -->
+        <div class="muscle fat">
+          <h4>脂肪分析</h4>
+          <div class="muscle-content">
+            <div class="title">
+              <ul>
+                <li></li>
+                <li>低</li>
+                <li>正常</li>
+                <li>高</li>
+                <li>正常范围</li>
+              </ul>
+            </div>
+            <div class="one public">
+              <div class="m-name">
+                <div class="name-left">脂肪</div>
+                <div class="name-right">kg</div>
+              </div>
+              <div class="m-scale">
+                <ul id="fat_plan">
+                  <li>
+                    <span>60</span>
+                  </li>
+                  <li>
+                    <span>70</span>
+                  </li>
+                  <li>
+                    <span>80</span>
+                  </li>
+                  <li>
+                    <span>90</span>
+                  </li>
+                  <li>
+                    <span>100</span>
+                  </li>
+                  <li>
+                    <span>110</span>
+                  </li>
+                  <li>
+                    <span>120</span>
+                  </li>
+                  <li>
+                    <span>130</span>
+                  </li>
+                  <li>
+                    <span>140</span>
+                  </li>
+                  <li class="last-scale">
+                    <span>150</span>
+                  </li>
+                </ul>
+                <div class="percente-box"></div>
+              </div>
+              <div class="m-norm" id="fat-norm"></div>
+            </div>
+            <div class="two public">
+              <div class="m-name ">
+                <div class="name-left special">
+                  <div class="tit1">体脂百分比</div>
+                  <div class="tit2">PBF</div>
+                </div>
+                <div class="name-right">%</div>
+              </div>
+              <div class="m-scale">
+                <ul id="pbf_plan">
+                  <li>
+                    <span>60</span>
+                  </li>
+                  <li>
+                    <span>70</span>
+                  </li>
+                  <li>
+                    <span>80</span>
+                  </li>
+                  <li>
+                    <span>90</span>
+                  </li>
+                  <li>
+                    <span>100</span>
+                  </li>
+                  <li>
+                    <span>110</span>
+                  </li>
+                  <li>
+                    <span>120</span>
+                  </li>
+                  <li>
+                    <span>130</span>
+                  </li>
+                  <li>
+                    <span>140</span>
+                  </li>
+                  <li class="last-scale">
+                    <span>150</span>
+                  </li>
+                </ul>
+                <div class="percente-box"></div>
+              </div>
+              <div class="m-norm" id="pbf-norm"></div>
+            </div>
+            <div class="three public">
+              <div class="m-name">
+                <div class="name-left">内脏脂肪数</div>
+              </div>
+              <div class="m-scale">
+                <ul id="vfi_plan">
+                  <li>
+                    <span>60</span>
+                  </li>
+                  <li>
+                    <span>70</span>
+                  </li>
+                  <li>
+                    <span>80</span>
+                  </li>
+                  <li>
+                    <span>90</span>
+                  </li>
+                  <li>
+                    <span>100</span>
+                  </li>
+                  <li>
+                    <span>110</span>
+                  </li>
+                  <li>
+                    <span>120</span>
+                  </li>
+                  <li>
+                    <span>130</span>
+                  </li>
+                  <li>
+                    <span>140</span>
+                  </li>
+                  <li class="last-scale">
+                    <span>150</span>
+                  </li>
+                </ul>
+                <div class="percente-box"></div>
+              </div>
+              <div class="m-norm" id="vfi-norm"></div>
+            </div>
+            <div class="four public">
+              <div class="m-name">
+                <div class="name-left">躯干脂肪量</div>
+                <div class="name-right">kg</div>
+              </div>
+              <div class="m-scale">
+                <ul id="tr_fat_plan">
+                  <li>
+                    <span>60</span>
+                  </li>
+                  <li>
+                    <span>70</span>
+                  </li>
+                  <li>
+                    <span>80</span>
+                  </li>
+                  <li>
+                    <span>90</span>
+                  </li>
+                  <li>
+                    <span>100</span>
+                  </li>
+                  <li>
+                    <span>110</span>
+                  </li>
+                  <li>
+                    <span>120</span>
+                  </li>
+                  <li>
+                    <span>130</span>
+                  </li>
+                  <li>
+                    <span>140</span>
+                  </li>
+                  <li class="last-scale">
+                    <span>150</span>
+                  </li>
+                </ul>
+                <div class="percente-box"></div>
+              </div>
+              <div class="m-norm" id="TR_fat-norm"></div>
+            </div>
+
+             <!-- 正常范围 -->
+             <div class="zcfw">
+
+              </div>
+          </div>
+        </div>
+
+        <!-- 形态分析 -->
+        <div class="muscle">
+          <h4>形态分析</h4>
+          <div class="muscle-content">
+            <div class="title">
+              <ul>
+                <li></li>
+                <li>低</li>
+                <li>正常</li>
+                <li>高</li>
+                <li>正常范围</li>
+              </ul>
+            </div>
+            <div class="one public">
+              <div class="m-name ">
+                <div class="name-left special">
+                  <div class="tit1">体质指数</div>
+                  <div class="tit2">BMI</div>
+                </div>
+              </div>
+              <div class="m-scale">
+                <ul id="bmi_plan">
+                  <li>
+                    <span>60</span>
+                  </li>
+                  <li>
+                    <span>70</span>
+                  </li>
+                  <li>
+                    <span>80</span>
+                  </li>
+                  <li>
+                    <span>90</span>
+                  </li>
+                  <li>
+                    <span>100</span>
+                  </li>
+                  <li>
+                    <span>110</span>
+                  </li>
+                  <li>
+                    <span>120</span>
+                  </li>
+                  <li>
+                    <span>130</span>
+                  </li>
+                  <li>
+                    <span>140</span>
+                  </li>
+                  <li class="last-scale">
+                    <span>150</span>
+                  </li>
+                </ul>
+                <div class="percente-box"></div>
+              </div>
+              <div class="m-norm" id="bmi-norm"></div>
+            </div>
+            <div class="two public">
+              <div class="m-name ">
+                <div class="name-left special">
+                  <div class="tit1">腰臀比</div>
+                  <div class="tit2">WHR</div>
+                </div>
+              </div>
+              <div class="m-scale">
+                <ul id="whr_plan">
+                  <li>
+                    <span>60</span>
+                  </li>
+                  <li>
+                    <span>70</span>
+                  </li>
+                  <li>
+                    <span>80</span>
+                  </li>
+                  <li>
+                    <span>90</span>
+                  </li>
+                  <li>
+                    <span>100</span>
+                  </li>
+                  <li>
+                    <span>110</span>
+                  </li>
+                  <li>
+                    <span>120</span>
+                  </li>
+                  <li>
+                    <span>130</span>
+                  </li>
+                  <li>
+                    <span>140</span>
+                  </li>
+                  <li class="last-scale">
+                    <span>150</span>
+                  </li>
+                </ul>
+                <div class="percente-box"></div>
+              </div>
+              <div class="m-norm" id="whr-norm"></div>
+            </div>
+
+             <!-- 正常范围 -->
+             <div class="zcfw">
+
+              </div>
+          </div>
+        </div>
+
+        <!-- 节段分析 -->
+        <div class="limbs-box">
+          <div class="lim-title">
+            <div class="lim-icon">
+              <img src="./img/jieduan.png" alt="">
+            </div>
+            <h4>节段分析</h4>
+          </div>
+          <div class="lim-content">
+            <div class="lim-left">
+              <h5>节段肌肉（kg）</h5>
+              <div class="img-box">
+                <div class="left-top">
+                  <p>左上肢</p>
+                  <p id="l-lt"></p>
+                </div>
+                <div class="left-bottom">
+                  <p>左下肢</p>
+                  <p id="l-lb"></p>
+                </div>
+                <div class="right-top">
+                  <p>右上肢</p>
+                  <p id="l-rt"></p>
+                </div>
+                <div class="right-bottom">
+                  <p>右下肢</p>
+                  <p id="l-rb"></p>
+                </div>
+                <div class="lim-mid">
+                  <p id="l-mid"></p>
+                </div>
+              </div>
+            </div>
+            <div class="lim-right">
+              <h5>节段脂肪（kg）</h5>
+              <div class="img-box">
+                <div class="left-top">
+                  <p>左上肢</p>
+                  <p id="r-lt"></p>
+                </div>
+                <div class="left-bottom">
+                  <p>左下肢</p>
+                  <p id="r-lb"></p>
+                </div>
+                <div class="right-top">
+                  <p>右上肢</p>
+                  <p id="r-rt"></p>
+                </div>
+                <div class="right-bottom">
+                  <p>右下肢</p>
+                  <p id="r-rb"></p>
+                </div>
+                <div class="lim-mid">
+                  <p id="r-mid"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- 右侧 -->
+      <div class="content-right">
+        <!-- 健康评分 -->
+        <div class="grade">
+          <div class="g1">
+            <span>健康评分：</span>
+            <span class="line" id="score"></span>
+          </div>
+          <div class="g2">
+            <div>
+              <img src="./img/aicon.png" alt="">
+            </div>
+            <div>
+              <span>身体年龄</span>
+              <span class="line" id="body-age"></span>
+              <span>岁</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 体重管理 -->
+        <div class="weight-manage">
+          <table border="1">
+            <tr>
+              <th colspan="3">
+                体重管理
+              </th>
+            </tr>
+            <tr>
+              <td>目标体重</td>
+              <td>
+                <span id="standard-weight"></span>
+                <i>kg</i>
+              </td>
+            </tr>
+            <tr>
+              <td>体重控制</td>
+              <td>
+                <span id="weight-control"></span>
+                <i>kg</i>
+              </td>
+            </tr>
+            <tr>
+              <td>脂肪控制量</td>
+              <td>
+                <span id="fat-control"></span>
+                <i>kg</i>
+              </td>
+            </tr>
+            <tr>
+              <td>肌肉控制量</td>
+              <td>
+                <span id="muscle-control"></span>
+                <i>kg</i>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <!-- 骨骼肌 -->
+        <div class="skeletal">
+          <div class="ske-title">
+            <span>骨骼肌：</span>
+            <span class="line" id="ske-ssm"></span>
+            <span>kg</span>
+          </div>
+          <div class="level">
+            <input type="checkbox" id="lv1" onclick="return false">
+            <span> 弱</span>
+            <input type="checkbox" id="lv2" onclick="return false">
+            <span> 正常</span>
+            <input type="checkbox" id="lv3" onclick="return false">
+            <span> 发达</span>
+          </div>
+          <div class="circle-box">
+            <div class="circle-left">
+              <p>
+                <span>上肢</span>
+                <span>下肢</span>
+              </p>
+              <div class="circle">
+                <div class="circle-top"></div>
+                <div class="circle-bottom"></div>
+                <div class="circle-text">
+                  <div>
+                    <span>弱</span>
+                    <input type="checkbox" onclick="return false" id="upLimb1">
+                    <input type="checkbox" onclick="return false" id="lowLimb1">
+                    <span>弱</span>
+                  </div>
+                  <div>
+                    <span>正常</span>
+                    <input type="checkbox" onclick="return false" id="upLimb2">
+                    <input type="checkbox" onclick="return false" id="lowLimb2">
+                    <span>正常</span>
+                  </div>
+                  <div>
+                    <span>发达</span>
+                    <input type="checkbox" onclick="return false" id="upLimb3">
+                    <input type="checkbox" onclick="return false" id="lowLimb3">
+                    <span>发达</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="circle-right">
+              <p>
+                <span>左右</span>
+                <span>平衡</span>
+              </p>
+              <div class="circle">
+                <div class="circle-l"></div>
+                <div class="circle-r"></div>
+                <div class="circle-text">
+                  <div>
+                    <input type="checkbox" onclick="return false" id="balance">
+                    <span>平衡</span>
+                  </div>
+                  <div>
+                    <input type="checkbox" onclick="return false" id="unbalance">
+                    <span>不平衡</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+        <!-- 肥胖分析 -->
+        <div class="obesity">
+          <div class="obesity-title">
+            <span>肥胖分析</span>
+            <span>（BMI等级）</span>
+          </div>
+          <div class="fat1">
+            <span>
+              <input type="checkbox" id="bmi1" onclick="return false">
+              <i>体重较轻</i>
+            </span>
+            <span>
+              <input type="checkbox" id="bmi2" onclick="return false" >
+              <i>正常</i>
+            </span>
+            <span>
+              <input type="checkbox" id="bmi3" onclick="return false">
+              <i>超重</i>
+            </span>
+          </div>
+          <div class="fat2">
+            <span>
+              <input type="checkbox" id="bmi4" onclick="return false">
+              <i>肥胖|级</i>
+            </span>
+            <span>
+              <input type="checkbox" id="bmi5" onclick="return false">
+              <i>肥胖||级</i>
+            </span>
+            <span>
+              <input type="checkbox" id="bmi6" onclick="return false">
+              <i>肥胖|||级</i>
+            </span>
+
+          </div>
+          <div class="metabolism">
+            <span>基础代谢</span>
+            <span id="bmr"></span>
+            <span>kcal</span>
+          </div>
+          <div class="whr">
+            <ul>
+              <li>腰臀比</li>
+              <li>
+                <div class="buttocks">
+                </div>
+                <p>
+                  <input type="checkbox" id="shape1" onclick="return false">
+                  <span>梨形</span>
+                </p>
+              </li>
+              <li>
+                <div class="buttocks2">
+                </div>
+                <p>
+                  <input type="checkbox" onclick="return false" id="shape2">
+                  <span>正常</span>
+                </p>
+              </li>
+              <li>
+                <div class="buttocks3">
+                </div>
+                <p>
+                  <input type="checkbox" id="shape3" onclick="return false">
+                  <span>苹果型</span>
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- 体型判定 -->
+        <div class="decide">
+          <h4>体型判定</h4>
+          <ul class="body-type">
+            <li class="def">隐形肥胖型</li>
+            <li class="def">脂肪过多型</li>
+            <li class="def">肥胖型</li>
+            <li class="def">肌肉不足型</li>
+            <li class="def">健康匀称型</li>
+            <li class="def">超重肌肉型</li>
+            <li class="def">消瘦型</li>
+            <li class="def">低脂肪型</li>
+            <li class="def">运动员型</li>
+          </ul>
+        </div>
+        <div class="banquan">
+          版权所有©同方健康科技（北京）股份有限公司
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <script src="../home/js/jQuery.min.js"></script>
+  <script src="./js/bodyReport.js"></script>
+</body>
+
+</html>

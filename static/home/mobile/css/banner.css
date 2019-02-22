@@ -1,0 +1,41 @@
+#banner {
+    width: 100%;
+    height: 14.5rem;
+    background: url(../../img/01banner.jpg);
+    background-position: 1px;
+}
+.title a{
+    box-shadow: 21px;
+    box-shadow: 2px 8px 5px #41957E;
+    background: #6FCFAA;
+    display: block;
+    text-align: center;
+    font-size: 0.3rem;
+    margin-top: 0.4rem;
+    line-height: 0.6rem;
+    height: 0.6rem;
+    width: 1.9rem;
+}
+@media screen and (max-width: 1390px) {
+    #banner {
+        width: 100%;
+        height: 8.7rem;
+        background: url(../../img/01banner.jpg)no-repeat;
+        /* background-position: 1px; */
+        background-size: 100%;
+    }
+}
+@media screen and (max-width: 750px) {
+.title p {
+    font-size: 0.5rem;
+    /* margin-top: -3px; */
+    /*1 line-height: 1; */
+}
+  #banner {
+      width: 100%;
+      height: 7.1rem;
+      background: url(../../img/01banner.jpg)no-repeat;
+      /* background-position: 1px; */
+      background-size: 100%;
+  }
+}

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>个人详情</title>
+  <link rel="stylesheet" href="./css/base.css?t={vision}">
+  <link rel="stylesheet" href="./css/style.css?t={vision}">
+  <script type="text/javascript" src="./js/pages/getApp.js?t={vision}"></script>
+</head>
+
+<body class="app-container">
+<div class="download-box">
+  <img src="../home/img/group@2x.png" alt="">
+  <div class="down-btn" onclick="window.location.href = 'http://android.myapp.com/myapp/detail.htm?apkName=com.yesfeeling.niulangsport&ADTAG=mobile'">立即下载</div>
+</div>
+<div class="user-detail-box marginbottom10">
+  <div class="background_bg" id="bigestBackground"></div>
+  <div class="center-logo clearfix">
+    <span class="logo-box">
+      <img src="http://niulang-v2.oss-cn-beijing.aliyuncs.com/default_head.png" id="userAvatar">
+    </span>
+  </div>
+  <div class="user-message">
+    <p><span id="userName">--</span><span class="sex-logo" id="userSex"></span></p>
+    <p>
+      <span id="uidCode">ID:--</span>&nbsp;&nbsp;&nbsp;<span id="userAddress">--</span>
+    </p>
+    <p id="userSignature"></p>
+    <ul class="clearfix">
+      <li><span id="numForFollow">--</span>关注</li>
+      <li><span id="numForFans">--</span>粉丝</li>
+      <li><span id="numForArticle">--</span>动态</li>
+    </ul>
+  </div>
+</div>
+<div class="sport-data marginbottom10">
+  <p>总运动 <span id="totalRunTime">0</span> 分钟</p>
+  <p>总消耗 <span id="totalCalorie">0</span> 大卡</p>
+  <ul>
+    <li>
+      <div class="circular-border" ids="f">
+        <div class="pie_left"><div class="left"></div></div>
+        <div class="pie_right"><div class="right"></div></div>
+        <div class="mask"></div>
+      </div>
+      <img src="./img/detail/qixie@2x.png" alt="">
+      <p><span>F<span class="level"></span></span>器械</p>
+      <div class="zhe-model"></div>
+    </li>
+    <li>
+      <div class="circular-border" ids="a">
+        <div class="pie_left"><div class="left"></div></div>
+        <div class="pie_right"><div class="right"></div></div>
+        <div class="mask"></div>
+      </div>
+      <img src="./img/detail/paobuji@2x.png" alt="">
+      <p><span>A<span class="level"></span></span>有氧</p>
+      <div class="zhe-model"></div>
+    </li>
+    <li>
+      <div class="circular-border" ids="w">
+        <div class="pie_left"><div class="left"></div></div>
+        <div class="pie_right"><div class="right"></div></div>
+        <div class="mask"></div>
+      </div>
+      <img src="./img/detail/buxing@2x.png" alt="">
+      <p><span>W<span class="level"></span></span>步行</p>
+      <div class="zhe-model"></div>
+    </li>
+  </ul>
+</div>
+<div class="picture-list marginbottom10">
+  <div class="picture-list-head">
+    <span>相册</span>
+  </div>
+  <ul id="pictureList"></ul>
+</div>
+<div class="bodybuilding">
+  <p>健身日记</p>
+  <ul class="everydata-list" id="fitnessDiaryDetail"></ul>
+</div>
+<div class="share-box">
+  <div class="user-detail">
+    <img src="http://niulang-v2.oss-cn-beijing.aliyuncs.com/default_head.png" id="shareUserAvatar">
+    <span class="rigth-text">
+      <div>
+        <span class="user-name" id="shareUsername">--</span>
+        <img src="" alt="">
+      </div>
+      <p class="last-time">分享给你</p>
+    </span>
+  </div>
+  <a class="add-follow" href="">“牛啦”内打开</a>
+</div>
+</body>
+
+</html>
+<script type="text/javascript" src="./js/plugins/flexible.js"></script>
+<script type="text/javascript" src="./js/plugins/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="./js/pages/personDetail.js?t={vision}"></script>
+<script>
+  $(function () {
+    /*totalSec=35&totalKcal=199*/
+    var queryJson = {
+      f: {
+        Lv: getQueryString('fLv'),
+        fAmount: getQueryString('fAmount'),
+        fMax: getQueryString('fMax'),
+        Percent: getNum(getQueryString('fAmount'), getQueryString('fMax'))
+      },
+      a: {
+        Lv: getQueryString('aLv'),
+        aAmount: getQueryString('aAmount'),
+        aMax: getQueryString('aMax'),
+        Percent: getNum(getQueryString('aAmount'), getQueryString('aMax'))
+      },
+      w: {
+        Lv: getQueryString('wLv'),
+        wAmount: getQueryString('wAmount'),
+        wMax: getQueryString('wMax'),
+        Percent: getNum(getQueryString('wAmount'), getQueryString('wMax'))
+      }
+    }
+    $('.circular-border').each(function(index, el) {
+      var num = queryJson[$(this).attr('ids')].Percent * 3.6;
+      num = num*0.8;
+      if (num<=180) {
+        $(this).find('.right').css('transform', "rotate(" + num + "deg)");
+      } else {
+        $(this).find('.right').css('transform', "rotate(180deg)");
+        $(this).find('.left').css('transform', "rotate(" + (num - 180) + "deg)");
+      };
+      $(this).next().next('p').find('.level').text(queryJson[$(this).attr('ids')].Lv);
+    });
+    /* 运动时间、卡路里 */
+    $('#totalRunTime').text(getQueryString('totalSec'));
+    $('#totalCalorie').text(getQueryString('totalKcal'));
+
+
+    function getNum(a,b) {
+      if(b == 0){
+        return 0
+      }else {
+        return Math.round(100 * a / b)
+      }
+    }
+  })
+</script>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>数据报告</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body></body>
+</html>
+<script src="./js/jquery.min.js"></script>
+<script>
+  var params2 = {
+    "q": getQueryString('q'),
+    "uid": Number(getQueryString('uid')),
+  }
+  $.ajax({
+    type: 'POST',
+    url: '/external_device/visbodyfit/v1/bind_user',
+    data: JSON.stringify(params2),
+    dataType: 'json',
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8'
+    },
+    success: function (data) {
+      console.log(data);
+      if (data.code == 0) {
+        window.location = "./index.html?q=" + getQueryString('q') + "&uid=" + getQueryString('uid')
+      } else {
+        alert("绑定用户失败")
+      }
+    }
+  })
+  // 获取url参数
+  function getQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]);
+    return null;
+  }
+</script>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/bodyExam.css?t={vision}">
+  <title>体测报告</title>
+</head>
+<style>
+  [v-cloak] {
+    display: none;
+  }
+
+  .download-box {
+    background-color: white;
+    height: 60px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #F0F0F0;
+    position: relative;
+    z-index: 2;
+  }
+
+  .download-box img {
+    width: 107px;
+    height: 40px;
+  }
+
+  .download-box .down-btn {
+    width: 80px;
+    text-align: center;
+    line-height: 30px;
+    color: #1AB394;
+    border: 1px solid #1AB394;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .names {
+    float: left;
+    margin-left: 10px;
+    width: 124px;
+    text-align: left;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+  }
+  @media screen and (max-width:320px){/*宽度小于等于320,同理*/
+    .names {
+      width: 79px;
+    }
+  }
+  .img_404 {
+    position: fixed;
+    top: 127px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f0f0f0;
+    background-image: url('./../sharearticle/img/lost3x.png');
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-position: center 36%;
+    display: none;
+    z-index: 9;
+  }
+  .ogh {
+    display: none;
+    text-align: center;
+    color: #999;
+  }
+  .ul_cursor li {
+    cursor: pointer;
+  }
+</style>
+<body>
+<div class="mask" style="display: none;">
+  <div id="error">无有效ID，获取信息失败</div>
+</div>
+<div class="img_404"><p class="ogh">第三方体测此版本暂未支持</p></div>
+<div class="download-box" style="display: none;">
+  <img src="./img/detail/logo@2x.png" alt="">
+  <div class="down-btn"
+       onclick="window.location.href = 'http://android.myapp.com/myapp/detail.htm?apkName=com.yesfeeling.niulangsport&ADTAG=mobile'">
+    立即下载
+  </div>
+</div>
+<span id="app" v-cloak>
+  <div class="body_top_box" v-bind:class="[examTimedo?'choosenone':'']">
+    <div class="body_head_icon"><img :src="headicon" alt=""></div>
+    <div class="names" v-text="name"></div>
+    <div class="body_date" v-text="examTime" v-if="inapp" @click="dateShow = dateShow?false:true"></div>
+    <div class="body_date_appout" v-text="examTime" v-else="inapp"></div>
+    <div class="dataliset" v-show="dateShow">
+      <ul>
+        <li v-for="(date, index) in dateList" v-text="date" @click="choose(index)"></li>
+      </ul>
+    </div>
+  </div>
+  <span id="otherbox">
+  <div class="body_tu" id="drawing">
+
+  </div>
+  <div class="body_H1">
+     基本身体成分
+  </div>
+  <div class="body_list_box">
+    <ul class="body_list_ul ul_cursor">
+      <li v-for="(item, index) in dataList" :key="index" v-if="item.type != 9">
+        <div class="body_list_li" @click="choosedowm(item.check, index)">
+          <div class="body_list_li_left">
+            <span class="body_list_li_left_icon">
+              <img :src="item.filename" alt="">
+            </span>
+            <span class="body_list_li_left_font">
+              <div class="body_list_li_left_font_top" v-text="item.itemName"></div>
+              <div class="body_list_li_left_font_bottom" :class="item.color">{{item.stateString}}<span
+                :class="item.check?'down_icon':'left_icon'"></span></div>
+            </span>
+          </div>
+          <div class="body_list_li_right" :class="item.color != 'green' ? item.color : ''"
+               v-text="item.listValue"></div>
+        </div>
+        <div class="body_list_li_detail_box" v-show="item.check">
+          <div v-text="item.itemIntroduction">
+          </div>
+          <div class="linebox">
+            <span>
+              <div class="isoerbiaochi" v-if="item.stateStrings.length == 5">
+                <div class="biaochi">
+                  <div class="itsem" style="background: #1C84C6;">
+                    <div class="itsem1">
+                      <span v-text="item.stateVer[0]"></span>
+                    </div>
+                  </div>
+                  <div class="itsem" style="background: #51A9CA;">
+                    <div class="itsem1">
+                      <span v-text="item.stateVer[1]"></span>
+                    </div>
+                  </div>
+                  <div class="itsem" style="background: #1AB394;">
+                    <div class="itsem1">
+                      <span v-text="item.stateVer[2]"></span>
+                    </div>
+                  </div>
+                  <div class="itsem" style="background: #F8AC59;">
+                    <div class="itsem1">
+                      <span v-text="item.stateVer[3]"></span>
+                    </div>
+                  </div>
+                  <div class="itsem" style="background: #EE6B54;"></div>
+                  <div class="itsembis" v-text="item.stateStrings[0]"></div>
+                  <div class="itsembis" v-text="item.stateStrings[1]"></div>
+                  <div class="itsembis" v-text="item.stateStrings[2]"></div>
+                  <div class="itsembis" v-text="item.stateStrings[3]"></div>
+                  <div class="itsembis" v-text="item.stateStrings[4]"></div>
+                  <div class="headvalue" :style="{left: item.left}">
+                    <img
+                      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NTc3MiwgMjAxNC8wMS8xMy0xOTo0NDowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpkNDk0ZjgwMy00ZWM2LTRlNDAtOTNkYS1mMTczNzM0YjdlNDciIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QkI2Q0ZFNDE1NjFCMTFFNkFEQzFFM0Q1MkJCNzEwNTkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QkI2Q0ZFNDA1NjFCMTFFNkFEQzFFM0Q1MkJCNzEwNTkiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDphMTgxZTQ3NS0yMzM5LTQxZmYtOWFjZC01MzEzNDlkYjczZDkiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6ZDQ5NGY4MDMtNGVjNi00ZTQwLTkzZGEtZjE3MzczNGI3ZTQ3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+hUp2mQAABKdJREFUeNrEV2tsVEUUPnPv7rYUrFVpFQtEG6CYNEaXZzGVGKBNjJFYCUIg+Igh4WEl+sfAD3wm+MOk0FJj1CCEakO0JEBMaIWEAPKSoqaaIsYHWFCapgvBPnb33vGcuXNn5969+8Ck6Um+Zntnzvlmzpw55wzjnMNYSoj+DD67MJ+5YUQdYgliDqICUSLHYojfEOcQnYjDiEQug0VfHXMWkEOIZBNiPaI0w5x7JaoRDYg+RAuiUS4uoxg5yFcgehBb/eSsuASM8qkC9NsnpVKnR9rIfgQBYiKaEOtSjAaYcxZAqGYJGFWPpJHymzGwu7+H5PFOsM59ix9s1zNfIB5HvIKw/ESMgtAXA0S+D1GvPsyqhsgLG4DdPyWvwOJXr0D8s51gnT+lf25HLNcXQTEQdASNitw0IbL2NSjYvC1vcrErnEs6pEs2pJDN7bli4DnERmfEgILX34JQ3dL/f8VQl2yQLSkbJEfgAkqAsR3qzq1eC+a8GvHbvtgNyYP7gF+/ltv9OIfmko5wItogWyn3sCbt+nqC8FXgvMw98/DSlYp8eAs6BWOF7f8cCptbgRWNDyYf/BeG31gH/MYAEUHhe81gVFYJW/ZPPzgxwXmpvNZv6h4Io4JyPQWcK1ZPtyAXBGiY9/6Zefe9lx1y8Q8H+5ef1VjkxY2po2CMCCL6AmpRYaLY/ezHPAEXql4I7I5iZ23TZoJRMSNzUqmYLua4ecI9QvH/pMnCtlzcRMGpHUGdIqxZ5I3osklQ2NIG/O9eMKY+iCvMkjxxjNxuX/4d2H3laUdFtq2zx0HjPORai6pdVEXTrxUaYll27mUJZ/SSz3Y0dQTMmOm47U6B0RKPfWZUajHAi50Jd416+U1xOJwGjLEYMipjTkEZGHVCxSE5XQ9ccgZvCIweucf+JX0B592vdndXuuI/V8E6eTRvIppLOn7x2e7S88BhWa8heeIImAueUNks8eUeSLS34kACCsaNBzM6Lzv5hbMw0viOuI7h+lUQXrZGpGXXtiYdugc6ZRuFzcRJ4Nf+clOmaDQgPoLLt2Hk/S24mL0Aw0PpzPiNxka2bRZzSUfoSnKySbal9MlNKw/EZQ+3lZTju5pFPRc5/Pn1jjLujLyQaP0YkliUzLk1wMqnyBpwRWQ4KkYqKT46V+i6Qg2KWJgjLZLT0xFRibyIEBWRmgnVC1hJiO9ugeTX7aowZb7oDEJP1jvkMm0nOw5A/KMP9N1Tqoz5u+KY7GjbxIo/3QGs5G6noKChyEsNoh9M7G/FsnpaeMOfgs1Z8yH8zCowpj+Uign0DNnSpEHvlIN6wmbZuVA7xSMvb2Kh2qe9t2JoEPgfvwLv73OM3FMK7IFpwMYVeeaJnX/SyMGymPy0U3VcsifMrymNzrewnpu31ZTuarKsrjNmrqY0qLZacqJqy62u0+bQhTO2+fDsW6HFTxVnbcu/OXTT+vG7CRgrOvmHt9OW+x8m293A9Eik4Ba6fFAeSRFeuwkB+tdFqyfjKuhplqsYkSKVzbcR/Z4RJMT2q4wQQN4vdSozked6GYHvdtAz613ZxdRqj1O3tg5oj9OOfB+n6gjGUv4TYAA2D9ThfJRCUwAAAABJRU5ErkJggg=="
+                      alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="isoerbiaochi" v-if="item.stateStrings.length == 4">
+                <div class="biaochi">
+                  <div class="itsem sfl" style="width:25%;background:#51A9CA">
+                    <div class="itsem1">
+                      <span v-text="item.stateVer[0]"></span>
+                    </div>
+                  </div>
+                  <div class="itsem sfl" style="width:25%;background:#1AB394">
+                    <div class="itsem1">
+                      <span v-text="item.stateVer[1]"></span>
+                    </div>
+                  </div>
+                  <div class="itsem sfl" style="width:25%;background:#F8AC59">
+                    <div class="itsem1">
+                      <span v-text="item.stateVer[2]"></span>
+                    </div>
+                  </div>
+                  <div class="itsem sfl" style="width:25%;background:#EE6B54"></div>
+                  <div class="itsembis sfl" style="width:25%" v-text="item.stateStrings[0]"></div>
+                  <div class="itsembis sfl" style="width:25%" v-text="item.stateStrings[1]"></div>
+                  <div class="itsembis sfl" style="width:25%" v-text="item.stateStrings[2]"></div>
+                  <div class="itsembis sfl" style="width:25%" v-text="item.stateStrings[3]"></div>
+                  <div class="headvalue" :style="{left: item.left}">
+                    <img
+                      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NTc3MiwgMjAxNC8wMS8xMy0xOTo0NDowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpkNDk0ZjgwMy00ZWM2LTRlNDAtOTNkYS1mMTczNzM0YjdlNDciIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QkI2Q0ZFNDE1NjFCMTFFNkFEQzFFM0Q1MkJCNzEwNTkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QkI2Q0ZFNDA1NjFCMTFFNkFEQzFFM0Q1MkJCNzEwNTkiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDphMTgxZTQ3NS0yMzM5LTQxZmYtOWFjZC01MzEzNDlkYjczZDkiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6ZDQ5NGY4MDMtNGVjNi00ZTQwLTkzZGEtZjE3MzczNGI3ZTQ3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+hUp2mQAABKdJREFUeNrEV2tsVEUUPnPv7rYUrFVpFQtEG6CYNEaXZzGVGKBNjJFYCUIg+Igh4WEl+sfAD3wm+MOk0FJj1CCEakO0JEBMaIWEAPKSoqaaIsYHWFCapgvBPnb33vGcuXNn5969+8Ck6Um+Zntnzvlmzpw55wzjnMNYSoj+DD67MJ+5YUQdYgliDqICUSLHYojfEOcQnYjDiEQug0VfHXMWkEOIZBNiPaI0w5x7JaoRDYg+RAuiUS4uoxg5yFcgehBb/eSsuASM8qkC9NsnpVKnR9rIfgQBYiKaEOtSjAaYcxZAqGYJGFWPpJHymzGwu7+H5PFOsM59ix9s1zNfIB5HvIKw/ESMgtAXA0S+D1GvPsyqhsgLG4DdPyWvwOJXr0D8s51gnT+lf25HLNcXQTEQdASNitw0IbL2NSjYvC1vcrErnEs6pEs2pJDN7bli4DnERmfEgILX34JQ3dL/f8VQl2yQLSkbJEfgAkqAsR3qzq1eC+a8GvHbvtgNyYP7gF+/ltv9OIfmko5wItogWyn3sCbt+nqC8FXgvMw98/DSlYp8eAs6BWOF7f8cCptbgRWNDyYf/BeG31gH/MYAEUHhe81gVFYJW/ZPPzgxwXmpvNZv6h4Io4JyPQWcK1ZPtyAXBGiY9/6Zefe9lx1y8Q8H+5ef1VjkxY2po2CMCCL6AmpRYaLY/ezHPAEXql4I7I5iZ23TZoJRMSNzUqmYLua4ecI9QvH/pMnCtlzcRMGpHUGdIqxZ5I3osklQ2NIG/O9eMKY+iCvMkjxxjNxuX/4d2H3laUdFtq2zx0HjPORai6pdVEXTrxUaYll27mUJZ/SSz3Y0dQTMmOm47U6B0RKPfWZUajHAi50Jd416+U1xOJwGjLEYMipjTkEZGHVCxSE5XQ9ccgZvCIweucf+JX0B592vdndXuuI/V8E6eTRvIppLOn7x2e7S88BhWa8heeIImAueUNks8eUeSLS34kACCsaNBzM6Lzv5hbMw0viOuI7h+lUQXrZGpGXXtiYdugc6ZRuFzcRJ4Nf+clOmaDQgPoLLt2Hk/S24mL0Aw0PpzPiNxka2bRZzSUfoSnKySbal9MlNKw/EZQ+3lZTju5pFPRc5/Pn1jjLujLyQaP0YkliUzLk1wMqnyBpwRWQ4KkYqKT46V+i6Qg2KWJgjLZLT0xFRibyIEBWRmgnVC1hJiO9ugeTX7aowZb7oDEJP1jvkMm0nOw5A/KMP9N1Tqoz5u+KY7GjbxIo/3QGs5G6noKChyEsNoh9M7G/FsnpaeMOfgs1Z8yH8zCowpj+Uign0DNnSpEHvlIN6wmbZuVA7xSMvb2Kh2qe9t2JoEPgfvwLv73OM3FMK7IFpwMYVeeaJnX/SyMGymPy0U3VcsifMrymNzrewnpu31ZTuarKsrjNmrqY0qLZacqJqy62u0+bQhTO2+fDsW6HFTxVnbcu/OXTT+vG7CRgrOvmHt9OW+x8m293A9Eik4Ba6fFAeSRFeuwkB+tdFqyfjKuhplqsYkSKVzbcR/Z4RJMT2q4wQQN4vdSozked6GYHvdtAz613ZxdRqj1O3tg5oj9OOfB+n6gjGUv4TYAA2D9ThfJRCUwAAAABJRU5ErkJggg=="
+                      alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="isoerbiaochi" v-if="item.stateStrings.length == 3">
+                <div class="biaochi">
+                  <div class="itsem sfl" style="width: 33.33%;background:#51A9CA">
+                    <div class="itsem1">
+                      <span v-text="item.stateVer[0]"></span>
+                    </div>
+                  </div>
+                  <div class="itsem sfl" style="width: 33.33%;background:#1AB394">
+                    <div class="itsem1">
+                      <span v-text="item.stateVer[1]"></span>
+                    </div>
+                  </div>
+                  <div class="itsem sfl" style="width: 33.33%;background:#F8AC59"></div>
+                  <div class="itsembis sfl" style="width:33.33%" v-text="item.stateStrings[0]"></div>
+                  <div class="itsembis sfl" style="width:33.33%" v-text="item.stateStrings[1]"></div>
+                  <div class="itsembis sfl" style="width:33.33%" v-text="item.stateStrings[2]"></div>
+                  <div class="headvalue" :style="{left: item.left}">
+                    <img
+                      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NTc3MiwgMjAxNC8wMS8xMy0xOTo0NDowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpkNDk0ZjgwMy00ZWM2LTRlNDAtOTNkYS1mMTczNzM0YjdlNDciIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QkI2Q0ZFNDE1NjFCMTFFNkFEQzFFM0Q1MkJCNzEwNTkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QkI2Q0ZFNDA1NjFCMTFFNkFEQzFFM0Q1MkJCNzEwNTkiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDphMTgxZTQ3NS0yMzM5LTQxZmYtOWFjZC01MzEzNDlkYjczZDkiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6ZDQ5NGY4MDMtNGVjNi00ZTQwLTkzZGEtZjE3MzczNGI3ZTQ3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+hUp2mQAABKdJREFUeNrEV2tsVEUUPnPv7rYUrFVpFQtEG6CYNEaXZzGVGKBNjJFYCUIg+Igh4WEl+sfAD3wm+MOk0FJj1CCEakO0JEBMaIWEAPKSoqaaIsYHWFCapgvBPnb33vGcuXNn5969+8Ck6Um+Zntnzvlmzpw55wzjnMNYSoj+DD67MJ+5YUQdYgliDqICUSLHYojfEOcQnYjDiEQug0VfHXMWkEOIZBNiPaI0w5x7JaoRDYg+RAuiUS4uoxg5yFcgehBb/eSsuASM8qkC9NsnpVKnR9rIfgQBYiKaEOtSjAaYcxZAqGYJGFWPpJHymzGwu7+H5PFOsM59ix9s1zNfIB5HvIKw/ESMgtAXA0S+D1GvPsyqhsgLG4DdPyWvwOJXr0D8s51gnT+lf25HLNcXQTEQdASNitw0IbL2NSjYvC1vcrErnEs6pEs2pJDN7bli4DnERmfEgILX34JQ3dL/f8VQl2yQLSkbJEfgAkqAsR3qzq1eC+a8GvHbvtgNyYP7gF+/ltv9OIfmko5wItogWyn3sCbt+nqC8FXgvMw98/DSlYp8eAs6BWOF7f8cCptbgRWNDyYf/BeG31gH/MYAEUHhe81gVFYJW/ZPPzgxwXmpvNZv6h4Io4JyPQWcK1ZPtyAXBGiY9/6Zefe9lx1y8Q8H+5ef1VjkxY2po2CMCCL6AmpRYaLY/ezHPAEXql4I7I5iZ23TZoJRMSNzUqmYLua4ecI9QvH/pMnCtlzcRMGpHUGdIqxZ5I3osklQ2NIG/O9eMKY+iCvMkjxxjNxuX/4d2H3laUdFtq2zx0HjPORai6pdVEXTrxUaYll27mUJZ/SSz3Y0dQTMmOm47U6B0RKPfWZUajHAi50Jd416+U1xOJwGjLEYMipjTkEZGHVCxSE5XQ9ccgZvCIweucf+JX0B592vdndXuuI/V8E6eTRvIppLOn7x2e7S88BhWa8heeIImAueUNks8eUeSLS34kACCsaNBzM6Lzv5hbMw0viOuI7h+lUQXrZGpGXXtiYdugc6ZRuFzcRJ4Nf+clOmaDQgPoLLt2Hk/S24mL0Aw0PpzPiNxka2bRZzSUfoSnKySbal9MlNKw/EZQ+3lZTju5pFPRc5/Pn1jjLujLyQaP0YkliUzLk1wMqnyBpwRWQ4KkYqKT46V+i6Qg2KWJgjLZLT0xFRibyIEBWRmgnVC1hJiO9ugeTX7aowZb7oDEJP1jvkMm0nOw5A/KMP9N1Tqoz5u+KY7GjbxIo/3QGs5G6noKChyEsNoh9M7G/FsnpaeMOfgs1Z8yH8zCowpj+Uign0DNnSpEHvlIN6wmbZuVA7xSMvb2Kh2qe9t2JoEPgfvwLv73OM3FMK7IFpwMYVeeaJnX/SyMGymPy0U3VcsifMrymNzrewnpu31ZTuarKsrjNmrqY0qLZacqJqy62u0+bQhTO2+fDsW6HFTxVnbcu/OXTT+vG7CRgrOvmHt9OW+x8m293A9Eik4Ba6fFAeSRFeuwkB+tdFqyfjKuhplqsYkSKVzbcR/Z4RJMT2q4wQQN4vdSozked6GYHvdtAz613ZxdRqj1O3tg5oj9OOfB+n6gjGUv4TYAA2D9ThfJRCUwAAAABJRU5ErkJggg=="
+                      alt="">
+                  </div>
+                </div>
+              </div>
+              <div class="isoerbiaochi" v-if="item.stateStrings.length == 2">
+                <div class="biaochi">
+                  <div class="itsem sfl" style="width:50%;background:#1AB394">
+                    <div class="itsem1">
+                      <span v-text="item.stateVer[0]"></span>
+                    </div>
+                  </div>
+                  <div class="itsem sfl" style="width:50%;background:#F8AC59"></div>
+                  <div class="itsembis sfl" style="width:50%" v-text="item.stateStrings[0]"></div>
+                  <div class="itsembis sfl" style="width:50%" v-text="item.stateStrings[1]"></div>
+                  <div class="headvalue" :style="{left: item.left}">
+                    <img
+                      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NTc3MiwgMjAxNC8wMS8xMy0xOTo0NDowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpkNDk0ZjgwMy00ZWM2LTRlNDAtOTNkYS1mMTczNzM0YjdlNDciIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QkI2Q0ZFNDE1NjFCMTFFNkFEQzFFM0Q1MkJCNzEwNTkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QkI2Q0ZFNDA1NjFCMTFFNkFEQzFFM0Q1MkJCNzEwNTkiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDphMTgxZTQ3NS0yMzM5LTQxZmYtOWFjZC01MzEzNDlkYjczZDkiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6ZDQ5NGY4MDMtNGVjNi00ZTQwLTkzZGEtZjE3MzczNGI3ZTQ3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+hUp2mQAABKdJREFUeNrEV2tsVEUUPnPv7rYUrFVpFQtEG6CYNEaXZzGVGKBNjJFYCUIg+Igh4WEl+sfAD3wm+MOk0FJj1CCEakO0JEBMaIWEAPKSoqaaIsYHWFCapgvBPnb33vGcuXNn5969+8Ck6Um+Zntnzvlmzpw55wzjnMNYSoj+DD67MJ+5YUQdYgliDqICUSLHYojfEOcQnYjDiEQug0VfHXMWkEOIZBNiPaI0w5x7JaoRDYg+RAuiUS4uoxg5yFcgehBb/eSsuASM8qkC9NsnpVKnR9rIfgQBYiKaEOtSjAaYcxZAqGYJGFWPpJHymzGwu7+H5PFOsM59ix9s1zNfIB5HvIKw/ESMgtAXA0S+D1GvPsyqhsgLG4DdPyWvwOJXr0D8s51gnT+lf25HLNcXQTEQdASNitw0IbL2NSjYvC1vcrErnEs6pEs2pJDN7bli4DnERmfEgILX34JQ3dL/f8VQl2yQLSkbJEfgAkqAsR3qzq1eC+a8GvHbvtgNyYP7gF+/ltv9OIfmko5wItogWyn3sCbt+nqC8FXgvMw98/DSlYp8eAs6BWOF7f8cCptbgRWNDyYf/BeG31gH/MYAEUHhe81gVFYJW/ZPPzgxwXmpvNZv6h4Io4JyPQWcK1ZPtyAXBGiY9/6Zefe9lx1y8Q8H+5ef1VjkxY2po2CMCCL6AmpRYaLY/ezHPAEXql4I7I5iZ23TZoJRMSNzUqmYLua4ecI9QvH/pMnCtlzcRMGpHUGdIqxZ5I3osklQ2NIG/O9eMKY+iCvMkjxxjNxuX/4d2H3laUdFtq2zx0HjPORai6pdVEXTrxUaYll27mUJZ/SSz3Y0dQTMmOm47U6B0RKPfWZUajHAi50Jd416+U1xOJwGjLEYMipjTkEZGHVCxSE5XQ9ccgZvCIweucf+JX0B592vdndXuuI/V8E6eTRvIppLOn7x2e7S88BhWa8heeIImAueUNks8eUeSLS34kACCsaNBzM6Lzv5hbMw0viOuI7h+lUQXrZGpGXXtiYdugc6ZRuFzcRJ4Nf+clOmaDQgPoLLt2Hk/S24mL0Aw0PpzPiNxka2bRZzSUfoSnKySbal9MlNKw/EZQ+3lZTju5pFPRc5/Pn1jjLujLyQaP0YkliUzLk1wMqnyBpwRWQ4KkYqKT46V+i6Qg2KWJgjLZLT0xFRibyIEBWRmgnVC1hJiO9ugeTX7aowZb7oDEJP1jvkMm0nOw5A/KMP9N1Tqoz5u+KY7GjbxIo/3QGs5G6noKChyEsNoh9M7G/FsnpaeMOfgs1Z8yH8zCowpj+Uign0DNnSpEHvlIN6wmbZuVA7xSMvb2Kh2qe9t2JoEPgfvwLv73OM3FMK7IFpwMYVeeaJnX/SyMGymPy0U3VcsifMrymNzrewnpu31ZTuarKsrjNmrqY0qLZacqJqy62u0+bQhTO2+fDsW6HFTxVnbcu/OXTT+vG7CRgrOvmHt9OW+x8m293A9Eik4Ba6fFAeSRFeuwkB+tdFqyfjKuhplqsYkSKVzbcR/Z4RJMT2q4wQQN4vdSozked6GYHvdtAz613ZxdRqj1O3tg5oj9OOfB+n6gjGUv4TYAA2D9ThfJRCUwAAAABJRU5ErkJggg=="
+                      alt="">
+                  </div>
+                </div>
+              </div>
+            </span>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="body_H1">
+    体重控制建议
+  </div>
+  <div class="body_list_box">
+    <ul class="body_list_ul">
+      <li v-for="(itsem, index) in weightList" :key="index">
+        <div class="body_list_li">
+          <div class="body_list_li_left linehei" v-text="itsem.name"></div>
+          <div class="body_list_li_right" v-text="itsem.value" v-bind:class="[itsem.value == '无需控制'?'fontsmall':'']">-</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="body_H1">
+    营养评估
+  </div>
+  <div class="new_listbox">
+    <ul>
+      <li class="new_list">
+        <div class="new_list_item new_1px">
+          <div class="detial">
+            <div class="textx">蛋白质</div>
+          </div>
+          <div class="new_list_btn" style="margin-top: 0px;" :class="agg.color+'bg'" v-text="agg.filename">-</div>
+        </div>
+      </li>
+      <li class="new_list">
+        <div class="new_list_item new_1px">
+          <div class="detial">
+            <div class="textx">无机盐</div>
+          </div>
+          <div class="new_list_btn" style="margin-top: 0px;" :class="born.color+'bg'" v-text="born.filename">-</div>
+        </div>
+      </li>
+      <li class="new_list">
+        <div class="new_list_item new_1px">
+          <div class="detial">
+            <div class="textx">脂肪</div>
+          </div>
+          <div class="new_list_btn" style="margin-top: 0px;" :class="fat.color+'bg'" v-text="fat.filename">-</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="body_H1">
+    体型判断
+  </div>
+  <div class="new_listbox">
+    <div class="new_body_list">
+      <ul id="BodyShape">
+        <li>
+          <img src="./img/bodyExam/体型/灰/yxfp.png" height="160" width="160" alt="">
+          <div class="font">隐形肥胖</div>
+        </li>
+        <li>
+          <img src="./img/bodyExam/体型/灰/pp.png" height="160" width="160" alt="">
+          <div class="font">偏胖</div>
+        </li>
+        <li>
+          <img src="./img/bodyExam/体型/灰/fp.png" height="160" width="160" alt="">
+          <div class="font">肥胖</div>
+        </li>
+        <li>
+          <img src="./img/bodyExam/体型/灰/psjr.png" height="160" width="160" alt="">
+          <div class="font">偏瘦肌肉</div>
+        </li>
+        <li>
+          <img src="./img/bodyExam/体型/灰/bz.png" height="160" width="160" alt="">
+          <div class="font">标准</div>
+        </li>
+        <li>
+          <img src="./img/bodyExam/体型/灰/fcjr.png" height="160" width="160" alt="">
+          <div class="font">非常肌肉</div>
+        </li>
+        <li>
+          <img src="./img/bodyExam/体型/灰/ps.png" height="160" width="160" alt="">
+          <div class="font">偏瘦</div>
+        </li>
+        <li>
+          <img src="./img/bodyExam/体型/灰/psjr.png" height="160" width="160" alt="">
+          <div class="font">标准肌肉</div>
+        </li>
+        <li>
+          <img src="./img/bodyExam/体型/灰/ydbz.png" height="160" width="160" alt="">
+          <div class="font">运动不足</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="body_H1">
+    近期体测数据
+  </div>
+  <div class="new_chart border-1px">
+    <div v-for="(item, index) in chartChooseList" :key="index" :class="item.choose?'choose':''" v-text="item.text"
+         @click="chooseChart(item)"></div>
+  </div>
+  <div id="mychart" style="width:100%; height:250px"></div>
+  <div class="body_H1">
+    体测建议
+  </div>
+  <div style="background:white;">
+    <div class="bot">
+      <div class="fixedBottom-top">依据智能健身数据及专业健身教练的评估、制定合理的生活习惯及膳食结构。</div>
+      <div class="fixedBottom">
+        <div>建议：</div>
+        <!-- <div>1.每周3-4次的抗阻力训练、每次持续时间20-30min;</div>
+        <div>2.每周3-4次的有氧运动（根据相关体重选择不同类型的有氧项目）;</div>
+        <div>3.健身跑、低冲击运动单车、游泳、跳绳、爬楼梯等；</div>
+        <div>4.每次持续时间20-30 min。</div>
+        <div style="margin-top:10px;">膳食建议：</div>
+        <div>主食：粗粮为主、绿色蔬菜以包菜、生菜、芹菜、小白菜为主，肉制品；选用去皮鸡胸肉及鱼类。</div>
+        <div>零食：少量坚果类食品</div> -->
+
+          <p v-for="(items, index) in dataList" :key="index"
+             v-if="items.color != 'green'">{{items.itemIntroduction}}</p>
+
+      </div>
+    </div>
+  </div>
+  <div class="isoerbiaochi" style="background:#EFEFEF;height:0;overflow: hidden;padding: 0 5%;">
+    <div class="biaochi">
+      <div class="itsem sfl" id="qwe0" style="width:50%;background:#17e277"></div>
+      <div class="itsem sfl" style="width:50%;background:#f66a59"></div>
+    </div>
+    <div class="biaochi">
+      <div class="itsem sfl" style="width: 33.33%" id="qwe1"></div>
+      <div class="itsem sfl" style="background: #3ec370;width: 33.33%"></div>
+      <div class="itsem sfl" style="background: #f66a59;width: 33.33%"></div>
+    </div>
+    <div class="biaochi">
+      <div class="itsem sfl" id="qwe2" style="width:25%"></div>
+      <div class="itsem sfl" style="background: #3ec370;width:25%"></div>
+      <div class="itsem sfl" style="background: #f66a59;width:25%"></div>
+      <div class="itsem sfl" style="background: #f66a59;width:25%"></div>
+    </div>
+    <div class="biaochi">
+      <div class="itsem" id="qwe3" style="width:20%"></div>
+      <div class="itsem" style="width:20%"></div>
+      <div class="itsem" style="width:20%"></div>
+      <div class="itsem" style="width:20%"></div>
+      <div class="itsem" style="width:20%"></div>
+    </div>
+  </div>
+  <div class="comperrasion">
+    <div>数据来源牛啦</div>
+    <div class="line"></div>
+    <div v-text="examTime"></div>
+  </div>
+  </span>
+</span>
+</body>
+<script type="text/javascript" src="./js/plugins/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="./js/plugins/vue.min.js"></script>
+<script src="./js/plugins/svg.min.js"></script>
+<script src="./js/plugins/echarts.min.js"></script>
+<script type="text/javascript" src="./js/common/api.js?t={vision}"></script>
+<script type="text/javascript" src="./js/pages/bodyExam.js?t={vision}"></script>
+<!-- <script type="text/javascript" src="./js/pages/staricExam.js"></script> -->
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript">
+      window._speedMark = new Date()
+    </script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>牛啦 - 智能健身管理系统</title>
+  </head>
+  <!-- <script src="<%= htmlWebpackPlugin.options.path %>/tinymce/tinymce.min.js"></script> -->
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+  <script type="text/javascript">
+    document.ondragover = function(ev) {
+      ev.preventDefault()
+    }
+  </script>
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=ZYoxwY2fVjPKqsw6IM35MebctElP4l4R&s=1"></script>
+  <!-- <script src="./static/debug/debug.js"></script>
+  <script>debug.init()</script> -->
+  <script>
+  if (window.location.hostname == 'localhost' || window.location.hostname == 'www.dev.nlfit.cn' || window.location.hostname == 'cur.nlfit.cn') {
+      console.log(window.location.hostname)
+    } else {
+      var tmpTag = 'https:' == document.location.protocol ? false : true
+      if (tmpTag) {
+        var urls = window.location.href
+        urls = urls.replace("http", "https")
+        window.location = urls
+      }
+    }
+  </script>
+</html>

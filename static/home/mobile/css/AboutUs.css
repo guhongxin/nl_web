@@ -1,0 +1,78 @@
+#AboutUs{
+        margin-top: 76px;
+}
+.scene{
+    width: 50%;
+    height: 8.5rem;
+    margin: 0 auto;
+    background: url(./../../img/jieshao.jpg) no-repeat;
+    background-position: 327px -142px;
+}
+.scene-more{
+    box-shadow: 1px 1px 5px #E2E5EC;
+    width: 385.6px;
+    color: #838383;
+    height: 23.6em;
+    background: #ffffff;
+    margin-top: 37px;
+    float: left;
+    font-size: 14px;
+}
+
+.scene-more a{
+        color: #2AB797;
+        display: block;
+        width: 102px;
+        margin-top: 0.2rem;
+        line-height: 30px;
+        text-align: center;
+        height: 30px;
+        border: 1px solid;
+}
+.scene-more p {
+    line-height: 30px;
+}
+#app-AboutUS{
+    display: none;
+}
+@media screen and (max-width: 751px) {
+#AboutUs {
+    display: none !important;
+}
+#app-AboutUS{
+    display: block !important;
+}
+#app-AboutUS p{
+       width: 90%;
+    /* margin-bottom: 37px; */
+
+    /* padding-bottom: 24px; */
+
+    line-height: 32px;
+    /* padding-bottom: 1.7rem; */
+
+    padding-bottom: 19px;
+    font-size: 15px;
+    margin: 0 auto;
+}
+
+#app-AboutUS .tit {
+font-size: 20px;
+}
+#app-AboutUS a{
+    color: #2AB797;
+    width: 2.2rem;
+    border: 1px solid;
+    height: 0.9rem;
+    text-align: center;
+    line-height: 0.9rem;
+    margin-left: 0.8rem;
+    margin-bottom: 1rem;
+    /* margin: 0 auto; */
+
+    font-size: 15px;
+    /* background: rebeccapurple; */
+
+    display: block;
+}
+}

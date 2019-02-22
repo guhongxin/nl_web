@@ -1,0 +1,681 @@
+@font-face {
+  font-family: "Airstrike";
+  src: url("./airstrike.ttf") format("truetype"); }
+.app-container {
+  background-color: #F0F0F0;
+  overflow-x: hidden; }
+  .app-container .main-container {
+    height: 100%;
+    width: 100%;
+    padding: 1.7066666667rem 0 1.7066666667rem 0;
+    box-sizing: border-box;
+    overflow-y: auto; }
+  .app-container .download-box {
+    background-color: white;
+    height: 1.7066666667rem;
+    padding: 0 0.4rem;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #F0F0F0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10000; }
+    .app-container .download-box .down-btn {
+      width: 1.8666666667rem;
+      height: 0.8rem;
+      text-align: center;
+      line-height: 0.8rem;
+      color: #1AB394;
+      border: 1px solid #1AB394;
+      border-radius: 0.4rem;
+      font-size: 0.32rem; }
+    .app-container .download-box img {
+      width: 3.7333333333rem;
+      height: 1.0666666667rem; }
+  .app-container .share-box {
+    height: 1.7066666667rem;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 4%;
+    box-sizing: border-box;
+    border-top: 1px solid #EEEEEE;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10000; }
+    .app-container .share-box .user-detail {
+      font-size: 0px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center; }
+      .app-container .share-box .user-detail > img {
+        width: 1.0666666667rem;
+        height: 1.0666666667rem;
+        border-radius: 0.6666666667rem;
+        display: inline-block;
+        margin-right: 15px;
+        float: left;
+        vertical-align: middle; }
+      .app-container .share-box .user-detail .rigth-text {
+        /*height: 100%;*/
+        float: left; }
+        .app-container .share-box .user-detail .rigth-text .user-name {
+          font-size: 0.48rem;
+          color: #464646;
+          line-height: 0.8rem; }
+        .app-container .share-box .user-detail .rigth-text .last-time {
+          font-size: 0.32rem;
+          color: #999999; }
+    .app-container .share-box .add-follow {
+      width: 2.9333333333rem;
+      height: 0.8533333333rem;
+      text-align: center;
+      line-height: 0.8533333333rem;
+      color: white;
+      background-color: #1AB394;
+      border-radius: 0.4rem;
+      font-size: 0.32rem; }
+  .app-container .detail-content {
+    padding: 0 4%;
+    padding-bottom: 15px;
+    box-sizing: border-box;
+    background-color: white; }
+    .app-container .detail-content .user-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 0.4rem 0; }
+      .app-container .detail-content .user-info .user-detail {
+        font-size: 0px;
+        vertical-align: sub; }
+        .app-container .detail-content .user-info .user-detail > img {
+          width: 1.3333333333rem;
+          height: 1.3333333333rem;
+          border-radius: 0.6666666667rem;
+          display: inline-block;
+          margin-right: 15px;
+          float: left; }
+        .app-container .detail-content .user-info .user-detail .rigth-text {
+          float: left; }
+          .app-container .detail-content .user-info .user-detail .rigth-text .user-name-box {
+            font-size: 0.5333333333rem;
+            font-weight: 600;
+            color: #262628;
+            line-height: 0.96rem;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center; }
+            .app-container .detail-content .user-info .user-detail .rigth-text .user-name-box .sex-logo {
+              display: inline-block;
+              width: 0.48rem;
+              height: 0.48rem;
+              border-radius: 0.48rem;
+              /*background: url("./../img/sex-female@2x.png") center no-repeat;*/
+              background-repeat: no-repeat;
+              background-position: center;
+              background-size: 0.48rem;
+              margin-left: 0.2666666667rem; }
+              .app-container .detail-content .user-info .user-detail .rigth-text .user-name-box .sex-logo.male {
+                background-image: url("./../img/detail/sex-male@2x.png") !important; }
+              .app-container .detail-content .user-info .user-detail .rigth-text .user-name-box .sex-logo.female {
+                background-image: url("./../img/detail/sex-female@2x.png") !important; }
+          .app-container .detail-content .user-info .user-detail .rigth-text .user-name {
+            font-size: 0.48rem;
+            color: #464646;
+            line-height: 0.6666666667rem; }
+          .app-container .detail-content .user-info .user-detail .rigth-text .last-time {
+            padding-top: 5px;
+            font-size: 0.32rem;
+            color: #999999; }
+      .app-container .detail-content .user-info .add-follow {
+        width: 1.6rem;
+        height: 0.6933333333rem;
+        text-align: center;
+        line-height: 0.6933333333rem;
+        color: white;
+        background-color: #1AB394;
+        border-radius: 0.4rem;
+        font-size: 0.32rem; }
+    .app-container .detail-content .img-list {
+      overflow-x: hidden; }
+      .app-container .detail-content .img-list li {
+        float: left;
+        padding: 2px;
+        box-sizing: border-box; }
+        .app-container .detail-content .img-list li img {
+          display: block;
+          width: 100%;
+          height: 100%; }
+    .app-container .detail-content .detail-vicetext {
+      font-size: 0.3733333333rem;
+      color: #333333;
+      letter-spacing: 0;
+      text-align: justify;
+      margin: 10px 0; }
+    .app-container .detail-content .address-btn {
+      display: inline-block;
+      background: #EFF3F6;
+      border-radius: 2px;
+      height: 0.7466666667rem;
+      line-height: 0.7466666667rem;
+      min-width: 3.0666666667rem;
+      color: #819FB3;
+      font-size: 0.32rem;
+      text-align: center;
+      vertical-align: text-bottom; }
+      .app-container .detail-content .address-btn .dingwei {
+        display: inline-block;
+        width: 0.2666666667rem;
+        height: 0.3733333333rem;
+        background: url("../img/detail/dingwei@2x.png") center no-repeat;
+        background-size: 0.2666666667rem 0.3733333333rem;
+        margin-right: 4px;
+        vertical-align: text-bottom; }
+    .app-container .detail-content .other-mess {
+      padding-top: 0.2666666667rem; }
+      .app-container .detail-content .other-mess .flex-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        float: left; }
+        .app-container .detail-content .other-mess .flex-center img {
+          margin-right: 8px; }
+      .app-container .detail-content .other-mess .ligthgray-text {
+        font-size: 0.3733333333rem;
+        height: 100%;
+        line-height: 0.6933333333rem;
+        color: #999999; }
+      .app-container .detail-content .other-mess .zan {
+        padding-right: 25px; }
+        .app-container .detail-content .other-mess .zan img {
+          width: 0.48rem;
+          height: 0.44rem;
+          display: inline-block; }
+      .app-container .detail-content .other-mess .more-detail {
+        padding-right: 25px; }
+        .app-container .detail-content .other-mess .more-detail img {
+          width: 0.5333333333rem;
+          height: 0.5066666667rem;
+          display: inline-block; }
+      .app-container .detail-content .other-mess .giveother img {
+        width: 0.4rem;
+        height: 0.5333333333rem;
+        display: inline-block; }
+  .app-container .zan-userlist {
+    margin: 10px 0;
+    background-color: white;
+    padding: 15px 4%;
+    font-size: 0.3733333333rem;
+    color: #333333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+    .app-container .zan-userlist ul {
+      font-size: 0;
+      display: inline-block; }
+      .app-container .zan-userlist ul li {
+        float: left;
+        margin: 0 4px;
+        border-radius: 0.5333333333rem; }
+        .app-container .zan-userlist ul li img {
+          width: 1.0666666667rem;
+          height: 1.0666666667rem;
+          border-radius: 0.5333333333rem; }
+  .app-container .comment-detail {
+    background-color: white; }
+    .app-container .comment-detail .detail-head {
+      height: 1.2533333333rem;
+      line-height: 1.2533333333rem;
+      padding: 0 4%;
+      box-sizing: border-box;
+      font-size: 0.3733333333rem;
+      color: #333333;
+      letter-spacing: -0.39px;
+      border-bottom: 1px solid #EEEEEE; }
+    .app-container .comment-detail ul {
+      padding: 0 4%; }
+      .app-container .comment-detail ul li {
+        padding: 15px 0;
+        border-bottom: 1px solid #EEEEEE; }
+        .app-container .comment-detail ul li:last-child {
+          border-bottom: none; }
+        .app-container .comment-detail ul li .base-info {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center; }
+          .app-container .comment-detail ul li .base-info img {
+            width: 1.0666666667rem;
+            height: 1.0666666667rem;
+            border-radius: 0.5333333333rem;
+            display: inline-block; }
+          .app-container .comment-detail ul li .base-info > div {
+            margin-left: 0.4rem; }
+            .app-container .comment-detail ul li .base-info > div p:first-child {
+              font-size: 0.4266666667rem;
+              color: #2E2E2E; }
+            .app-container .comment-detail ul li .base-info > div p:last-child {
+              font-size: 0.3733333333rem;
+              color: #999999; }
+        .app-container .comment-detail ul li .commont-text {
+          font-size: 0.3733333333rem;
+          padding-left: 1.4666666667rem;
+          padding-top: 7px; }
+          .app-container .comment-detail ul li .commont-text .hightlight {
+            color: #63B2D0; }
+  .app-container .user-detail-box {
+    background-color: white; }
+    .app-container .user-detail-box .background_bg {
+      background: -ms-linear-gradient(left, #616161, #979594);
+      background: -moz-linear-gradient(left, #616161, #979594);
+      background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#616161), to(#979594));
+      background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#616161), to(#979594));
+      background: -webkit-linear-gradient(left, #616161, #979594);
+      background: -o-linear-gradient(left, #616161, #979594);
+      width: 100%;
+      height: 3.7333333333rem; }
+    .app-container .user-detail-box .center-logo {
+      position: relative;
+      padding: 0.4rem 0;
+      height: 0.96rem; }
+      .app-container .user-detail-box .center-logo .logo-box {
+        width: 2.1333333333rem;
+        height: 2.1333333333rem;
+        position: absolute;
+        left: 0.6666666667rem;
+        top: -0.8rem;
+        border-radius: 1.0666666667rem;
+        background-color: white; }
+        .app-container .user-detail-box .center-logo .logo-box img {
+          display: block;
+          width: 1.8666666667rem;
+          height: 1.8666666667rem;
+          border-radius: 0.9333333333rem;
+          margin: 0.1333333333rem auto; }
+      .app-container .user-detail-box .center-logo .right-btn {
+        float: right;
+        margin-right: 0.4rem;
+        font-size: 0;
+        vertical-align: sub; }
+        .app-container .user-detail-box .center-logo .right-btn span {
+          float: left;
+          border-radius: 0.8533333333rem;
+          border: 1px solid #333333;
+          display: inline-block;
+          text-align: center;
+          font-size: 14px;
+          color: #333333; }
+        .app-container .user-detail-box .center-logo .right-btn span:first-child {
+          width: 2.1333333333rem;
+          height: 0.8533333333rem;
+          line-height: 0.8533333333rem;
+          margin-right: 0.1333333333rem; }
+        .app-container .user-detail-box .center-logo .right-btn span:last-child {
+          width: 0.8533333333rem;
+          height: 0.8533333333rem; }
+          .app-container .user-detail-box .center-logo .right-btn span:last-child img {
+            width: 0.32rem;
+            height: 0.32rem;
+            margin: 0.2666666667rem auto; }
+    .app-container .user-detail-box .user-message {
+      padding: 0 4%; }
+      .app-container .user-detail-box .user-message p:nth-child(1) {
+        font-size: 0.5333333333rem;
+        font-weight: 600;
+        color: #262628;
+        line-height: 0.96rem;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center; }
+        .app-container .user-detail-box .user-message p:nth-child(1) .sex-logo {
+          display: inline-block;
+          width: 0.48rem;
+          height: 0.48rem;
+          border-radius: 0.48rem;
+          /*background: url("./../img/sex-male@2x.png") center no-repeat;*/
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 0.48rem;
+          margin-left: 0.2666666667rem; }
+          .app-container .user-detail-box .user-message p:nth-child(1) .sex-logo.male {
+            background-image: url("./../img/detail/sex-male@2x.png") !important; }
+          .app-container .user-detail-box .user-message p:nth-child(1) .sex-logo.female {
+            background-image: url("./../img/detail/sex-female@2x.png") !important; }
+      .app-container .user-detail-box .user-message p:nth-child(2) {
+        font-size: 12px;
+        color: #999999; }
+      .app-container .user-detail-box .user-message p:nth-child(3) {
+        font-size: 14px;
+        color: #666666;
+        padding: 0.5333333333rem 0; }
+      .app-container .user-detail-box .user-message ul {
+        font-size: 12px;
+        color: #3F3F3F;
+        letter-spacing: 0;
+        line-height: 22px;
+        padding: 0.4rem 0 0.6666666667rem 0; }
+        .app-container .user-detail-box .user-message ul li {
+          float: left;
+          width: 33.3%; }
+          .app-container .user-detail-box .user-message ul li span {
+            font-size: 16px;
+            color: #333333;
+            padding-right: 5px; }
+          .app-container .user-detail-box .user-message ul li:nth-child(1) {
+            text-align: left; }
+          .app-container .user-detail-box .user-message ul li:nth-child(2) {
+            text-align: center; }
+          .app-container .user-detail-box .user-message ul li:nth-child(3) {
+            text-align: right; }
+  .app-container .sport-data {
+    padding: 0.5333333333rem 0.4rem;
+    background-color: white;
+    font-family: PingFangSC-Semibold; }
+    .app-container .sport-data p:nth-child(1) {
+      font-size: 0.4266666667rem;
+      color: #333333;
+      font-weight: 600;
+      line-height: 0.5866666667rem; }
+    .app-container .sport-data p:nth-child(2) {
+      font-size: 0.32rem;
+      color: #999999;
+      line-height: 0.48rem; }
+    .app-container .sport-data ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 0.9333333333rem; }
+      .app-container .sport-data ul li {
+        min-width: 1.3333333333rem;
+        margin: 0 0.6666666667rem;
+        position: relative; }
+        .app-container .sport-data ul li > img {
+          width: 0.4266666667rem;
+          height: 0.4266666667rem;
+          display: inline-block;
+          margin: 0 auto;
+          position: absolute;
+          top: 0.4533333333rem;
+          left: 0;
+          right: 0; }
+        .app-container .sport-data ul li .circular-border {
+          width: 1.3333333333rem;
+          height: 1.3333333333rem;
+          border-radius: 1.3333333333rem;
+          display: block;
+          transform: rotate(216deg);
+          background: #1AB394;
+          margin: 0 auto;
+          /*border-top: 2px solid #EEEEEE;
+          border-left: 2px solid #EEEEEE;
+          border-right: 2px solid #EEEEEE;*/ }
+          .app-container .sport-data ul li .circular-border .pie_left, .app-container .sport-data ul li .circular-border .pie_right {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0; }
+          .app-container .sport-data ul li .circular-border .left, .app-container .sport-data ul li .circular-border .right {
+            width: 100%;
+            height: 100%;
+            background: #dad0d8;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0; }
+          .app-container .sport-data ul li .circular-border .pie_right, .app-container .sport-data ul li .circular-border .right {
+            clip: rect(0, auto, auto, 0.88rem); }
+          .app-container .sport-data ul li .circular-border .pie_left, .app-container .sport-data ul li .circular-border .left {
+            clip: rect(0, 0.88rem, auto, 0); }
+          .app-container .sport-data ul li .circular-border .mask {
+            width: 90%;
+            height: 90%;
+            border-radius: 100%;
+            left: 5%;
+            top: 5%;
+            background: #FFF;
+            position: absolute;
+            font-size: 0; }
+        .app-container .sport-data ul li p {
+          font-size: 0.32rem;
+          color: #2A2A2A;
+          letter-spacing: 0;
+          line-height: 0.8rem;
+          /*padding-top: toRem(5);*/ }
+          .app-container .sport-data ul li p span {
+            font-size: 0.48rem;
+            color: #1AB394;
+            font-family: "Airstrike";
+            padding-right: 5px;
+            /*font-weight: bold;
+            font-style: italic;*/ }
+        .app-container .sport-data ul li .zhe-model {
+          width: 100%;
+          position: absolute;
+          height: 0.4rem;
+          left: 0;
+          top: 1.0666666667rem;
+          background-color: white; }
+  .app-container .picture-list {
+    background-color: white;
+    padding: 0 4%;
+    overflow: hidden; }
+    .app-container .picture-list .picture-list-head {
+      height: 1.6rem;
+      line-height: 1.6rem;
+      /*span:last-child{
+        font-size: toRem(14);
+        color: #999999;
+        float: right;
+        .more{
+          background: url("./../img/jt_right@2x.png") center no-repeat;
+          background-size: toRem(7) toRem(10);
+          display: inline-block;
+          width: toRem(7);
+          height: toRem(10);
+        }
+      }*/ }
+      .app-container .picture-list .picture-list-head span:first-child {
+        font-size: 0.4266666667rem;
+        color: #333333;
+        font-weight: 600; }
+    .app-container .picture-list ul {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      overflow-y: auto;
+      margin-bottom: 25px; }
+      .app-container .picture-list ul li {
+        margin-right: 10px;
+        position: relative; }
+        .app-container .picture-list ul li .some-logo {
+          position: absolute;
+          right: 0.2666666667rem;
+          bottom: 0.2666666667rem;
+          /*background: url("./../img/pictures@2x.png") center no-repeat;*/
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: 0.2933333333rem 0.2933333333rem;
+          display: inline-block;
+          width: 0.2933333333rem;
+          height: 0.2933333333rem; }
+          .app-container .picture-list ul li .some-logo.picture {
+            background-image: url("./../img/detail/pictures@2x.png"); }
+          .app-container .picture-list ul li .some-logo.video {
+            background-image: url("./../img/detail/shipin@2x.png"); }
+        .app-container .picture-list ul li img {
+          display: block;
+          width: 2.6666666667rem;
+          height: 2.6666666667rem; }
+  .app-container .bodybuilding {
+    background-color: white;
+    padding: 0.8rem 4%; }
+    .app-container .bodybuilding p:first-child {
+      font-size: 0.4266666667rem;
+      color: #333333;
+      font-weight: 600; }
+    .app-container .bodybuilding .everydata-list li {
+      margin-bottom: 0.4rem;
+      position: relative; }
+      .app-container .bodybuilding .everydata-list li .item-lightline {
+        background-color: #CCCCCC;
+        width: 1px;
+        height: 13.3333333333rem;
+        position: absolute;
+        left: 1.1466666667rem;
+        top: 2rem; }
+    .app-container .bodybuilding .everydata-list .everyItem-header {
+      font-size: 0.4266666667rem;
+      color: #333333;
+      font-weight: 600;
+      line-height: 1.8666666667rem; }
+    .app-container .bodybuilding .everydata-list .everyItem-content {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding-bottom: 0.5333333333rem; }
+      .app-container .bodybuilding .everydata-list .everyItem-content .time {
+        font-size: 0.32rem;
+        color: #999999;
+        line-height: 0.5333333333rem;
+        width: 0.8rem; }
+      .app-container .bodybuilding .everydata-list .everyItem-content .light-dian {
+        display: inline-block;
+        width: 0.1866666667rem;
+        min-width: 0.1866666667rem;
+        height: 0.1866666667rem;
+        background-color: #CCCCCC;
+        border-radius: 0.1866666667rem;
+        margin: 6px 0.2666666667rem; }
+      .app-container .bodybuilding .everydata-list .everyItem-content .item-detail {
+        display: inline-block; }
+        .app-container .bodybuilding .everydata-list .everyItem-content .item-detail.last-total {
+          font-size: 0.32rem;
+          color: #CCCCCC;
+          box-sizing: border-box;
+          line-height: 20px; }
+        .app-container .bodybuilding .everydata-list .everyItem-content .item-detail p {
+          font-size: 0.3733333333rem;
+          color: #333333; }
+        .app-container .bodybuilding .everydata-list .everyItem-content .item-detail > img {
+          width: 5.3333333333rem;
+          height: 5.3333333333rem;
+          display: inline-block;
+          margin-bottom: 10px;
+          margin-top: 10px; }
+        .app-container .bodybuilding .everydata-list .everyItem-content .item-detail .flex-center {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          float: left; }
+        .app-container .bodybuilding .everydata-list .everyItem-content .item-detail .ligthgray-text {
+          font-size: 0.3733333333rem;
+          height: 100%;
+          line-height: 0.6933333333rem;
+          color: #999999;
+          margin-left: 15px; }
+        .app-container .bodybuilding .everydata-list .everyItem-content .item-detail .zan-data {
+          padding-right: 25px; }
+          .app-container .bodybuilding .everydata-list .everyItem-content .item-detail .zan-data img {
+            width: 0.48rem;
+            height: 0.44rem;
+            display: inline-block; }
+        .app-container .bodybuilding .everydata-list .everyItem-content .item-detail .ping-data {
+          padding-right: 25px; }
+          .app-container .bodybuilding .everydata-list .everyItem-content .item-detail .ping-data img {
+            width: 0.5333333333rem;
+            height: 0.5066666667rem;
+            display: inline-block; }
+  .app-container .swiper-container {
+    width: 100%;
+    height: 4.5333333333rem;
+    background-color: white; }
+    .app-container .swiper-container .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%; }
+    .app-container .swiper-container .swiper-pagination-bullet {
+      background-color: white; }
+      .app-container .swiper-container .swiper-pagination-bullet.swiper-pagination-bullet-active {
+        background-color: #1AB394; }
+  .app-container .club-detail {
+    background-color: white;
+    padding: 0.2666666667rem 4% 0; }
+    .app-container .club-detail .club-logo-name {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 0.2666666667rem 0; }
+      .app-container .club-detail .club-logo-name img {
+        width: 0.96rem;
+        height: 0.96rem;
+        border-radius: 0.96rem;
+        margin-right: 10px; }
+    .app-container .club-detail .club-baseInfo ul li {
+      padding: 0.4rem 0;
+      width: 100%;
+      position: relative;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center; }
+      .app-container .club-detail .club-baseInfo ul li .left-logo {
+        height: 0.3733333333rem;
+        margin-right: 0.2133333333rem; }
+      .app-container .club-detail .club-baseInfo ul li .left-text {
+        width: 6.6666666667rem;
+        font-size: 0.3733333333rem;
+        color: #464646; }
+      .app-container .club-detail .club-baseInfo ul li .right-logo {
+        width: 1.8666666667rem;
+        position: absolute;
+        right: 0;
+        font-size: 0.32rem;
+        color: #1AB394;
+        text-align: right;
+        display: table; }
+        .app-container .club-detail .club-baseInfo ul li .right-logo .daohang-logo {
+          vertical-align: middle;
+          display: table-cell;
+          width: 0.32rem;
+          height: 0.32rem;
+          background: url("./../img/detail/daohang@2x.png") center no-repeat;
+          background-size: 100%; }
+        .app-container .club-detail .club-baseInfo ul li .right-logo .right-green-logo {
+          vertical-align: middle;
+          display: table-cell;
+          width: 0.16rem;
+          height: 0.16rem;
+          background: url("./../img/detail/greenRight.png") center no-repeat;
+          background-size: 100%; }
+  .app-container .club-feature {
+    padding: 0 4%;
+    background-color: white; }
+    .app-container .club-feature .feature-title {
+      font-size: 0.4266666667rem;
+      color: #333333;
+      font-weight: 600;
+      line-height: 1.6rem; }
+    .app-container .club-feature ul {
+      font-size: 0; }
+      .app-container .club-feature ul li {
+        width: 16.6%;
+        padding-bottom: 0.5333333333rem;
+        display: none; }
+        .app-container .club-feature ul li img {
+          display: block;
+          width: 80%;
+          margin: 0 auto; }
+        .app-container .club-feature ul li div {
+          font-size: 0.32rem;
+          text-align: center;
+          line-height: 0.5333333333rem; }
+
+/*# sourceMappingURL=style.css.map */

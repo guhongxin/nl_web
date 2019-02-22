@@ -1,0 +1,417 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url(./fonts/icomoon.eot?gqahth);
+  src:  url(./fonts/icomoon.eot?gqahth#iefix) format('embedded-opentype'),
+    url(./fonts/icomoon.ttf?gqahth) format('truetype'),
+    url(./fonts/icomoon.woff?gqahth) format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-agreement .path1:before {
+  content: "\e900";
+  color: rgb(242, 249, 255);
+}
+.icon-agreement .path2:before {
+  content: "\e901";
+  margin-left: -1em;
+  color: rgb(125, 153, 252);
+}
+.icon-articalpush .path1:before {
+  content: "\e902";
+  color: rgb(242, 249, 255);
+}
+.icon-articalpush .path2:before {
+  content: "\e903";
+  margin-left: -1em;
+  color: rgb(78, 212, 255);
+}
+.icon-attendancerecord .path1:before {
+  content: "\e904";
+  color: rgb(236, 252, 234);
+}
+.icon-attendancerecord .path2:before {
+  content: "\e905";
+  margin-left: -1em;
+  color: rgb(101, 218, 155);
+}
+.icon-cardrecord .path1:before {
+  content: "\e906";
+  color: rgb(242, 249, 255);
+}
+.icon-cardrecord .path2:before {
+  content: "\e907";
+  margin-left: -1em;
+  color: rgb(78, 212, 255);
+}
+.icon-cardrecord .path3:before {
+  content: "\e908";
+  margin-left: -1em;
+  color: rgb(78, 212, 255);
+}
+.icon-cardtypemanage .path1:before {
+  content: "\e909";
+  color: rgb(255, 246, 235);
+}
+.icon-cardtypemanage .path2:before {
+  content: "\e90a";
+  margin-left: -1em;
+  color: rgb(255, 148, 1);
+}
+.icon-cardtypemanage .path3:before {
+  content: "\e90b";
+  margin-left: -1em;
+  color: rgb(255, 148, 1);
+}
+.icon-cashier .path1:before {
+  content: "\e90c";
+  color: rgb(255, 246, 235);
+}
+.icon-cashier .path2:before {
+  content: "\e90d";
+  margin-left: -1em;
+  color: rgb(255, 148, 1);
+}
+.icon-createForm .path1:before {
+  content: "\e90e";
+  color: rgb(242, 249, 255);
+}
+.icon-createForm .path2:before {
+  content: "\e90f";
+  margin-left: -1em;
+  color: rgb(125, 153, 252);
+}
+.icon-createForm .path3:before {
+  content: "\e910";
+  margin-left: -1em;
+  color: rgb(125, 153, 252);
+}
+.icon-cupboardmanage .path1:before {
+  content: "\e911";
+  color: rgb(242, 249, 255);
+}
+.icon-cupboardmanage .path2:before {
+  content: "\e912";
+  margin-left: -1em;
+  color: rgb(125, 153, 252);
+}
+.icon-cupboardmanage .path3:before {
+  content: "\e913";
+  margin-left: -1em;
+  color: rgb(242, 249, 255);
+}
+.icon-cupboardmanage .path4:before {
+  content: "\e914";
+  margin-left: -1em;
+  color: rgb(125, 153, 252);
+}
+.icon-cupboardmanage .path5:before {
+  content: "\e915";
+  margin-left: -1em;
+  color: rgb(242, 249, 255);
+}
+.icon-cupboardmanage .path6:before {
+  content: "\e916";
+  margin-left: -1em;
+  color: rgb(125, 153, 252);
+}
+.icon-cupboardmanage .path7:before {
+  content: "\e917";
+  margin-left: -1em;
+  color: rgb(242, 249, 255);
+}
+.icon-cupboardmanage .path8:before {
+  content: "\e918";
+  margin-left: -1em;
+  color: rgb(125, 153, 252);
+}
+.icon-cupboardmanage .path9:before {
+  content: "\e919";
+  margin-left: -1em;
+  color: rgb(242, 249, 255);
+}
+.icon-customerrecord .path1:before {
+  content: "\e91a";
+  color: rgb(241, 248, 255);
+}
+.icon-customerrecord .path2:before {
+  content: "\e91b";
+  margin-left: -1em;
+  color: rgb(125, 153, 252);
+}
+.icon-customerrecord .path3:before {
+  content: "\e91c";
+  margin-left: -1em;
+  color: rgb(125, 153, 252);
+}
+.icon-deviceBind .path1:before {
+  content: "\e91d";
+  color: rgb(236, 252, 234);
+}
+.icon-deviceBind .path2:before {
+  content: "\e91e";
+  margin-left: -1em;
+  color: rgb(101, 218, 155);
+}
+.icon-groupCourseManage .path1:before {
+  content: "\e91f";
+  color: rgb(242, 249, 255);
+}
+.icon-groupCourseManage .path2:before {
+  content: "\e920";
+  margin-left: -1em;
+  color: rgb(125, 153, 252);
+}
+.icon-leaguerecord .path1:before {
+  content: "\e921";
+  color: rgb(242, 249, 255);
+}
+.icon-leaguerecord .path2:before {
+  content: "\e922";
+  margin-left: -1em;
+  color: rgb(125, 153, 252);
+}
+.icon-leaguerecord .path3:before {
+  content: "\e923";
+  margin-left: -1em;
+  color: rgb(125, 153, 252);
+}
+.icon-menber .path1:before {
+  content: "\e924";
+  color: rgb(242, 249, 255);
+}
+.icon-menber .path2:before {
+  content: "\e925";
+  margin-left: -1em;
+  color: rgb(78, 212, 255);
+}
+.icon-menber .path3:before {
+  content: "\e926";
+  margin-left: -1em;
+  color: rgb(78, 212, 255);
+}
+.icon-menber .path4:before {
+  content: "\e927";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-menber .path5:before {
+  content: "\e928";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-menber .path6:before {
+  content: "\e929";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.icon-menber .path7:before {
+  content: "\e92a";
+  margin-left: -1em;
+  color: rgb(78, 212, 255);
+}
+.icon-opencard .path1:before {
+  content: "\e92b";
+  color: rgb(255, 246, 235);
+}
+.icon-opencard .path2:before {
+  content: "\e92c";
+  margin-left: -1em;
+  color: rgb(255, 148, 1);
+}
+.icon-opencard .path3:before {
+  content: "\e92d";
+  margin-left: -1em;
+  color: rgb(255, 148, 1);
+}
+.icon-opencard .path4:before {
+  content: "\e92e";
+  margin-left: -1em;
+  color: rgb(255, 148, 1);
+}
+.icon-privatebuy .path1:before {
+  content: "\e92f";
+  color: rgb(255, 246, 235);
+}
+.icon-privatebuy .path2:before {
+  content: "\e930";
+  margin-left: -1em;
+  color: rgb(255, 148, 1);
+}
+.icon-privatebuy .path3:before {
+  content: "\e931";
+  margin-left: -1em;
+  color: rgb(255, 148, 1);
+}
+.icon-privatecourse .path1:before {
+  content: "\e932";
+  color: rgb(242, 249, 255);
+}
+.icon-privatecourse .path2:before {
+  content: "\e933";
+  margin-left: -1em;
+  color: rgb(78, 212, 255);
+}
+.icon-privatecourse .path3:before {
+  content: "\e934";
+  margin-left: -1em;
+  color: rgb(78, 212, 255);
+}
+.icon-privateorder .path1:before {
+  content: "\e935";
+  color: rgb(236, 252, 234);
+}
+.icon-privateorder .path2:before {
+  content: "\e936";
+  margin-left: -1em;
+  color: rgb(101, 218, 155);
+}
+.icon-privateorder .path3:before {
+  content: "\e937";
+  margin-left: -1em;
+  color: rgb(101, 218, 155);
+}
+.icon-privaterecord .path1:before {
+  content: "\e938";
+  color: rgb(236, 252, 234);
+}
+.icon-privaterecord .path2:before {
+  content: "\e939";
+  margin-left: -1em;
+  color: rgb(101, 218, 155);
+}
+.icon-privaterecord .path3:before {
+  content: "\e93a";
+  margin-left: -1em;
+  color: rgb(101, 218, 155);
+}
+.icon-publicCourseManage .path1:before {
+  content: "\e93b";
+  color: rgb(255, 246, 235);
+}
+.icon-publicCourseManage .path2:before {
+  content: "\e93c";
+  margin-left: -1em;
+  color: rgb(255, 148, 1);
+}
+.icon-publicCourseManage .path3:before {
+  content: "\e93d";
+  margin-left: -1em;
+  color: rgb(255, 148, 1);
+}
+.icon-publicrecord .path1:before {
+  content: "\e93e";
+  color: rgb(255, 246, 235);
+}
+.icon-publicrecord .path2:before {
+  content: "\e93f";
+  margin-left: -1em;
+  color: rgb(255, 148, 1);
+}
+.icon-publicrecord .path3:before {
+  content: "\e940";
+  margin-left: -1em;
+  color: rgb(255, 148, 1);
+}
+.icon-rolemanage .path1:before {
+  content: "\e941";
+  color: rgb(242, 249, 255);
+}
+.icon-rolemanage .path2:before {
+  content: "\e942";
+  margin-left: -1em;
+  color: rgb(78, 212, 255);
+}
+.icon-signIn .path1:before {
+  content: "\e943";
+  color: rgb(236, 252, 234);
+}
+.icon-signIn .path2:before {
+  content: "\e944";
+  margin-left: -1em;
+  color: rgb(101, 218, 155);
+}
+.icon-staffmanage .path1:before {
+  content: "\e945";
+  color: rgb(242, 249, 255);
+}
+.icon-staffmanage .path2:before {
+  content: "\e946";
+  margin-left: -1em;
+  color: rgb(78, 212, 255);
+}
+.icon-staffmanage .path3:before {
+  content: "\e947";
+  margin-left: -1em;
+  color: rgb(78, 212, 255);
+}
+.icon-testreport .path1:before {
+  content: "\e948";
+  color: rgb(236, 252, 234);
+}
+.icon-testreport .path2:before {
+  content: "\e949";
+  margin-left: -1em;
+  color: rgb(101, 218, 155);
+}
+.icon-totalAll .path1:before {
+  content: "\e94a";
+  color: rgb(241, 248, 255);
+}
+.icon-totalAll .path2:before {
+  content: "\e94b";
+  margin-left: -1em;
+  color: rgb(125, 153, 252);
+}
+.icon-venue .path1:before {
+  content: "\e94c";
+  color: rgb(242, 249, 255);
+}
+.icon-venue .path2:before {
+  content: "\e94d";
+  margin-left: -1em;
+  color: rgb(125, 153, 252);
+}
+.icon-操作日志:before {
+  content: "\e94e";
+  color: #909da6;
+}
+.icon-店长:before {
+  content: "\e94f";
+  color: #909da6;
+}
+.icon-高级设置:before {
+  content: "\e950";
+  color: #909da6;
+}
+.icon-会籍:before {
+  content: "\e951";
+  color: #909da6;
+}
+.icon-教练:before {
+  content: "\e952";
+  color: #909da6;
+}
+.icon-前台:before {
+  content: "\e953";
+  color: #909da6;
+}
+.icon-数据统计:before {
+  content: "\e954";
+  color: #909da6;
+}

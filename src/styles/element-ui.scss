@@ -1,0 +1,681 @@
+ //覆盖一些element-ui样式
+// .el-input.is-active .el-input__inner, .el-input__inner:focus {
+//     border-color: #333;
+//     outline: 0;
+// }
+div, font, button, textarea, input {
+  font-family: Microsoft YaHei, Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+}
+ .el-breadcrumb__inner, .el-breadcrumb__inner a{
+  font-weight: 400!important;
+}
+
+ .el-upload {
+   input[type="file"] {
+     display: none !important;
+   }
+ }
+
+ .el-upload__input {
+   display: none;
+ }
+
+ .cell {
+   .el-tag {
+     margin-right: 0px;
+   }
+ }
+
+ .small-padding {
+   .cell {
+     padding-left: 5px;
+     padding-right: 5px;
+   }
+ }
+
+ .fixed-width{
+  .el-button--mini{
+    padding: 7px 10px;
+    // width: 60px;
+  }
+ }
+
+ .status-col {
+   .cell {
+     padding: 0 10px;
+     text-align: center;
+     .el-tag {
+       margin-right: 0px;
+     }
+   }
+ }
+
+ //暂时性解决diolag 问题 https://github.com/ElemeFE/element/issues/2461
+ .el-dialog {
+   transform: none;
+   left: 0;
+   position: relative;
+   margin: 0 auto;
+ }
+
+ //文章页textarea修改样式
+ .article-textarea {
+   textarea {
+     padding-right: 40px;
+     resize: none;
+     border: none;
+     border-radius: 0px;
+     border-bottom: 1px solid #bfcbd9;
+   }
+ }
+
+ //element ui upload
+ .upload-container {
+   .el-upload {
+     width: 100%;
+     .el-upload-dragger {
+       width: 100%;
+       height: 220px;
+     }
+   }
+ }
+
+.el-table .el-table__row .double {
+  padding: 0 0;
+  .cell {
+    padding: 0;
+  }
+}
+.jurisdiction {
+  .el-dialog__body {
+    padding: 0 0;
+  }
+  .el-tabs--left .el-tabs__nav-next, .el-tabs--right .el-tabs__nav-next {
+    bottom: -20px;
+  }
+  .el-tabs--left .el-tabs__nav-prev, .el-tabs--right .el-tabs__nav-prev {
+    top: -20px;
+  }
+  .el-tabs--left .el-tabs__header.is-left {
+    width: 190px;
+    height: 530px;
+  }
+  .el-tabs--left .el-tabs__item.is-left {
+    text-align: left;
+  }
+  .el-tabs--left.el-tabs--border-card .el-tabs__item.is-left.is-active {
+    border-color: none;
+  }
+  .font-w .el-checkbox {
+    font-weight: bold;
+  }
+}
+.venue-box {
+  .input-div {
+    .el-input {
+      width: 320px;
+    }
+    .el-date-editor .el-range-separator {
+      width: 7%;
+    }
+  }
+  .el-date-editor--daterange.el-input, .el-date-editor--daterange.el-input__inner, 
+  .el-date-editor--timerange.el-input, .el-date-editor--timerange.el-input__inner {
+    width: 320px;
+  }
+}
+.attendance-dialog {
+  .el-dialog__header {
+    border-bottom: 1px solid #ccc;
+  }
+}
+.menber-choose {
+  .el-dialog__header {
+    border: 1px solid #ccc;
+  }
+}
+.buy-dialog {
+  .el-dialog__header {
+    border: 1px solid #ccc;
+  }
+}
+.buy-dialog {
+  .el-dialog__footer {
+    text-align: center;
+    button {
+      width: 160px;
+      background: #000;
+      border: 1px solid #000;
+    }
+  }
+  .form-box {
+    .el-input ,.el-textarea {
+      width: 300px;
+    }
+    .el-textarea {
+      vertical-align: top;
+      height: 80px;
+      .el-textarea__inner {
+        height: 100%;
+      }
+    }
+    .el-input-number__increase {
+      right: -99px;
+    }
+  }
+  .formStep3 {
+    width: 415px;
+    margin: 35px auto;
+  }
+  .el-form-item__label {
+    font-size: 18px;
+    font-weight: normal;
+  }
+}
+.testReport-dialog, .addCoachForm, .addCourseForm {
+  .el-dialog__header {
+    border: 1px solid #ccc;
+  }
+  .el-dialog__footer {
+    text-align: center;
+    button {
+      width: 160px;
+      background: #1AB394;
+      border: 1px solid #1AB394;
+    }
+  }
+  .form-box ,.form2 {
+    .el-input {
+      width: 300px;
+    }
+    .el-form-item__label {
+      width: 50px;
+      color: #F14C30;
+      font-size: 28px;
+      margin-top: -8px;
+    }
+  }
+  .courseForm {
+    .el-input {
+      width: 360px;
+    }
+    .el-input--medium {
+      width: 360px;
+    }
+  }
+}
+.authentication-dialog {
+  .el-dialog__header {
+    border: 1px solid #ccc;
+  }
+  .el-dialog__footer {
+    text-align: center;
+    button {
+      width: 160px;
+      background: #000;
+      border: 1px solid #000;
+    }
+  }
+  .rzMsgForm {
+    margin-top: 50px;
+    .el-input {
+      width: 360px;
+    }
+    .el-form-item__label {
+      font-size: 18px;
+      width: 140px;
+      font-weight: normal;
+      color: #000;
+    }
+    .el-form-item {
+      margin-bottom: 50px;
+    }
+  }
+}
+.tabs-box {
+  .el-tabs--left .el-tabs__header.is-left {
+    width: 240px;
+  }
+  .el-tabs--left .el-tabs__item.is-left {
+    text-align: left;
+    height: 60px;
+    line-height: 60px;
+  }
+  .el-tabs--left .el-tabs__nav-wrap.is-left {
+    background: #F4F6F9;
+  }
+  .el-tabs--left.el-tabs--card .el-tabs__item.is-left.is-active {
+    background: #fff;
+  }
+  .el-tabs--left.el-tabs--card .el-tabs__item.is-left {
+    border-top: 0;
+  }
+  // .el-tabs--left {
+  //   /*height: calc(100vh - 180px);*/
+  // }
+  // .el-tabs--left.el-tabs--card .el-tabs__nav {
+  //   padding-bottom: calc(100vh - 680px);
+  // }
+  .el-tabs--left.el-tabs--card .el-tabs__nav {
+    border-bottom: 0;
+  }
+}
+.privateCourse-form {
+  .el-input {
+    width: 260px;
+  }
+  .el-form-item__label {
+    // width: 50px;
+    // color: #F14C30;
+    // font-size: 28px;
+    // margin-top: -8px;
+  }
+  .el-range-editor--medium.el-input__inner {
+    width: 360px;
+  }
+}
+.introduce {
+  .el-textarea {
+    width: 360px;
+    vertical-align: top;
+  }
+  .el-textarea__inner {
+     height: 190px;
+  }
+}
+.cover {
+  .el-select>.el-input {
+    width: 268px;
+  }
+  // .select-courseImg .el-select>.el-input{
+  //   width: 300px;
+  // }
+}
+
+.addRole {
+  .el-dialog__header {
+    border: 1px solid #ccc;
+  }
+  .el-button {
+    width: 160px;
+    background: #1AB394;
+    border: 1px solid #1AB394;
+    color: #fff;
+  }
+  .t-c {
+    .el-input {
+      width: 320px;
+    }
+    .el-textarea {
+      width: 320px;
+      vertical-align: top;
+      .el-textarea__inner {
+        height: 120px;
+      }
+    }
+  }
+}
+.staff-dialog {
+  .el-date-editor .el-range-separator {
+    width: 8%;
+  }
+}
+.forgot-form ,.modifyPwd-dialog {
+  .el-input {
+    width: 320px;
+  }
+  .comfireCode {
+    .el-input {
+      width: 180px;
+    }
+  }
+}
+.modifyPwd-dialog {
+  .el-form--label-left .el-form-item__label {
+    text-align: right;
+    width: 265px;
+  }
+}
+.modifyPwd-dialog {
+  .el-dialog__header {
+    border: 1px solid #ccc;
+    padding: 10px 20px 0;
+  }
+  .el-button {
+    width: 160px;
+    background: #1AB394;
+    border: 1px solid #1AB394;
+    color: #fff;
+  }
+}
+.modifyPwd-form {
+  .el-form-item__error {
+    left: 266px;
+  }
+}
+.cabinet-dialog1, .cabinet-dialog2, .add-cabinet-dialog, .bind-cabinet-dialog{
+  .el-dialog__header {
+    border: 1px solid #ccc;
+  }
+  .el-checkbox__input.is-disabled.is-checked .el-checkbox__inner {
+    background-color: rgb(63,195,113);
+    border-color: rgb(63,195,113);
+  }
+  .el-checkbox__inner {
+    border-radius: 0;
+  }
+  .cabnit-dialog-footer {
+    .el-button--medium {
+      padding: 10px 38px;
+      color: #fff;
+    }
+    .continue {
+      background: #1AB394;
+    }
+    .return {
+      background: #000;
+    }
+  }
+  .el-textarea {
+    width: 330px;
+    vertical-align:top;
+    height: 50px;
+  }
+  .el-input {
+    width: 360px;
+  }
+}
+.cabinet-dialog4 {
+  .el-dialog__header {
+    border: 1px solid #ccc;
+  }
+  .el-textarea {
+    width: 330px;
+    vertical-align:top;
+    height: 50px;
+  }
+  .el-input {
+    width: 330px;
+  }
+  .cabnit-dialog-footer {
+    .el-button--medium {
+      padding: 10px 38px;
+      color: #fff;
+    }
+    .continue {
+      background: #1AB394;
+    }
+    .return {
+      background: #000;
+    }
+  }
+}
+.otherSearch {
+  .el-input {
+    width: 100%;
+  }
+  .el-input__inner {
+    border-radius: 0 4px 4px 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+.otherSearcher {
+  .el-input {
+    width: 610px;
+  }
+  .el-input__inner {
+    border-radius: 0 0 0 0; 
+  }
+}
+
+.coachForm {
+  .el-form-item {
+    width: 500px;
+    margin: 40px auto;
+  }
+}
+.resigt .el-input-group__append, .opencard-select .el-input-group__append {
+  background-color: #409eff;
+  color: #fff;
+}
+.resigt .el-input-group__append:hover, .opencard-select .el-input-group__append:hover {
+  background-color: #66b1ff;
+}
+.cashierTable {
+  padding: 0;
+  .el-table td {
+    padding: 0;
+  }
+  .el-table_2_column_8 {
+    padding: 0;
+  }
+}
+.el-table {
+  .cashierTable {
+    td {
+      padding: 0;
+    }
+    .cell {
+      padding: 0;
+      .mytd:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}
+.myTable td, .myTable th.is-leaf {
+  border-bottom: none;
+}
+.myTable thead tr, .recordTable thead tr {
+  background-color: #ccc;
+}
+.myTable th, .el-table thead tr, .recordTable th, .el-table thead tr {
+  background-color: #ddd;
+}
+.myTable thead, .recordTable thead {
+  color: #000;
+}
+.myTable th, .recordTable th {
+  padding: 15px 0; 
+}
+.tagbox .mar10+.mar10 {
+  margin-left: 10px;
+}
+.tagbox .mar10 {
+  margin-left: 10px;
+}
+.el-table-filter__list {
+    padding: 5px 0;
+    margin: 0;
+    list-style: none;
+    min-width: 100px;
+    overflow: auto;
+    max-height: 400px;
+}
+
+.checkbox1, .checkbox2{
+  .el-checkbox, .el-checkbox__input {
+    z-index: 0;
+  }
+}
+.statistics-dialog, .course-dialog, .lenCabinet {
+  .el-dialog__header {
+    border: 1px solid #ccc;
+  }
+  // .el-dialog__footer {
+  //   text-align: center;
+  //   button {
+  //     background: #000;
+  //     color: #fff;
+  //     border: 1px solid #000;
+  //     padding: 10px 38px;
+  //   }
+  // }
+}
+.course-dialog {
+  .form-box {
+    .el-form-item {
+      display: inline-block;
+      .el-input__inner {
+        width: 300px;
+      }
+    }
+    // .el-date-editor .el-range__close-icon {
+    //   margin-top: -26px;
+    // }
+    .el-form-item--medium .el-form-item__content, .el-form-item--medium .el-form-item__label {
+      display: inline-block;
+    }
+    .min_person {
+      .el-input {
+        width: 148px;
+        .el-input__inner {
+          width: 148px;
+        }
+      }
+    }
+    .select {
+      .el-input__inner {
+        width: 118px;
+      }
+    }
+    .el-date-editor .el-range-separator {
+      width: 8%;
+    }
+  }
+  .el-dialog__footer {
+    text-align: center;
+  }
+}          
+.check-table{
+  thead {
+  color: #333;
+    tr th {
+      background-color: #f5f5f5;
+    }
+  }
+} 
+
+.box, .ul-cabinet {
+  .el-checkbox__input.is-disabled.is-checked .el-checkbox__inner::after {
+    border-color: #fff;
+    cursor: default;
+  }
+  .el-checkbox {
+    cursor: default;
+  }
+  .el-checkbox__input.is-disabled .el-checkbox__inner {
+    cursor: default;
+  }
+  .el-checkbox__input.is-disabled+span.el-checkbox__label {
+    cursor: default;
+  }
+}
+.inputBlack {
+  .el-input-group__prepend {
+    background-color: #333333;
+    border-color: #333333;
+    color: #fff;
+  }  
+  .el-input__inner:focus {
+    border-color: #333333;
+  }
+  .el-popper[x-placement^=bottom] {
+    .popper__arrow {
+      border-bottom-color: #333;
+    }
+    .popper__arrow::after {
+      border-bottom-color: #333;
+    }   
+  }
+  .popper__arrow::after {
+    border-bottom-color: #333;
+  }
+}
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button{
+  -webkit-appearance: none !important;
+}
+.delete-popover  .el-popover{
+  left: 460px;
+}
+.el-tabs--left .el-tabs__header.is-left, .el-tabs--left .el-tabs__header.is-right, .el-tabs--left .el-tabs__nav-scroll, .el-tabs--left .el-tabs__nav-wrap.is-left, .el-tabs--left .el-tabs__nav-wrap.is-right, .el-tabs--right .el-tabs__header.is-left, .el-tabs--right .el-tabs__header.is-right, .el-tabs--right .el-tabs__nav-scroll, .el-tabs--right .el-tabs__nav-wrap.is-left, .el-tabs--right .el-tabs__nav-wrap.is-right {
+  min-height: 740px;
+}
+.tabs-box .tabs-box .el-tabs--left .el-tabs__nav-wrap.is-left {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+}
+.tabs-box .el-tabs__item {
+  color: #999;
+}
+.statistics-table {
+  .el-table__header-wrapper {
+    background: #ddd;
+  }
+  .cell {
+    line-height: 50px;
+    height: 50px;
+  }
+}
+.el-tabs__item:hover {
+  color: #1AB394;
+}
+.el-tabs__item.is-active {
+  color: #1AB394;
+}
+.el-tabs__active-bar {
+  background-color: #1AB394;
+}
+.el-submenu__title {
+  background-color: rgb(37, 40, 43)
+}
+.el-submenu__title:hover {
+  background-color: #111111;
+}
+.el-menu--horizontal {
+  border-bottom: none;
+}
+.el-input.is-disabled .el-input__inner {
+  color: #a3a6ab;
+}
+.el-steps--simple {
+  padding: 13px 4% !important;
+}
+.my-message {
+  z-index: 9999 !important;
+}
+.el-message {
+  z-index: 9999;
+  top: 90px;
+  box-shadow: 0 0 15px #c9e2ff;
+}
+.el-message__content {
+  font-size: 16px;
+}
+.el-icon-close{
+  border: none !important;
+}
+.el-step.is-simple .el-step__head {
+  line-height: 0;
+}
+.myDropownMune {
+  background: #393e44;
+  padding-bottom: 0;
+  border: 1px solid #393e44;
+  .noEmployee {
+    color: #ffaa25;
+  }
+  .el-dropdown-item {
+    color: #999;
+  }
+}
+.myDropownMune[x-placement^=bottom] .popper__arrow::after {
+  border-bottom-color:#393e44
+}
+.el-time-panel__content::after, .el-time-panel__content::before {
+  margin-top: -5px;
+}

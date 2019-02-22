@@ -1,0 +1,127 @@
+.clearfix:after {
+  content: "";
+  display: block;
+  visibility: hidden;
+  clear: both;
+  height: 0;
+}
+@font-face {
+  font-family: 'dincondensed-bold';
+  src: url('./../../ranklist/font/DIN-Condensed-Bold.woff.ttf') format('truetype');
+}
+@font-face {
+  font-family: "Airstrike";
+  src: url("../../sharepage/css/airstrike.ttf") format("truetype"); }
+.clearfix {
+  zoom: 1;
+}
+.top-info {
+  padding: 15px 0;
+  height: 50px;
+  width: 100%;
+}
+.top-info span {
+  height: 50px;
+  line-height: 50px;
+  float: left;
+  font-weight: bold;
+  font-size: 14px;
+}
+.top-info img {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  float: right;
+}
+.kcal-info span:first-child {
+  font-family: DINCondensed-Bold;
+  font-size: 90px;
+  color: #262628;
+  letter-spacing: 0;
+  padding-left: 40px;
+}
+.kcal-info span:last-child {
+  font-family: PingFangSC-Light;
+  font-size: 14px;
+  color: #999999;
+  letter-spacing: -0.39px;
+  margin: 0 0 0 10px;
+}
+.canvas-box > p {
+  font-size: 16px;
+  color: #333333;
+  font-weight: bold;
+  padding: 50px 0 25px 0;
+}
+.canvas-list {
+  width: 100%;
+  font-size: 0;
+}
+.canvas-list > li {
+  font-size: 0px !important;
+  width: calc(100% / 3);
+  display: inline-block;
+  box-sizing:border-box;
+}
+.canvas-list .statistical-box {
+  font-size: 12px;
+  text-align: center;
+}
+.canvas-introduction {
+  color: #1AB394;
+  font-family: Airstrike;
+  font-size: 18px;
+}
+.canvas-introduction span {
+  font-family: PingFangSC-Regular;
+  font-size: 12px;
+  color: #2A2A2A;
+  padding-left: 10px;
+}
+.sportList li {
+  border-bottom: 1px solid #EEEEEE;
+  position: relative;
+  padding: 15px 0;
+}
+.sportList li img {
+  width: 32px;
+  height: 32px;
+  border-radius: 32px;
+  position: absolute;
+  left: 0;
+  top: 15px;
+}
+.sportList li > div {
+  padding-left: 45px;
+  box-sizing: border-box;
+  width: 100%;
+}
+.sportList li > div p:first-child {
+  font-size: 14px;
+  color: #464646;
+  font-family: "微软雅黑";
+}
+.sportList li > div p:last-child {
+  font-size: 12px;
+  color: #999999;
+  padding-top: 5px;
+}
+.rigth-data {
+  position: absolute;
+  right: 0;
+  top: 15px;
+  font-size: 12px;
+  color: #999999;
+  padding: 0 5px;
+}
+.sportList li .conden-num {
+  font-family: DINCondensed-Bold;
+  font-size: 30px;
+  color: #333333;
+}
+.empty-box {
+  text-align: center;
+  line-height: 60px;
+  color: #b4b7b1;
+}

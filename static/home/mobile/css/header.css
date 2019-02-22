@@ -1,0 +1,328 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+.hard img{
+        width: 39%;
+}
+header {
+    width: 100%;
+    /* height: 1.245834rem; */
+    background: url(./../../img/01banner.jpg) no-repeat;
+    background-size: 100%;
+}
+
+.top-bar {
+    position: relative;
+}
+
+.logo {
+    margin-top: .1875rem;
+    width: 0.702083rem;
+    height: auto;
+    margin-left: 0.58125rem;
+}
+
+.header-name {
+    margin-top: .1875rem;
+    display: block;
+    margin-left: .0625rem;
+    float: left;
+}
+
+.header-name span {
+       font-size: 0.3875rem;
+}
+
+.header-name p {
+    font-size: .052083rem;
+}
+
+.header-name span,
+.header-name p {
+    color: #fff;
+}
+
+.top-nav {
+    float: right;
+}
+
+.top-nav ul {
+    display: flex;
+    color: #fff;
+    align-items: center;
+    margin-right: .552083rem;
+}
+
+.top-nav ul li {
+    font-size: 0.325rem;
+    /* margin-top: .25rem; */
+}
+
+.top-nav ul li:first-child {
+    margin-right: .15625rem;
+}
+
+.top-nav ul li:nth-child(2) {
+    margin-right: .239583rem;
+}
+
+.top-nav ul li:nth-child(3) {
+    margin-right: .171875rem
+}
+
+.login {
+    margin-right: .083333rem;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    padding: .0625rem .145833rem;
+}
+
+.login:hover {
+    background: #fff;
+    color: rgb(82, 170, 145);
+}
+
+.user {
+    border: 1px solid #fff;
+    border-radius: 4px;
+    padding: .0625rem .15625rem;
+    background: #fff;
+    color: rgb(82, 170, 145);
+}
+.title {
+    color: #fff;
+    width: 50%;
+    padding-top: 2.9rem;
+    margin: 0 auto;
+}
+.title p{
+        font-size: 0.6rem;
+}
+.block{
+    display: none
+}
+
+.green {
+    /* background-color:#139f83; */
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+    background-color: #139f83;
+}
+
+
+@media screen and (min-width: 751px) {
+    .header-name img {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .top-nav ul {
+        margin-right: 0;
+    }
+    header {
+        overflow-x: hidden;
+        background-position: 1px;
+        background: none;
+    }
+    .top-bar {
+        width: 100%;
+        background: #fff;
+        overflow: hidden;
+        line-height: 1.466667rem;
+        height: 1.466667rem;
+    }
+    .logo {
+        display: inline-block;
+        margin-left: .533333rem;
+        width: .693333rem;
+        height: auto;
+        margin-top: .4rem;
+    }
+    .header-name img {
+        height: 0.8rem;
+        margin-top: 0.38rem;
+        margin-left: .2rem;
+    }
+    .top-nav ul li {
+        font-weight: 600;
+    }
+    .none{
+        display: none;
+    }
+    .title {
+    display: block;
+    /* height: 5.6rem; */
+
+    /* width: 100%; */
+
+    background-size: 100% 100%;
+    /* margin-left: 1.4rem; */
+
+    /* font-size: 48px; */
+
+    /* line-height: 1; */
+
+    margin-left: 1.1rem;
+    margin-top: 3.5remm;
+    padding-top: 53px;
+    /* padding-left: 1.333333rem; */
+
+    /* margin-top: -0.1rem; */
+    }
+    .title span{
+        display: none
+    }
+    .block{
+        display: block
+    }
+    .title h4 {
+            display: none !important;
+        }
+    .title h1 {
+        padding-top: 2.266667rem;
+        font-size: .666667rem;
+    }
+    .title h1,
+    .title h5 {
+        margin-left: 1.333333rem;
+    }
+    .title h5 {
+        font-size: .4rem
+    }
+    .header-name span,
+    .header-name p {
+        display: none;
+    }
+    .header-name span {
+        font-size: .453333rem;
+    }
+    .header-name p {
+        font-size: .16rem;
+    }
+    .login,
+    .user {
+        display: none;
+    }
+    .header-name {
+        margin-top: 0;
+    }
+    .top-nav ul li {
+        color: #6d6d6d;
+        font-size: .15625rem;
+    }
+    .top-nav ul li {
+        /* margin-top: .626667rem; */
+        font-size: .4rem;
+    }
+    .top-nav ul li:nth-child(1) {
+        margin-right: .533333rem;
+    }
+    .top-nav ul li:nth-child(2) {
+        margin-right: .453333rem;
+    }
+    .top-nav ul li:nth-child(3) {
+        margin-right: .533333rem;
+    }
+    .company {
+        margin-top: .866667rem;
+        margin-left: 0;
+    }
+    .company img {
+        width: 1.333333rem;
+        height: auto;
+    }
+    .content-one {
+        width: auto;
+        position: relative;
+    }
+    .content-words {
+        padding-top: 4.133333rem;
+        width: 100%;
+        display: block;
+    }
+    .content-words p {
+        padding-left: .533333rem;
+        padding-right: .533333rem;
+    }
+    .content-one .content-image {
+        position: absolute !important;
+        top: .693333rem !important;
+        left: 2.906667rem !important;
+        margin-left: 0 !important;
+        width: 3.146667rem !important;
+        height: 2.893333rem !important;
+    }
+    .content-two .content-image {
+        height: 3.466667rem !important;
+        width: 3.28rem !important;
+        display: block;
+        margin: 0 auto !important;
+    }
+    .content-text .content-style {
+        margin: 0;
+    }
+    .content-words p:nth-child(2) {
+        margin-top: .8rem
+    }
+    .content-two .content-words {
+        padding-top: .8rem;
+    }
+    footer {
+        height: 8.106667rem;
+    }
+    footer .foot-name {
+        font-size: .533333rem;
+    }
+    footer .list {
+        position: relative;
+    }
+    footer .list .code-image {
+        margin: 0 auto;
+        padding: 0;
+        position: absolute;
+        top: .8rem;
+        left: 0;
+        right: 0;
+    }
+    footer .list .code-image .images img {
+        width: 1.533333rem;
+        height: auto;
+    }
+    footer .list ul {
+        margin-top: 3.2rem;
+    }
+    footer .list ul li {
+        font-size: .4rem;
+    }
+    footer .list ul li:nth-child(2),
+    footer .list ul li:last-child {
+        margin-top: .666667rem;
+    }
+    footer .code-image .images-ios {
+        margin-right: 1.653333rem;
+    }
+    footer .list ul li img {
+        width: .4rem;
+        height: auto;
+    }
+}

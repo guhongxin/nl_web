@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>体测报告</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/report.css?t={vision}">
+</head>
+<body>
+
+
+  <button class="no-print" id="close" onclick="CloseWebPage()">
+    关闭窗口
+  </button>
+  <div class="box">
+    <!-- <h2 class="head"></h2> -->
+    <div class="content"></div>
+  </div>
+  <button class="no-print" onclick="window.print()">打印报告</button>
+  <div class="box">
+    <!-- 头部 -->
+    <div class="header">
+      <div class="title">
+        <h1>人体成分健康分析报告</h1>
+        <p>HUMAN COMPONENT HEAL TH ANAL YSIS REPORT</p>
+      </div>
+    </div>
+    <!-- 内容区域 -->
+    <div class="content">
+      <div class="content-top">
+        <table border="1" class="top" bordercolor="#DDDDDD">
+          <caption>
+            <h2>基本信息</h2>
+          </caption>
+          <tr>
+            <td class="bg_color">姓名</td>
+            <td id="body_name">-</td>
+            <td class="bg_color">性别</td>
+            <td id="body_sex">-</td>
+            <td class="bg_color">综合评分</td>
+          </tr>
+          <tr>
+            <td class="bg_color">身高（cm）</td>
+            <td id="body_height">-</td>
+            <td class="bg_color">测试时间</td>
+            <td id="body_time">-</td>
+            <td id="body_score" class="score">-</td>
+          </tr>
+
+        </table>
+      </div>
+      <div class="content-middle">
+        <div class="left-box">
+          <table class="middle-left" border="1" bordercolor="#DDDDDD">
+            <caption>
+              <h2>身体成分各项数据</h2>
+            </caption>
+            <tr>
+              <td rowspan="2" class="flag">项目</td>
+              <td rowspan="2" class="flag">测量值</td>
+              <td rowspan="2" class="flag">标准范围</td>
+              <td colspan="3" class="flag">程度判定</td>
+
+            </tr>
+            <tr>
+              <td class="flag" style="background-color:#7AB8CF">偏低</td>
+              <td class="flag" style="background-color:#1AB394">标准</td>
+              <td class="flag" style="background-color:#F8AC59">偏高</td>
+            </tr>
+            <tr>
+              <td>当前体重(kg)</td>
+              <td id="body_weight">-</td>
+              <td id="body_weight_normal">-</td>
+              <td id="body_weight_low"></td>
+              <td id="body_weight_middle"></td>
+              <td id="body_weight_high"></td>
+            </tr>
+            <tr>
+              <td>体格指数（bmi）</td>
+              <td id="body_bmi">-</td>
+              <td id="body_bmi_normal">-</td>
+              <td id="body_bmi_low"></td>
+              <td id="body_bmi_middle"></td>
+              <td id="body_bmi_high"></td>
+            </tr>
+            <tr>
+              <td>脂肪（%）</td>
+              <td id="body_fat_weight">-</td>
+              <td id="body_fat_normal">-</td>
+              <td id="body_fat_low"></td>
+              <td id="body_fat_middle"></td>
+              <td id="body_fat_high"></td>
+            </tr>
+            <tr>
+              <td>肌肉（%）</td>
+              <td id="body_muscle">-</td>
+              <td id="body_muscle_normal">-</td>
+              <td id="body_muscle_low"></td>
+              <td id="body_muscle_middle"></td>
+              <td id="body_muscle_high"></td>
+            </tr>
+            <tr>
+              <td>水分（%）</td>
+              <td id="body_water">-</td>
+              <td id="body_water_normal">-</td>
+              <td id="body_water_low"></td>
+              <td id="body_water_middle"></td>
+              <td id="body_water_high"></td>
+            </tr>
+            <tr>
+              <td>蛋白质（%）</td>
+              <td id="body_protein">-</td>
+              <td id="body_protein_normal">-</td>
+              <td id="body_protein_low"></td>
+              <td id="body_protein_middle"></td>
+              <td id="body_protein_high"></td>
+            </tr>
+            <tr>
+              <td>内脏脂肪（%）</td>
+              <td id="body_infat">-</td>
+              <td id="body_infat_normal">-</td>
+              <td id="body_infat_low"></td>
+              <td id="body_infat_middle"></td>
+              <td id="body_infat_high"></td>
+            </tr>
+            <tr>
+              <td>皮下脂肪（%）</td>
+              <td id="body_subfat">-</td>
+              <td id="body_subfat_normal">-</td>
+              <td id="body_subfat_low"></td>
+              <td id="body_subfat_middle"></td>
+              <td id="body_subfat_high"></td>
+            </tr>
+            <tr>
+              <td>骨量（%）</td>
+              <td id="body_Bone">-</td>
+              <td id="body_Bone_normal">-</td>
+              <td id="body_bone_low"></td>
+              <td id="body_bone_middle"></td>
+              <td id="body_bone_high"></td>
+            </tr>
+            <tr>
+              <td>基础代谢（kcal）</td>
+              <td id="body_metabolism">-</td>
+              <td id="body_metabolism_normal">-</td>
+              <td id="body_metabolism_low"></td>
+              <td id="body_metabolism_middle"></td>
+              <td id="body_metabolism_high"></td>
+            </tr>
+            <tr>
+              <td>身体年龄</td>
+              <td id="body_age">-</td>
+              <td id="body_age_normal">-</td>
+              <td id="body_age_low"></td>
+              <td id="body_age_middle"></td>
+              <td id="body_age_high"></td>
+            </tr>
+
+          </table>
+        </div>
+
+        <!-- 右侧 -->
+        <div class="right-box">
+          <table class="right-top" border="1" bordercolor="#DDDDDD" id="bodyType">
+            <caption>
+              <h2>体型判断</h2>
+            </caption>
+            <tr>
+              <td>
+                <img src="./img/grey/yxfp@2x.png" alt="">
+                <p>隐形肥胖</p>
+              </td>
+              <td>
+                <img src="./img/grey/ppx@2x.png" alt="">
+                <p>偏胖</p>
+              </td>
+              <td>
+                <img src="./img/grey/fpx@2x.png" alt="">
+                <p>肥胖</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <img src="./img/grey/psjr@2x.png" alt="">
+                <p>偏瘦肌肉</p>
+              </td>
+              <td>
+                <img src="./img/grey/bzx@2x.png" alt="">
+                <p>标准</p>
+              </td>
+              <td>
+                <img src="./img/grey/fcjr@2x.png" alt="">
+                <p>非常肌肉</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <img src="./img/grey/ps@2x.png" alt="">
+                <p>偏瘦</p>
+              </td>
+              <td>
+                <img src="./img/grey/bzjr@2x.png" alt="">
+                <p>标准肌肉</p>
+              </td>
+              <td>
+                <img src="./img/grey/ydbz@2x.png" alt="">
+                <p>运动不足</p>
+              </td>
+            </tr>
+
+          </table>
+          <table class="right-middle" border="1" bordercolor="#DDDDDD">
+            <caption>
+              <h2>体重控制</h2>
+            </caption>
+            <tr>
+              <td>理想体重</td>
+              <td>体重控制</td>
+              <td>脂肪控制</td>
+              <td>肌肉控制</td>
+            </tr>
+            <tr>
+              <td id="weight_ideal">-</td>
+              <td id="weight_control">-</td>
+              <td id="fat_control">-</td>
+              <td id="muscle_control">-</td>
+            </tr>
+
+          </table>
+          <table class="right-bottom" border="1" bordercolor="#DDDDDD">
+            <caption>
+              <h2>营养判断</h2>
+            </caption>
+            <tr>
+              <td>蛋白质</td>
+              <td>无机盐</td>
+              <td>脂肪</td>
+            </tr>
+            <tr>
+              <td id="adequate"></td>
+              <td id="standard"></td>
+              <td id="flat"></td>
+            </tr>
+          </table>
+        </div>
+
+      </div>
+      <div class="content-bottom">
+        <h2>体测建议</h2>
+        <div class="suggest" id="suggest">
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/jquery-1.9.1.min.js"></script>
+  <!-- <script src="./js/report.js"></script> -->
+  <script>
+    var id = ''
+    getQueryString('id') ? id = getQueryString('id') : undefined
+    if (!id) {
+      console.error('没有ID')
+      alert('页面无有效id，无法加载数据！')
+    }
+    var token = ''
+    getCookie('Admin-Token') ? token = getCookie('Admin-Token') : undefined
+    if (!token) {
+      console.error('没有token')
+      // alert('页面无有效token，无法加载数据！')
+    }
+    $.ajax({
+      url: '/v1/gym/body_exams/share/' + id,
+      type: 'get',
+      beforeSend: function (request) {
+        request.setRequestHeader('Authorization', 'Bearer ' + token)
+      },
+      success: function (res) {
+        setBodyData(res)
+      }
+    })
+    function trim(str) {
+      var _str = str || ''
+      return _str.replace(/(^\s+)|(\s+$)/g, "");
+    }
+    // 设置点
+    function setPoint(_result, dom) {
+      switch (_result) {
+        case 'low':
+          dom[0].text('●').css({ 'fontSize': '20px', 'color': '#7AB8CF' })
+          break;
+        case 'normal':
+          dom[1].text('●').css({'fontSize':'20px', 'color': '#1AB394'})
+          break;
+        case 'high':
+          dom[2].text('●').css({ 'fontSize': '20px', 'color': '#F8AC59' })
+          break;
+        default:
+          dom.forEach(function(item) {
+            item.text('-').css({ 'fontSize': '20px', 'color': '#F8AC59' })
+          })
+      }
+    }
+    // 设置背景颜色
+    function setBackground(_result, dom) {
+      switch (_result) {
+        case 'low':
+          dom.css({ 'backgroundColor': '#7AB8CF' })
+          break;
+        case 'normal':
+          dom.css({ 'backgroundColor': '#1AB394'})
+          break;
+        case 'high':
+          dom.css({ 'backgroundColor': '#F8AC59' })
+          break;
+        default:
+          dom.css({ 'backgroundColor': '#F8AC59' })
+      }
+    }
+    // 设置数值
+    function setBodyData(res) {
+      console.log(res);
+      $('#body_name').text(res.name? res.name:'-')
+      if(!res.customer) {
+        var sex = '-'
+        if (res.sex == 1) {sex = '男'}
+        if (res.sex == 2) {sex = '女'}
+        $('#body_sex').text(sex)
+      }else {
+        $('#body_sex').text(res.customer.sex == 1 ? '男' : '女')
+      }
+      $('#body_height').text(res.height? retainTwo(res.height):'-')
+      $('#body_time').text(res.examTime?res.examTime:'-')
+      $('#body_score').text(res.score ? Math.floor(res.score * 100) / 100 : '-')
+      // 成分数据 体重
+      $('#body_weight').text(res.weight?retainTwo(res.weight):'-')
+      var weight = JSON.parse(res.gym_body_exam_data.dataItems[9].stateValues)
+      $('#body_weight_normal').text(retainTwo(weight[1]) + ' - ' + retainTwo(weight[2]))
+      // 当前体重
+      setPoint(stateString(trim(res.gym_body_exam_data.dataItems[9].stateString)), [$('#body_weight_low'), $('#body_weight_middle'), $('#body_weight_high')])
+      // bmi
+      $('#body_bmi').text(res.gym_body_exam_data ? retainTwo(res.gym_body_exam_data.dataItems[0].itemValue) : '-')
+      var bmi = JSON.parse(res.gym_body_exam_data.dataItems[0].stateValues)
+      $('#body_bmi_normal').text(retainTwo(bmi[0]) + ' - ' + retainTwo(bmi[1]))
+      setPoint(stateString(trim(res.gym_body_exam_data.dataItems[0].stateString)), [$('#body_bmi_low'), $('#body_bmi_middle'), $('#body_bmi_high')])
+
+      // 脂肪
+      $('#body_fat_weight').text(res.gym_body_exam_data.dataItems[3].itemValue?retainTwo(res.gym_body_exam_data.dataItems[3].itemValue):'-')
+      var bodyFat = JSON.parse(res.gym_body_exam_data.dataItems[3].stateValues)
+      $('#body_fat_normal').text(retainTwo(bodyFat[0]) + ' - ' + retainTwo(bodyFat[1]))
+      setPoint(stateString(trim(res.gym_body_exam_data.dataItems[3].stateString)), [$('#body_fat_low'), $('#body_fat_middle'),  $('#body_fat_high')])
+
+      // 肌肉
+      $('#body_muscle').text(res.muscle?retainTwo(res.muscle):'-')
+      var bodyMuscle = JSON.parse(res.gym_body_exam_data.dataItems[6].stateValues)
+      $('#body_muscle_normal').text(retainTwo(bodyMuscle[0]) + ' - ' + retainTwo(bodyMuscle[1]))
+      setPoint(stateString(trim(res.gym_body_exam_data.dataItems[6].stateString)), [$('#body_muscle_low'), $('#body_muscle_middle'), $('#body_muscle_high')])
+
+      // 水分
+      $('#body_water').text(res.gym_body_exam_data.dataItems[8].itemValue?retainTwo(res.gym_body_exam_data.dataItems[8].itemValue):'-')
+      var bodyWater = JSON.parse(res.gym_body_exam_data.dataItems[8].stateValues)
+      $('#body_water_normal').text(retainTwo(bodyWater[0]) + ' - ' + retainTwo(bodyWater[1]))
+      setPoint(stateString(trim(res.gym_body_exam_data.dataItems[8].stateString)), [$('#body_water_low'), $('#body_water_middle'), $('#body_water_high')])
+
+      // 蛋白质
+      $('#body_protein').text(res.protein?retainTwo(res.protein):'-')
+      var bodyProtein = JSON.parse(res.gym_body_exam_data.dataItems[7].stateValues)
+      $('#body_protein_normal').text(retainTwo(bodyProtein[0]) + ' - ' + retainTwo(bodyProtein[1]))
+      setPoint(stateString(trim(res.gym_body_exam_data.dataItems[7].stateString)), [$('#body_protein_low'), $('#body_protein_middle'), $('#body_protein_high')])
+
+      // 内脏脂肪
+      $('#body_infat').text(res.infat?retainTwo(res.infat):'-')
+      var bodyInfat = JSON.parse(res.gym_body_exam_data.dataItems[5].stateValues)
+      bodyInfat[1]?$('#body_infat_normal').text(retainTwo(bodyInfat[0]) + ' - ' + retainTwo(bodyInfat[1])):$('#body_infat_normal').text(retainTwo(bodyInfat[0]))
+      setPoint(stateString(trim(res.gym_body_exam_data.dataItems[5].stateString)), [$('#body_infat_low'), $('#body_infat_middle'), $('#body_infat_high')])
+
+      // 皮下脂肪
+      $('#body_subfat').text(res.gym_body_exam_data.dataItems[4].itemValue?retainTwo(res.gym_body_exam_data.dataItems[4].itemValue):'-')
+      var bodySubfat = JSON.parse(res.gym_body_exam_data.dataItems[4].stateValues)
+      $('#body_subfat_normal').text(retainTwo(bodySubfat[0]) + ' - ' + retainTwo(bodySubfat[1]))
+      setPoint(stateString(trim(res.gym_body_exam_data.dataItems[4].stateString)), [$('#body_subfat_low'), $('#body_subfat_middle'), $('#body_subfat_high')])
+
+      // 骨量
+      $('#body_Bone').text(res.bone?retainTwo(res.bone):'-')
+      var bodyBone = JSON.parse(res.gym_body_exam_data.dataItems[2].stateValues)
+      $('#body_Bone_normal').text(retainTwo(bodyBone[0]) + ' - ' + retainTwo(bodyBone[1]))
+      setPoint(stateString(trim(res.gym_body_exam_data.dataItems[2].stateString)), [$('#body_bone_low'), $('#body_bone_middle'), $('#body_bone_high')])
+
+      // 基础代谢
+      $('#body_metabolism').text(Number(res.gym_body_exam_data.dataItems[1].itemValue).toFixed(2))
+      /*$('#body_metabolism_normal').text(res.gym_body_exam_data.dataItems[1].stateValues?JSON.parse(res.gym_body_exam_data.dataItems[1].stateValues):'--')*/
+      if(res.gym_body_exam_data.dataItems[1].stateValues) {
+        var bodyInfat = JSON.parse(res.gym_body_exam_data.dataItems[1].stateValues)
+        bodyInfat[1]?$('#body_metabolism_normal').text(retainTwo(bodyInfat[0]) + ' - ' + retainTwo(bodyInfat[1])):$('#body_metabolism_normal').text(retainTwo(bodyInfat[0]))
+      }else {
+        $('#body_metabolism_normal').text('--')
+      }
+      // 后台说基础代谢没有偏低。偏高。标准
+      setPoint(stateString(trim(res.gym_body_exam_data.dataItems[1].stateString)), [$('#body_metabolism_low'), $('#body_metabolism_middle'), $('#body_metabolism_high')])
+
+      // 身体年龄
+      $('#body_age').text((Number(res.gym_body_exam_data.dataItems[10].itemValue).toFixed(0)))
+      $('#body_age_normal').text(JSON.parse(res.gym_body_exam_data.dataItems[10].stateValues))
+      setPoint(stateString(trim(res.gym_body_exam_data.dataItems[10].stateString)), [$('#body_age_low'), $('#body_age_middle'), $('#body_age_high')])
+      // 体重控制
+      console.log(res.gym_body_exam_data.controlItems);
+      
+      $('#weight_ideal').text(res.gym_body_exam_data.controlItems ? suggest(res.gym_body_exam_data.controlItems[0].itemValue) : '-')
+      $('#weight_control').text(res.gym_body_exam_data.controlItems ? suggest(res.gym_body_exam_data.controlItems[1].itemValue) : '-')
+      $('#fat_control').text(res.gym_body_exam_data.controlItems ? suggest(res.gym_body_exam_data.controlItems[2].itemValue) : '-')
+      $('#muscle_control').text(res.gym_body_exam_data.controlItems ? suggest(res.gym_body_exam_data.controlItems[3].itemValue) : '-')
+      // 营养判断
+      $('#adequate').text(trim(res.gym_body_exam_data.dataItems[7].stateString)) // 蛋白质
+      setBackground(stateString(trim(res.gym_body_exam_data.dataItems[7].stateString)), $('#adequate'))
+      $('#standard').text(trim(res.gym_body_exam_data.dataItems[2].stateString)) // 无机盐
+      setBackground(stateString(trim(res.gym_body_exam_data.dataItems[2].stateString)), $('#standard'))
+      $('#flat').text(trim(res.gym_body_exam_data.dataItems[3].stateString)) // 脂肪
+      setBackground(stateString(trim(res.gym_body_exam_data.dataItems[3].stateString)), $('#flat'))
+
+      // 右侧体型判断
+      var bodyTypeDoc = $('#bodyType').find('td')
+      var _index = res.normal
+      bodyTypeDoc.map(function(index, item) {
+        if (index === _index) {
+          $(item).addClass('norm')
+        } else {
+          $(item).removeClass('norm')
+        }
+      })
+      // 体测建议
+      if (res.gym_body_exam_data.dataItems) {
+        var pagep = ''
+        for (var o = 0; o < res.gym_body_exam_data.dataItems.length; o++) {
+          if (res.gym_body_exam_data.dataItems[o].itemIntroduction) {
+            pagep += '<p>' + res.gym_body_exam_data.dataItems[o].itemIntroduction + '</p>'
+          }
+        }
+        // $('#suggest').html(pagep)
+      }
+    }
+
+    function getQueryString(name) {
+      var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+      var reg_rewrite = new RegExp("(^|/)" + name + "/([^/]*)(/|$)", "i");
+      var r = window.location.search.substr(1).match(reg);
+      var q = window.location.pathname.substr(1).match(reg_rewrite);
+      if (r != null) {
+        return unescape(r[2]);
+      } else if (q != null) {
+        return unescape(q[2]);
+      } else {
+        return null;
+      }
+    }
+
+    function getCookie(name) {
+      return sessionStorage.getItem(name)
+    }
+
+    function CloseWebPage() {
+      window.close();
+    }
+    function stateString(item) {
+				var filename = ''
+				switch (item) {
+					case '偏低':
+					case '严重不足':
+						filename = 'low'
+						break;
+					case '标准':
+					case '达标':
+						filename = 'normal'
+						break;
+          case '偏高':
+          case '充足':
+          case '严重超标':
+          case '不达标':
+					case '严重偏高':
+						filename = 'high'
+						break;
+					default:
+						filename = 'low'
+						break;
+				}
+				return filename
+      }
+      
+            // 保留两位小数
+      function retainTwo(num) {
+      var result = parseFloat(num)
+      result = Math.round(  num *100) / 100 
+     return result
+
+    }
+
+
+      //  体重建议处理
+      function suggest(val) {
+      var result2 = '无需控制'
+      var symbol = ''
+      var midNum = ''
+      // 判断是不是中文开头
+      var reg = /^[\u4e00-\u9fa5]+$/;
+      if (reg.test(val) == true) {
+        result2 = val
+      } else {
+        // 在处理不是中文开头的情况
+        // 看是不是'+'或者'-'开头
+        symbol = val.substring(0, 1)
+        if (symbol == '+') {
+          midNum = parseFloat(val)
+          midNum = Math.round(midNum * 100) / 100
+          result2 = symbol + midNum + '公斤'
+        } else {
+          midNum = parseFloat(val)
+          midNum = Math.round(midNum * 100) / 100
+          result2 = midNum + '公斤'
+        }
+      }
+      return result2
+    }
+  </script>
+</body>
+
+</html>

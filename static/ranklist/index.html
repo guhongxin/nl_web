@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <title>牛啦 FITNESS - 运动排行榜</title>
+    </head>
+    <style>
+        @font-face {  
+            font-family: 'dincondensed-bold';
+            src:url('./font/DIN-Condensed-Bold.woff.ttf') format('truetype');
+        }
+        .curHeader{
+            overflow: hidden;
+            height: 80px;
+            line-height: 80px;
+            background: #2D3033;
+            box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+        }
+        .curHeader>.logo{
+            width: 250px;
+            display: inline-block;
+            position: relative;
+            top: 15%;
+            left: 1%;
+        }
+        .curHeader>.logo>img{
+            width: 100%;
+        }
+        .curHeader>.todayTime{
+            float: right;
+            margin-right: 40px;
+            font-family: 'PingFangSC-Semibold';
+            font-size: 16px;
+            color: #FFFFFF;
+            letter-spacing: 0;
+        }
+        body, html{
+            padding: 0;
+            margin: 0;
+            background-color: #2D3033;
+            font-family:Arial, Helvetica, sans-serif, '微软雅黑';
+        }
+        .font {
+            font-size: 20px;
+            color: #FFFFFF;
+            background: url('data:image/png;base64,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') no-repeat;
+            background-size: 36px;
+            background-position: 0 16px;
+            padding-left: 40px;
+        }
+        .font span {
+            font-size: 37px;
+        }
+        .itembox {
+            width: 30.5%;
+            float: left;
+            margin-left: 2.125%;
+        }
+        .rankbox {
+            margin-top: 30px;
+        }
+        .rankhead {
+            overflow: hidden;
+            width: 100%;
+            box-shadow: 0 52px 20px 0 #000;
+        }
+        .rankitem {
+            float: left;
+            width: 33.33%;
+            height: 326px;
+        }
+        .item1 {
+            margin-top: 30px;
+            background-image: linear-gradient(135deg, #E85C5C 0%, #932FB3 100%);
+            border-radius: 15px 0 0 0;
+        }
+        .item2 {
+            background-image: linear-gradient(135deg, #BA35E2 0%, #583BCD 100%);
+            border-radius: 15px 15px 0 0;
+        }
+        .item3 {
+            background-image: linear-gradient(135deg, #8968FF 0%, #0E6C97 100%);
+            border-radius: 0 15px 0 0;
+            margin-top: 30px;
+        }
+        .item4 {
+            margin-top: 30px;
+            background-image: linear-gradient(135deg, #F7CC6D 0%, #D5713F 100%);
+            border-radius: 15px 0 0 0;
+        }
+        .item5 {
+            background-image: linear-gradient(135deg, #FA8C46 0%, #B82E2F 100%);
+            border-radius: 15px 15px 0 0;
+        }
+        .item6 {
+            background-image: linear-gradient(135deg, #E85B5A 0%, #932CB3 100%);
+            border-radius: 0 15px 0 0;
+            margin-top: 30px;
+        }
+        .item7 {
+            margin-top: 30px;
+            background-image: linear-gradient(135deg, #8967FE 0%, #3FA2CF 100%);
+            border-radius: 15px 0 0 0;
+        }
+        .item8 {
+            background-image: linear-gradient(135deg, #66D2FF 0%, #4BB299 100%); 
+            border-radius: 15px 15px 0 0;
+        }
+        .item9 {
+            background-image: linear-gradient(135deg, #75E1C8 0%, #68B855 100%);
+            border-radius: 0 15px 0 0;
+            margin-top: 30px;
+        }
+        .middle {
+            height: 356px;
+        }
+        .headiconone {
+            width: 110px;
+            height: 110px;
+            border: 5px solid #ffffff;
+            border-radius: 50%;
+            margin: 20px auto 0 auto;
+            position: relative;
+        }
+        .headiconone img{
+            display: block;
+            float: left;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+        .tows {
+            width: 126px;
+            height: 126px;
+        }
+        .prizeone {
+            bottom: -37px;
+            left: 27px;
+            width: 58px;
+            height: 58px;
+            position: absolute;
+            z-index: 1;
+        }
+        .prizetow {
+            left: 34px;
+        }
+        .yin {background: url('./img/y.png') no-repeat; background-size: 100%;}
+        .ton {background: url('./img/t.png') no-repeat; background-size: 100%;}
+        .jin {background: url('./img/j.png') no-repeat; background-size: 100%;}
+        .headtext {
+            font-size: 20px;
+            color: #ffffff;
+            width: 100%;
+            overflow: hidden;
+            text-overflow:ellipsis;
+            white-space: nowrap;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .headfoot {
+            margin-top: 30px;
+            width: 100%;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+        .headfootitem {
+            width: 50%;
+            float: left;
+            box-sizing: border-box;
+        }
+        .headfoottext {
+            font-size: 12px;
+        }
+        .headfootnum {
+            font-size: 30px;
+            font-family: 'dincondensed-bold';
+            overflow: hidden;
+            text-overflow:ellipsis;
+            white-space: nowrap;
+        }
+        .headfootunit {
+            font-size: 14px;
+            font-family: 'dincondensed-bold';
+        }
+        .rl {
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .rr {
+            transform: translateX(1px)
+        }
+        .headone {
+            font-size: 25px;
+        }
+        .headfootone {font-size: 14px;}
+        .headfootnumone {font-size: 34px;}
+        .headfootunitone {font-size: 16px; }
+        .nbsp {background: #2D3033;height: 10px;width: 100%;}
+        ul, li {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .otherrank {
+            height: calc(100vh - 526px);
+            /* overflow: hidden;
+            overflow-y: auto; */
+            overflow: hidden;
+            overflow-y: auto;
+            box-shadow: 0 40px 20px 0 #000;
+        }
+        .otherrank li{
+            overflow: hidden;
+            height: 94px;
+            display: table; 
+            width: 100%;
+            color: white;
+            background-image: linear-gradient(194deg, #35363b 0%, #282c31 100%);
+            position: relative;
+        }
+        .bgreat {
+            position: absolute;
+            /*width: 162px; */
+            width: 45%;
+            height: 94px;
+            transform: skew(-15deg);
+            left: -15px;
+        }
+        .bgreat1 {
+            opacity: 0.7;
+            background-image: linear-gradient(-224deg, rgba(78, 79, 142, 1)  0%, rgba(79, 65, 87, 1) 50%, rgba(57, 56, 60, 1) 100%);  
+        }
+        .bgreat2 {
+            opacity: 0.7;
+            background-image: linear-gradient(-224deg, rgba(151, 96, 65, 1)  0%, rgba(102, 84, 65, 1) 50%, rgba(65, 64, 61, 1) 100%);
+        }
+        .bgreat3 {
+            opacity: 0.7;
+            background-image: linear-gradient(90deg, rgba(78, 120, 97, 1)  0%, rgba(80, 109, 102, .4) 50%, rgba(72, 80, 93, .6) 70%, rgba(59, 60, 72, .7) 100%);
+        }
+        .otherrank li div{
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .otherfont {
+            width: 8%;
+            font-size: 45px;
+            line-height: 94px;
+            text-align: center;
+            font-family: 'dincondensed-bold';
+            margin-left: 2%;
+            position: relative;
+            color: #ffffff;
+            z-index: 2;  
+        }
+        .tableicon{
+            width: 10%;
+            height: 94px;
+            margin-left: 0px;
+            position: relative;
+            z-index: 2;  
+        }
+        .tableicon img{
+            /* margin-top: 19px; */
+            margin-top: 19px;
+            margin-left: 10px;
+            border: 3px solid #ffffff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            position: relative;
+        }
+        .tablenam {
+            width: 18%;
+            font-size: 20px;
+            overflow: hidden;
+            text-overflow:ellipsis;
+            white-space: nowrap;
+            margin-left: 4%;
+            position: relative;
+            z-index: 2;   
+        }
+        .tablekcal {
+            min-width: 26%;
+            font-family: 'dincondensed-bold';
+            font-size: 35px;
+            margin-left: 1%;
+            text-align: center;
+        }
+        .tablekcal span {
+            font-size: 15px;
+        }
+        .overscrolllisrt {
+            /* overflow: hidden;
+            overflow-y: auto; */
+        }
+        ::-webkit-scrollbar    
+        {    
+            width: 0;    
+            height: 0;    
+            background-color: #F5F5F5;    
+        }
+        @media screen and ( max-width: 1500px ) {
+            .tableicon img{
+                margin-top: 26px;
+                width: 37px;
+                height: 37px;
+            }
+            .headfootnumone {
+                font-size: 26px;
+            }
+        }
+        @media screen and ( max-width: 1500px ) {
+            .tableicon img{
+                margin-top: 29px;
+                width: 30px;
+                height: 30px;
+            }
+            .headiconone {
+                width: 60px;
+                height: 60px;
+                border: 3px solid #ffffff;
+                margin-top: 70px;
+            }
+            .tows {
+                margin-top: 50px;
+                width: 80px;
+                height: 80px;
+            }
+            .prizeone {
+                width: 42px;
+                left: 10px;
+            }
+            .prizetow {
+                left: 20px;
+            }
+        }
+    </style>
+	<body>
+        <div class="curHeader">
+			<span class="logo">
+				<img src="../superscreen/img/LOGOwhite.svg" />
+			</span>
+	        <span class="todayTime" id="todayTime"></span>
+        </div>
+        <div class="rankbox">
+            <div class="itembox">
+                <div class="font"><span>日</span>消耗排行榜</div>
+                <div class="rankhead" id="rankTopDay">
+                    <div class="rankitem item1">
+                        <div class="headiconone">
+                            <img src="" alt="head">
+                            <div class="prizeone yin"></div>
+                        </div>
+                        <div class="headtext"></div>
+                        <div class="headfoot">
+                            <div class="headfootitem rl">
+                                <div class="headfoottext">总消耗</div>
+                                <div class="headfootnum"></div>
+                                <div class="headfootunit">大卡</div>
+                            </div>
+                            <div class="headfootitem rr">
+                                <div class="headfoottext">总运动</div>
+                                <div class="headfootnum"></div>
+                                <div class="headfootunit">分钟</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rankitem item2 middle">
+                        <div class="headiconone tows">
+                            <img src="" alt="head">
+                            <div class="prizeone jin prizetow"></div>
+                        </div>
+                        <div class="headtext headone"></div>
+                        <div class="headfoot">
+                            <div class="headfootitem rl">
+                                <div class="headfoottext headfootone">总消耗</div>
+                                <div class="headfootnum headfootnumone"></div>
+                                <div class="headfootunit headfootunitone">大卡</div>
+                            </div>
+                            <div class="headfootitem rr">
+                                <div class="headfoottext headfootone">总运动</div>
+                                <div class="headfootnum headfootnumone"></div>
+                                <div class="headfootunit headfootunitone">分钟</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rankitem item3">
+                        <div class="headiconone">
+                            <img src="" alt="head">
+                            <div class="prizeone ton"></div>
+                        </div>
+                        <div class="headtext"></div>
+                        <div class="headfoot">
+                            <div class="headfootitem rl">
+                                <div class="headfoottext">总消耗</div>
+                                <div class="headfootnum"></div>
+                                <div class="headfootunit">大卡</div>
+                            </div>
+                            <div class="headfootitem rr">
+                                <div class="headfoottext">总运动</div>
+                                <div class="headfootnum"></div>
+                                <div class="headfootunit">分钟</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nbsp"></div>
+                <div class="otherrank" id="rankDayRank">
+                    <ul class="overscrolllisrt" id="rankDay">
+                        <!-- <li>
+                            <i class="bgreat bgreat1"></i>
+                            <div class="otherfont">400</div>
+                            <div class="tableicon"><img src="http://niulang-v2.oss-cn-beijing.aliyuncs.com/2018-03-27/gym5aba32af08fc11522152111.jpeg" alt="HEAD"></div>
+                            <div class="tablenam">嗷嗷嗷asdadasd</div>
+                            <div class="tablekcal">335<span>Kcal</span></div>
+                            <div class="tablekcal">123<span>Min</span></div>
+                        </li> -->
+                    </ul>
+                </div>
+            </div>
+            <div class="itembox">
+                <div class="font">
+                    <span>周</span>消耗排行榜</div>
+                <div class="rankhead" id="rankTopWeek">
+                    <div class="rankitem item4">
+                        <div class="headiconone">
+                            <img src="" alt="head">
+                            <div class="prizeone yin"></div>
+                        </div>
+                        <div class="headtext"></div>
+                        <div class="headfoot">
+                            <div class="headfootitem rl">
+                                <div class="headfoottext">总消耗</div>
+                                <div class="headfootnum"></div>
+                                <div class="headfootunit">大卡</div>
+                            </div>
+                            <div class="headfootitem rr">
+                                <div class="headfoottext">总运动</div>
+                                <div class="headfootnum"></div>
+                                <div class="headfootunit">分钟</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rankitem item5 middle">
+                        <div class="headiconone tows">
+                            <img src="" alt="head">
+                            <div class="prizeone jin prizetow"></div>
+                        </div>
+                        <div class="headtext headone"></div>
+                        <div class="headfoot">
+                            <div class="headfootitem rl">
+                                <div class="headfoottext headfootone">总消耗</div>
+                                <div class="headfootnum headfootnumone"></div>
+                                <div class="headfootunit headfootunitone">大卡</div>
+                            </div>
+                            <div class="headfootitem rr">
+                                <div class="headfoottext headfootone">总运动</div>
+                                <div class="headfootnum headfootnumone"></div>
+                                <div class="headfootunit headfootunitone">分钟</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rankitem item6">
+                        <div class="headiconone">
+                            <img src="" alt="head">
+                            <div class="prizeone ton"></div>
+                        </div>
+                        <div class="headtext"></div>
+                        <div class="headfoot">
+                            <div class="headfootitem rl">
+                                <div class="headfoottext">总消耗</div>
+                                <div class="headfootnum"></div>
+                                <div class="headfootunit">大卡</div>
+                            </div>
+                            <div class="headfootitem rr">
+                                <div class="headfoottext">总运动</div>
+                                <div class="headfootnum"></div>
+                                <div class="headfootunit">分钟</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nbsp"></div>
+                <div class="otherrank" id="rankWeekRank">
+                    <ul class="overscrolllisrt" id="rankWeek">
+                        <!-- <li>
+                            <i class="bgreat bgreat1"></i>
+                            <div class="otherfont">4</div>
+                            <div class="tableicon">
+                                <img src="" alt="HEAD">
+                            </div>
+                            <div class="tablenam"></div>
+                            <div class="tablekcal">
+                                <span>Kcal</span>
+                            </div>
+                            <div class="tablekcal">
+                                <span>Min</span>
+                            </div>
+                        </li>  -->
+                    </ul>
+                </div>
+            </div>
+            <div class="itembox">
+                <div class="font">
+                    <span>月</span>消耗排行榜</div>
+                <div class="rankhead" id="rankTopMonth">
+                    <div class="rankitem item7">
+                        <div class="headiconone">
+                            <img src="" alt="head">
+                            <div class="prizeone yin"></div>
+                        </div>
+                        <div class="headtext"></div>
+                        <div class="headfoot">
+                            <div class="headfootitem rl">
+                                <div class="headfoottext">总消耗</div>
+                                <div class="headfootnum"></div>
+                                <div class="headfootunit">大卡</div>
+                            </div>
+                            <div class="headfootitem rr">
+                                <div class="headfoottext">总运动</div>
+                                <div class="headfootnum"></div>
+                                <div class="headfootunit">分钟</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rankitem item8 middle">
+                        <div class="headiconone tows">
+                            <img src="" alt="head">
+                            <div class="prizeone jin prizetow"></div>
+                        </div>
+                        <div class="headtext headone"></div>
+                        <div class="headfoot">
+                            <div class="headfootitem rl">
+                                <div class="headfoottext headfootone">总消耗</div>
+                                <div class="headfootnum headfootnumone"></div>
+                                <div class="headfootunit headfootunitone">大卡</div>
+                            </div>
+                            <div class="headfootitem rr">
+                                <div class="headfoottext headfootone">总运动</div>
+                                <div class="headfootnum headfootnumone"></div>
+                                <div class="headfootunit headfootunitone">分钟</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rankitem item9">
+                        <div class="headiconone">
+                            <img src="" alt="head">
+                            <div class="prizeone ton"></div>
+                        </div>
+                        <div class="headtext"></div>
+                        <div class="headfoot">
+                            <div class="headfootitem rl">
+                                <div class="headfoottext">总消耗</div>
+                                <div class="headfootnum"></div>
+                                <div class="headfootunit">大卡</div>
+                            </div>
+                            <div class="headfootitem rr">
+                                <div class="headfoottext">总运动</div>
+                                <div class="headfootnum"></div>
+                                <div class="headfootunit">分钟</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nbsp"></div>
+                <div class="otherrank" id="rankMonthRank">
+                    <ul class="overscrolllisrt" id="rankMonth">
+                        <!-- <li>
+                            <i class="bgreat bgreat3"></i>
+                            <div class="otherfont">4</div>
+                            <div class="tableicon">
+                                <img src="http://niulang-v2.oss-cn-beijing.aliyuncs.com/2018-03-27/gym5aba32af08fc11522152111.jpeg" alt="HEAD">
+                            </div>
+                            <div class="tablenam">dsadasdasdaasfdfdaasfd</div>
+                            <div class="tablekcal">335
+                                <span>Kcal</span>
+                            </div>
+                            <div class="tablekcal">123
+                                <span>Min</span>
+                            </div>
+                        </li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="../superscreen/js/jquery-1.8.3.min.js"></script>
+    <script src="js/rankList.js?t={vision}"></script>
+	<script>
+        $('.headiconone img').attr('src', '../superscreen/img/rentou.png')
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var reg_rewrite = new RegExp("(^|/)" + name + "/([^/]*)(/|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            var q = window.location.pathname.substr(1).match(reg_rewrite);
+            if(r != null){
+                return unescape(r[2]);
+            }else if(q != null){
+                return unescape(q[2]);
+            }else{
+                return null;
+            }
+        }
+        $('#todayTime').text(new Date().getFullYear() + '年' + (new Date().getMonth() + 1) + '月' + new Date().getDate() + '日')
+        function loadScript(url, apikey) {
+            var script = document.createElement("script");
+            script.type = "text/javascript";
+            script.src = url;
+            script.setAttribute("apikey", apikey);
+            document.body.appendChild(script);
+        }
+        loadScript("https://js.fundebug.cn/fundebug.1.1.2.min.js", "248e06b488f5a46d2d9eb84c2bc2082a6251b0015154f753894dc9340746b2ed")
+    </script>
+</html>

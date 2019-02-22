@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>心率系统</title>
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <link rel="stylesheet" href="./otherfile/css/style.css?t={vision}">
+  <style>
+    .el-message.el-message--info {
+      min-width: 300px;
+      width: 300px !important;
+    }
+
+    [v-clock] {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" v-clock>
+    <div class="header-box">
+      <!--<span class="go-back" v-if="step<=2" @click="goBack"></span>-->
+      <!--<span :class="{'block-box':step>=3}">心率系统</span>-->
+      <!--<span v-if="step<=2">{{step}}/2</span>-->
+    </div>
+    <div v-if="step==1" class="step-1">
+      <img :src="BASE_AVATOR" class="user-avtor">
+      <div class="user-name">{{userName}}</div>
+      <ul class="form-list">
+        <li>
+          <span>姓别</span>
+          <!--<input type="text" placeholder="选择" v-model="userInfo.sex">-->
+          <el-select v-model="userInfo.sex" placeholder="选择" class="init-select" id="sex">
+            <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+            </el-option>
+          </el-select>
+        </li>
+        <li>
+          <span>年龄</span>
+          <input type="number" @keyup="intercepting('old')" placeholder="请输入您的年龄" v-model="userInfo.old" id="age">
+        </li>
+        <li>
+          <span>身高 (CM)</span>
+          <input type="number" @keyup="intercepting('height')" v-model="userInfo.height" placeholder="请输入您的身高" id="height">
+        </li>
+        <li>
+          <span>体重 (Kg)</span>
+          <input type="number" @keyup="intercepting('weight')" v-model="userInfo.weight" placeholder="请输入您的体重" id="weight">
+        </li>
+      </ul>
+      <div class="next-btn" @click="toStepTwo">确认我的信息</div>
+    </div>
+    <div v-if="step==2" class="step-2">
+      <img :src="BASE_AVATOR" class="user-avtor">
+      <div class="user-name">{{userName}}</div>
+      <ul class="form-list">
+        <li>
+          <span>编号</span>
+          <input type="text" v-model="userInfo.identifier" placeholder="请输入编号" maxlength="7">
+        </li>
+      </ul>
+      <div class="big-img">
+        <div>
+          <img src="./otherfile/img/shouhuanZ.png" class="shouhuan">
+          <p>手环正面</p>
+        </div>
+        <div class="line"></div>
+        <div>
+          <img src="./otherfile/img/shouhuanF.png" class="shouhuan">
+          <p>手环背面</p>
+        </div>
+        <div>
+          <img src="./otherfile/img/qipao.png" class="qipao">
+          <p class="two-clume">查看手环背面的ID填入上方即可</p>
+        </div>
+      </div>
+      <div class="next-btn" @click="toStepThree">确认编号</div>
+    </div>
+    <div v-if="step==3" class="step-3">
+      <span class="bianhao-box">编号
+        <span>{{userInfo.identifier}}</span>
+      </span>
+      <div class="setTimeout">
+        <p class="timing">
+          <span>{{timing.minutes}}</span>
+          <span>'</span>
+          <span>{{timing.seconds}}</span>
+          <span>''</span>
+        </p>
+        <p>运动计时</p>
+        <p v-if="timing.status == 2" style="text-align: center;color: #1AB394;font-size: 16px;padding: 10px 0;">完成训练</p>
+      </div>
+      <div class="start-btn" v-show="timing.status != 2">
+        <div class="click-btn-box" id="clickBtnBox">
+          <span :class="['click-btn',{go:timing.status == 0,timing:timing.status == 1,ok:timing.status == 2}]"
+                @click="startTime" @touchstart="touchstart" @touchend="clearLoop"></span>
+        </div>
+        <!--<div class="background-percent" id="countdown14"></div>-->
+      </div>
+      <p class="title" v-if="timing.status == 1">长按结束</p>
+      <div class="next-btn go-back-reload" @click="goBackReload" v-if="timing.status == 2">返回</div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="./otherfile/js/flexible.js"></script>
+<script type="text/javascript" src="./otherfile/js/vue.min.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="./otherfile/js/jquery-1.8.3.min.js"></script>
+<script src="./otherfile/js/jquery.knob.js"></script>
+<script src="./otherfile/js/jquery.throttle.js"></script>
+<script src="./otherfile/js/jquery.classycountdown.js"></script>
+
+</html>
+<script>
+  /* 阻止微信浏览器长按出现菜单 */
+  document.oncontextmenu = function (e) {
+    //或者return false;
+    e.preventDefault();
+  };
+  var websockectData = null
+  var Base_url = '/external_device/gymsmart/get_customer'
+  var BASE_AVATOR = 'http://niulang-v2.oss-cn-beijing.aliyuncs.com/default_head.png';
+  var app = new Vue({
+    el: '#app',
+    data: {
+      step: 1,
+      BASE_AVATOR: 'http://niulang-v2.oss-cn-beijing.aliyuncs.com/default_head.png',
+      userName: '',
+      options: [{
+          value: 1,
+          label: '男'
+        },
+        {
+          value: 2,
+          label: '女'
+        },
+      ],
+      userInfo: {
+        sex: '',
+        old: '',
+        height: '',
+        weight: '',
+        identifier: '',
+        customer_id: '',
+      },
+      timing: {
+        minutes: '00',
+        seconds: '00',
+        status: 0
+      },
+      timerFlag: null,
+      timer: null,
+      sockectTimer: null,
+      hasClick: false,
+      clicking: false,
+      isCreated: true
+    },
+    created() {
+      this.getUserInfo();
+    },
+    mounted() {},
+    methods: {
+      intercepting(value) {
+        // console.log(value);
+        if (this.userInfo[value].length > 4) {
+          this.userInfo[value] = this.userInfo[value].slice(0, 4)
+        }
+      },
+      startTime(event) {
+        var that = this
+        // console.log('click')
+        /* 最后的OK点击返回 */
+        console.log(event);
+        if(event.target.className.indexOf('ok') >= 0){
+          window.location.reload()
+        }
+        if (this.hasClick) {
+          return
+        }
+
+        // 点击按钮开始发送请求
+        var params2 = {
+          "uid": Number(this.getQueryString('uid')), //app用户uid
+          "device_id": this.getQueryString('device_id'), //设备id,来源于二维码
+          "customer_id": Number(this.userInfo.customer_id), //app用户uid
+          "heart_beat_id": String(this.userInfo.identifier) //心率带id
+        }
+        // 开始运动的请求
+        $.ajax({
+          type: 'POST',
+          url: '/external_device/gymsmart/start_sport',
+          data: JSON.stringify(params2),
+          dataType: 'json',
+          headers: {
+            'Content-Type': 'application/json;charset=UTF-8'
+          },
+          success: function (data) {
+            /* 定时开始 */
+            that.hasClick = true
+            that.timing.status = 1
+            var initTime = 0
+            that.timer = setInterval(function() {
+              ++initTime
+              var minutes = Math.floor(initTime / 60);
+              var seconds = Math.floor(initTime % 60);
+              if (minutes < 10) {
+                that.timing.minutes = '0' + minutes
+              } else {
+                that.timing.minutes = minutes
+              }
+              if (seconds < 10) {
+                that.timing.seconds = '0' + seconds
+              } else {
+                that.timing.seconds = seconds
+              }
+              // console.log(minutes,seconds);
+              if (initTime >= 3600) {
+                clearInterval(that.timer)
+              }
+            }, 1000)
+            // 请求成功
+            if (data.status == 0) {
+              // console.log(data.data.token);
+              if (data.data.token) {
+                var token = data.data.token
+                //  console.log(token);
+                  // 获取浏览器地址
+                  if(location.hostname == 'localhost') {
+                    var BASE_URL = '192.168.1.250:13102'
+                  }else {
+                    var BASE_URL = location.host
+                  }
+                  console.log(BASE_URL)
+                var url = 'ws://'+ BASE_URL +'/external_device/gymsmart/start_ws' + '?token=' + token
+                websockectData = new WebSocket(url);
+                websockectData.onopen = function () {
+                 that.sockectTimer = setInterval(function () {
+                    websockectData.send('1')
+                  },3000)
+                }
+                websockectData.onerror = function () {
+                  that.$message({
+                    message: '运动开启失败',
+                  })
+                }
+              }
+            } else if (data.status == 1) {
+              /* 清除定时 */
+              clearTimeout(that.timer)
+              that.timing.status = 0
+              that.hasClick = false
+              that.$alert('运动开启失败', {
+                confirmButtonText: '确定',
+                center: true,
+                callback: function(action) {
+                  that.step = 2
+                }
+              });
+
+            }
+          }
+        })
+
+      },
+      // 长按结束运动
+      touchstart() {
+        // console.log(this.userInfo);
+        var params3 = {
+          "uid": Number(this.getQueryString('uid')), //app用户uid
+          "device_id": this.getQueryString('device_id'), //设备id,来源于二维码
+          "customer_id": Number(this.userInfo.customer_id), //app用户uid
+        }
+        if (this.timing.status != 1) {
+          return
+        }
+        this.clicking = true
+        $('#clickBtnBox').after('<div class="background-percent" id="countdown14"></div>')
+        $('#countdown14').ClassyCountdown({
+          theme: "black-black",
+          labelsOptions: {
+            style: 'font-size:0.5em; text-transform:uppercase;'
+          },
+          end: $.now() + 3000
+        });
+        var that = this
+        this.timerFlag = setTimeout(function () {
+          that.clearLoop()
+          that.timing.status = 2
+          clearInterval(that.timer)
+          //长按结束之后发送请求
+          if (websockectData) {
+            console.log(2);
+            clearInterval(that.sockectTimer)
+            websockectData.close()
+          }
+        }, 3000)
+      },
+      clearLoop() {
+        if (this.timing.status != 1) {
+          return
+        }
+        this.clicking = false
+        $('#countdown14').remove()
+        clearTimeout(this.timerFlag)
+      },
+      // 获取url参数
+      getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+      },
+      //发送ajax请求 获取用户信息
+      getUserInfo() {
+        var that = this;
+        $.ajax({
+          type: 'POST',
+          url: Base_url,
+          data: JSON.stringify({
+            // "uid":28420,
+            "uid": Number(this.getQueryString('uid')),
+            // "device_id":"adadad"
+            "device_id": this.getQueryString('device_id')
+          }),
+          dataType: 'json',
+          headers: {
+            'Content-Type': 'application/json;charset=UTF-8'
+          },
+          success: function (data) {
+            // console.log(data);
+            if (data.status == 1) {
+              that.$message({
+                message: data.msg,
+              });
+            } else if (data.status == 0) {
+              if (data.data.customer && data.data.customer.id) {
+                that.userName = data.data.customer.name
+                that.BASE_AVATOR = data.data.customer.head_icon ? data.data.customer.head_icon :
+                  'http://niulang-v2.oss-cn-beijing.aliyuncs.com/default_head.png'
+                that.userInfo.old = data.data.customer.age
+                that.userInfo.sex = data.data.customer.sex
+                that.userInfo.height = data.data.customer.height
+                that.userInfo.weight = data.data.customer.weight / 1000
+                that.userInfo.customer_id = data.data.customer.id
+                // var customer_id = data.data.customer.id
+                // console.log(that.userInfo);
+                that.isCreated = false
+              } else {
+                that.isCreated = true
+              }
+            }
+          }
+        })
+      },
+      goBack() {
+        this.step = 1
+      },
+      toStepTwo() {
+        var that = this
+        // 效验输入框的值是不是为空
+        if (this.userInfo.sex == '' || this.userInfo.old == '' || this.userInfo.height == '' || this.userInfo.weight ==
+          '') {
+          that.$message({
+            message: '请完整填写个人信息',
+          })
+          return
+        }
+        var is_uid = Number(this.getQueryString('uid'))
+        var device_id = this.getQueryString('device_id')
+        // console.log(this.userInfo)
+        var sex = Number(this.userInfo.sex)
+        var age = Number(this.userInfo.old)
+        var height = Number(this.userInfo.height)
+        var weight = Number(this.userInfo.weight)
+        var customer_id = Number(this.userInfo.customer_id)
+        // 判断数据是不是在河里范围内
+
+        if (age <= 6 || age >= 100) {
+          that.$message({
+            message: '年龄输入有误，请重新输入',
+          })
+          return
+        }
+        if (height <= 40 || height >= 240) {
+          that.$message({
+            message: '身高输入有误，请重新输入',
+          })
+          return
+        }
+        if (weight <= 15 || weight >= 200) {
+          that.$message({
+            message: '体重输入有误，请重新输入',
+          })
+          return
+        }
+
+        // 判断customer_id是否存在
+
+        var params = {
+          "uid": is_uid, //app用户uid
+          "device_id": device_id, //设备id,来源于二维码
+          "sex": sex, //1男,2女
+          "age": age, //年龄
+          "height": height, //单位cm
+          "weight": weight * 1000 //单位g
+
+        }
+        if (this.isCreated == true) {
+          // 创建客户
+          $.ajax({
+            type: 'POST',
+            url: '/external_device/gymsmart/create_customer',
+            data: JSON.stringify(params),
+            dataType: 'json',
+            headers: {
+              'Content-Type': 'application/json;charset=UTF-8'
+            },
+            success: function (data) {
+              // console.log(data);
+              that.step = 2
+              // console.log(data);
+              that.userInfo.customer_id = data.data.customer.id
+            }
+          })
+        } else if (this.isCreated == false) {
+          params['customer_id'] = customer_id
+          // 修改客户
+          $.ajax({
+            type: 'POST',
+            url: '/external_device/gymsmart/update_customer',
+            data: JSON.stringify(params),
+            dataType: 'json',
+            headers: {
+              'Content-Type': 'application/json;charset=UTF-8'
+            },
+            success: function (data) {
+              if (data.status == 1) {
+                that.$message({
+                  message: data.msg,
+                });
+              } else if (data.status == 0) {
+                that.step = 2
+              }
+
+            }
+          })
+        }
+      },
+
+      toStepThree() {
+        var that = this
+        // 效验手环输入框是不是为空
+        if (this.userInfo.identifier == '' || this.userInfo.identifier.length < 7) {
+          that.$message({
+            message: '手环编号输入有误，请重新输入',
+          });
+          return
+        } else {
+          that.step = 3
+        }
+      },
+      goBackReload() {
+        window.location.reload()
+      }
+    }
+  })
+
+</script>
+<style>
+  .el-message-box{
+    width: 60% !important;
+    padding-bottom: 15px;
+  }
+  .el-message-box__header{
+    display: none;
+  }
+</style>

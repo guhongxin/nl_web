@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>体测报告</title>
+  <link rel="stylesheet" href="./css/health.css">
+</head>
+<body>
+  <div class="contents">
+  <div class="health_head">
+    <div class="date" id="user_date"></div>
+    <div class="date down" id="choose_date" data-show="0"></div>
+    <div class="dataliset">
+      <ul id="datalist">
+      </ul>
+    </div>
+    <div class="head_icon"><img id="user_headIocn" src="" alt=""></div>
+    <div class="name" id="user_name"></div>
+    <div class="tag">性别：<span id="user_sex"></span> &nbsp;&nbsp; 年龄：<span id="user_age"></span> &nbsp;&nbsp; 身高：<span id="user_height"></span></div>
+  </div>
+  <div class="health_hn">体成分结构</div>
+  <div class="health_li">
+    <span id="bodylist1El"></span>
+    <div class="explain">
+      <div class="title">体成分构成说明 :</div>
+      <div class="font">
+        <p>体重=脂肪量+去脂体重 </p>
+        <p>去脂体重=无机盐量+肌肉量</p>
+        <p>肌肉量=蛋白质+身体水分</p>
+      </div>
+    </div>
+  </div>
+  <div class="health_hn">阶段分析 <span>单位：kg</span> </div>
+  <div class="health_hntitle">肌肉量<i class="point"></i></div>
+  <div class="analysis" id="analysis1">
+   
+  </div>
+
+  <div class="health_hntitle">脂肪量<i class="point"></i></div>
+  <div class="analysis" id="analysis2">
+    <!-- <div class="analysis_lt green">
+      <div class="font">
+        <div class="font_top">72.1</div>
+        <div class="font_mid">59.9 - 73.3</div>
+        <div class="font_bot">正常</div>
+      </div>
+    </div>
+    <div class="analysis_rt green">
+      <div class="font">
+        <div class="font_top">72.1</div>
+        <div class="font_mid">59.9 - 73.3</div>
+        <div class="font_bot">正常</div>
+      </div>
+    </div>
+    <div class="analysis_lb yellow">
+      <div class="font">
+        <div class="font_top">72.1</div>
+        <div class="font_mid">59.9 - 73.3</div>
+        <div class="font_bot">正常</div>
+      </div>
+    </div>
+    <div class="analysis_rb blue">
+      <div class="font">
+        <div class="font_top">72.1</div>
+        <div class="font_mid">59.9 - 73.3</div>
+        <div class="font_bot">正常</div>
+      </div>
+    </div> -->
+  </div>
+  <div class="tunfont">腰臀脂肪比</div>
+  <div class="tun">
+    <div class="font" id="assFat">-</div>
+    <div class="rule">
+      <ul class="chi">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li><span id="assFat_one">-</span></li>
+
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li><span id="assFat_two">-</span></li>
+
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+      <div class="text">
+        <div>偏低</div>
+        <div>正常</div>
+        <div>偏高</div>
+      </div>
+    </div>
+  </div>
+  <div class="health_hn" style="margin-top: 90px;">身体参数</div>
+  <div class="health_li" id="bodylist2El">
+    <!-- <div class="card green">
+      <div class="title"><span>体重</span></div>
+      <div class="font">
+        <div class="font_top">72.1<span>kg</span></div>
+        <div class="font_mid">59.9 - 73.3 <span>kg</span></div>
+        <div class="font_bot">正常</div>
+      </div>
+    </div>
+    <div class="card yellow">
+      <div class="title"><span>体重</span></div>
+      <div class="font">
+        <div class="font_top">72.1<span>kg</span></div>
+        <div class="font_mid">59.9 - 73.3 <span>kg</span></div>
+        <div class="font_bot">正常</div>
+      </div>
+    </div>
+    <div class="card blue">
+      <div class="title"><span>体重</span></div>
+      <div class="font">
+        <div class="font_top">72.1<span>kg</span></div>
+        <div class="font_mid">59.9 - 73.3 <span>kg</span></div>
+        <div class="font_bot">正常</div>
+      </div>
+    </div>
+    <div class="card gary">
+      <div class="title"><span>总能量消耗</span></div>
+      <div class="font">
+        <div class="font_top">72.1<span>kg</span></div>
+        <div class="font_mid">59.9 - 73.3 <span>kg</span></div>
+        <div class="font_bot">正常</div>
+      </div>
+    </div> -->
+  </div>
+  <div class="health_hn">体型评估</div>
+  <div class="bodyxing_box">
+  <div class="bodyxing">
+    <ul>
+      <li>健壮</li>
+      <li>强壮</li>
+      <li>壮硕</li>
+      <li>肥硕</li>
+      <li>矫健</li>
+      <li>匀称</li>
+      <li>肥胖</li>
+      <li>严重肥胖</li>
+      <li>消瘦</li>
+      <li>虚弱</li>
+      <li>虚胖</li>
+      <li>严重虚胖</li>
+    </ul>
+  </div>
+  </div>
+  <div class="health_hn" style="clear: both;">风险评估</div>
+  <div class="danger">
+    <div class="line_dagte">
+      <div class="line_point"></div>
+      <div class="line_text">肥胖评估</div>
+      <div class="shou">瘦</div>
+      <div class="line_block">
+        <ul id="assess_fat">
+          <li class="blue "></li>
+          <li class="green active"></li>
+          <li class="yellow"></li>
+          <li class="red"></li>
+        </ul>
+      </div>
+      <div class="pang">胖</div>
+    </div>
+    <div class="line_dagte">
+      <div class="line_point"></div>
+      <div class="line_text">腹部肥胖</div>
+      <div class="shou">瘦</div>
+      <div class="line_block">
+        <ul id="assess_abdominal_fat">
+          <li class="blue "></li>
+          <li class="green active"></li>
+          <li class="yellow"></li>
+          <li class="red"></li>
+        </ul>
+      </div>
+      <div class="pang">胖</div>
+    </div>
+    <div class="line_dagte">
+      <div class="line_point"></div>
+      <div class="line_text">虚弱评估</div>
+      <div class="shou">壮</div>
+      <div class="line_block">
+        <ul id="assess_weakness">
+          <li class="blue "></li>
+          <li class="green active"></li>
+          <li class="yellow"></li>
+          <li class="red"></li>
+        </ul>
+      </div>
+      <div class="pang">虚</div>
+    </div>
+    <div class="line_dagte">
+      <div class="line_point"></div>
+      <div class="line_text">营养评估</div>
+      <div class="shou">足</div>
+      <div class="line_block">
+        <ul id="assess_nutrition">
+          <li class="blue "></li>
+          <li class="green active"></li>
+          <li class="yellow"></li>
+          <li class="red"></li>
+        </ul>
+      </div>
+      <div class="pang">缺</div>
+    </div>
+    <div class="pie">
+      <div class="evle">风险等级</div>
+      <div class="detd yellow" id="rotateFont">中风险</div>
+    </div>
+    <div class="rotate"></div>
+  </div>
+  <div class="health_hn" style="clear: both;margin-top: 112px;">调节建议</div>
+  <div class="health_footer green">
+    <div class="title">肌肉调节</div>
+    <div class="health_footer_right">
+      <div class="top">
+        <div class="top_left"><font id="muscelControl"></font> <span>kg</span></div>
+        <div class="bottom_right"><span></span></div>
+      </div>
+      <div class="mid" id="muscelList">
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+      <div class="bot">建议总值：<span id="muscelfat"></span> </div>
+    </div>
+  </div>
+  <div class="health_footer yellow">
+    <div class="title">脂肪调节</div>
+    <div class="health_footer_right">
+      <div class="top">
+        <div class="top_left"><font id="fatcontrol"></font><span>kg</span></div>
+        <div class="bottom_right"><span></span></div>
+      </div>
+      <div class="mid" id="fatList">
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+      <div class="bot">建议总值：<span id="evalfat"></span></div>
+    </div>
+  </div>
+  <div class="comperrasion">
+    <div>数据来源佑久体测</div>
+    <div class="line"></div>
+    <div id="examTime"></div>
+  </div>
+</div>
+</body>
+<script src="../bodyExam/js/jquery-1.9.1.min.js"></script>
+<script src="./js/index.js?t={vision}"></script>
+</html>

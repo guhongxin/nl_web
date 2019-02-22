@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>数据报告</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/icon-font_1.css">
+  <link rel="stylesheet" href="./css/swiper-4.3.5.min.css">
+  <link rel="stylesheet" href="./css/style.css?t={vision}">
+  <script>
+    var isFirst = true
+  </script>
+</head>
+<body>
+<div id="loading">
+  <div class="spinner">
+    <div class="cube1"></div>
+    <div class="cube2"></div>
+  </div>
+  <div id="loadingText">数据生成中，已完成<span>0</span>% 。。。</div>
+</div>
+<div class="app-container">
+  <div class="header-box">
+    <img src="http://niulang-v2.oss-cn-beijing.aliyuncs.com/default_head.png" class="user-avator">
+    <span id="userName"></span>
+    <div class="time-select">
+      <span id="dataTime"></span>
+      <ul id="datalist"></ul>
+    </div>
+  </div>
+  <div class="model-box">
+    <div class="model-item">
+      <span></span>
+      <span id="clickItme"></span>
+    </div>
+    <div class="scale-box">
+      <div class="scale-container">
+        <div id="clickDate"></div>
+        <div id="keduBox" class="kedu">
+          <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="modelLoad">
+      <div class="spinner">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+      </div>
+    </div>
+    <div id="model"></div>
+  </div>
+  <div class="swiper-pagination-box">
+    <div class="swiper-pagination"></div>
+  </div>
+  <div class="main-container">
+    <div id="swiperContainer">
+      <div class="swiper-wrapper">
+        <!-- 围度信息 -->
+        <div class="swiper-slide">
+          <div class="circumference-title">
+            <span>单位：cm</span>
+            <span class="icon-trend"></span>
+          </div>
+          <ul class="circumference-list">
+            <li>
+              <div class="circumference-item">
+                <div class="left-date">
+                  <p id="leftArm">0</p>
+                  <p>左上臂围</p>
+                </div>
+                <span class="icon-R-arm right-icon">
+                  <span class="path1"></span>
+                  <span class="path2"></span>
+                </span>
+              </div>
+            </li>
+            <li>
+              <div class="circumference-item">
+                <div class="left-date">
+                  <p id="rigthArm">0</p>
+                  <p>右上臂围</p>
+                </div>
+                <span class="icon-L-arm right-icon">
+                  <span class="path1"></span>
+                  <span class="path2"></span>
+                </span>
+              </div>
+            </li>
+            <li>
+              <div class="circumference-item">
+                <div class="left-date">
+                  <p id="xiongWei">0</p>
+                  <p>胸围</p>
+                </div>
+                <span class="icon-bust right-icon">
+                  <span class="path1"></span>
+                  <span class="path2"></span>
+                </span>
+              </div>
+            </li>
+            <li>
+              <div class="circumference-item">
+                <div class="left-date">
+                  <p id="yaoWei">0</p>
+                  <p>腰围</p>
+                </div>
+                <span class="icon-waist right-icon">
+                  <span class="path1"></span>
+                  <span class="path2"></span>
+                </span>
+              </div>
+            </li>
+            <li>
+              <div class="circumference-item">
+                <div class="left-date">
+                  <p id="leftThigh">0</p>
+                  <p>左大腿围</p>
+                </div>
+                <span class="icon-R-thigh right-icon">
+                  <span class="path1"></span>
+                  <span class="path2"></span>
+                </span>
+              </div>
+            </li>
+            <li>
+              <div class="circumference-item">
+                <div class="left-date">
+                  <p id="rightThigh">0</p>
+                  <p>右大腿围</p>
+                </div>
+                <span class="icon-L-thigh right-icon">
+                  <span class="path1"></span>
+                  <span class="path2"></span>
+                </span>
+              </div>
+            </li>
+            <li>
+              <div class="circumference-item">
+                <div class="left-date">
+                  <p id="leftLeg">0</p>
+                  <p>左小腿围</p>
+                </div>
+                <span class="icon-R-leg right-icon">
+                  <span class="path1"></span>
+                  <span class="path2"></span>
+                </span>
+              </div>
+            </li>
+            <li>
+              <div class="circumference-item">
+                <div class="left-date">
+                  <p id="rightLeg">0</p>
+                  <p>右小腿围</p>
+                </div>
+                <span class="icon-L-leg right-icon">
+                  <span class="path1"></span>
+                  <span class="path2"></span>
+                </span>
+              </div>
+            </li>
+            <li>
+              <div class="circumference-item">
+                <div class="left-date">
+                  <p id="hipWei">0</p>
+                  <p>臂围</p>
+                </div>
+                <span class="icon-hip right-icon">
+                  <span class="path1"></span>
+                  <span class="path2"></span>
+                </span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <!-- 身体成分 -->
+        <div class="swiper-slide">
+          <div class="body-composition-tab">
+            <div class="item active">
+              <span class="icon-weight"></span>
+              <p>体重</p>
+            </div>
+            <div class="item">
+              <span class="icon-BFR"></span>
+              <p>体脂率</p>
+            </div>
+            <div class="item">
+              <span class="icon-BMI"></span>
+              <p>BMI</p>
+            </div>
+            <div class="item">
+              <!--<span class="sologo">朴高</span>-->
+              <span class="icon-metabolic"></span>
+              <p>基础代谢</p>
+            </div>
+            <div class="item">
+              <span class="icon-WHP"></span>
+              <p>腰臀比</p>
+            </div>
+            <div class="item">
+              <span class="icon-moisture"></span>
+              <p>水分含量</p>
+            </div>
+            <div class="item">
+              <span class="icon-muscle"></span>
+              <p>肌肉含量</p>
+            </div>
+          </div>
+          <div class="body-composition-list" id="bodyComposition">
+            <div class="swiper-wrapper" style="height: 100%;">
+              <div class="swiper-slide">
+                <div class="item-baseDate">
+                  <p>
+                    <span id="bodyWeight">0</span>
+                    <small>kg</small>
+                  </p>
+                  <p>体重</p>
+                </div>
+                <div class="percentage-registration"></div>
+                <div class="some-suggest">
+                  【体重】身体做含所有物质的总质量。
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="item-baseDate">
+                  <p>
+                    <span id="PercentBodyFat">0</span>
+                    <small>%</small>
+                  </p>
+                  <p>体脂率</p>
+                </div>
+                <div class="percentage-registration"></div>
+                <div class="some-suggest">
+                  【体脂率】身体做含所有物质的总质量。
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="item-baseDate">
+                  <p>
+                    <span id="bodyBMI">0</span>
+                    <!--<small>kg</small>-->
+                  </p>
+                  <p>BMI</p>
+                </div>
+                <div class="percentage-registration"></div>
+                <div class="some-suggest">
+                  【BMI】身体成分中，脂肪组织所占的比率，脂肪率高是肥胖的信号。
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="item-baseDate">
+                  <p>
+                    <span id="bodyKcal">0</span>
+                    <!--<small>kg</small>-->
+                  </p>
+                  <p>基础代谢</p>
+                </div>
+                <div class="percentage-registration"></div>
+                <div class="some-suggest">
+                  【基础代谢】指人体在清醒而又极其安静地状态下，不受肌肉活动、环境温度、食物及精神紧张等影响时的能量代谢率。
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="item-baseDate">
+                  <p>
+                    <span id="bodyWaistToHip">0</span>
+                    <!--<small>kg</small>-->
+                  </p>
+                  <p>腰臀比</p>
+                </div>
+                <div class="percentage-registration"></div>
+                <div class="some-suggest">
+                  【腰臀比】腰围和臀围的比值，也是判定中心性肥胖的总要指标。
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="item-baseDate">
+                  <p>
+                    <span id="bodyFluid">0</span>
+                    <small>%</small>
+                  </p>
+                  <p>水分含量</p>
+                </div>
+                <div class="percentage-registration"></div>
+                <div class="some-suggest">
+                  【水分含量】身体水分占体重的百分比，此数据和肌肉量有着及其密切的关系，因为肌肉中含大量水分(70%)这项指标能反应减重方式是否正确。
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="item-baseDate">
+                  <p>
+                    <span id="bodyMuscle">0</span>
+                    <small>kg</small>
+                  </p>
+                  <p>肌肉含量</p>
+                </div>
+                <div class="percentage-registration"></div>
+                <div class="some-suggest">
+                  【肌肉含量】肌肉在身体的总重量，肌肉量也与体质、年龄、运动量多种因素有关。
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+<script id="vs" type="x-shader/x-vertex">
+		#define PHYSICAL
+
+		uniform float uVertexOffset;
+		varying vec2 vUv;
+
+		vec3 defaultRimColor = vec3(0.4);
+		varying vec3 vRimColor;
+
+		varying vec3 vViewPosition;
+		#ifndef FLAT_SHADED
+			varying vec3 vNormal;
+		#endif
+
+		#include <common>
+		#include <uv_pars_vertex>
+		#include <uv2_pars_vertex>
+		#include <displacementmap_pars_vertex>
+		#include <color_pars_vertex>
+		#include <fog_pars_vertex>
+		#include <morphtarget_pars_vertex>
+		#include <skinning_pars_vertex>
+		#include <shadowmap_pars_vertex>
+		#include <specularmap_pars_fragment>
+		#include <logdepthbuf_pars_vertex>
+		#include <clipping_planes_pars_vertex>
+
+		void main() {
+			#include <uv_vertex>
+			#include <uv2_vertex>
+			#include <color_vertex>
+			#include <beginnormal_vertex>
+			#include <morphnormal_vertex>
+			#include <skinbase_vertex>
+			#include <skinnormal_vertex>
+			#include <defaultnormal_vertex>
+
+		#ifndef FLAT_SHADED // Normal computed with derivatives when FLAT_SHADED
+			vNormal = normalize( transformedNormal );
+		#endif
+			#include <begin_vertex>
+			#include <displacementmap_vertex>
+			#include <morphtarget_vertex>
+			#include <skinning_vertex>
+
+
+		#ifdef USE_MEASURE
+		    transformed += normalize(objectNormal) * uVertexOffset;
+		#endif
+		    vUv = uv;
+
+
+			#include <project_vertex>
+
+
+
+			vec4 mvNormal =  normalize(modelViewMatrix * vec4(objectNormal, 0.0));
+		    float rim = 1.0 - saturate(dot(-normalize(mvPosition.xyz / mvPosition.w), mvNormal.xyz));
+		    vRimColor = defaultRimColor * pow(rim, 4.0);
+
+			#include <logdepthbuf_vertex>
+			#include <clipping_planes_vertex>
+			vViewPosition = - mvPosition.xyz;
+			#include <worldpos_vertex>
+			#include <shadowmap_vertex>
+			#include <fog_vertex>
+		}
+
+
+</script>
+<script id="fs" type="x-shader/x-fragment">
+		#define PHYSICAL
+
+		varying vec3 vRimColor;
+		varying vec2 vUv;
+		vec3 powThreshold = vec3(0.001);
+		uniform sampler2D uFullTextureMapTex;
+		uniform float uTextureMapSwitch;
+
+		uniform sampler2D uRulerTexSelected;
+		uniform float uRulerUVScale;
+		uniform vec3 uRulerControl;
+
+		uniform vec3 diffuse;
+		uniform vec3 emissive;
+		uniform float roughness;
+		uniform float metalness;
+		uniform float opacity;
+
+		#ifndef STANDARD
+			uniform float clearCoat;
+			uniform float clearCoatRoughness;
+		#endif
+
+		varying vec3 vViewPosition;
+
+		#ifndef FLAT_SHADED
+			varying vec3 vNormal;
+		#endif
+
+		#include <common>
+		#include <packing>
+		#include <color_pars_fragment>
+		#include <uv_pars_fragment>
+		#include <uv2_pars_fragment>
+		#include <map_pars_fragment>
+		#include <alphamap_pars_fragment>
+		#include <aomap_pars_fragment>
+		#include <lightmap_pars_fragment>
+		#include <emissivemap_pars_fragment>
+		#include <envmap_pars_fragment>
+		#include <fog_pars_fragment>
+		#include <bsdfs>
+		#include <cube_uv_reflection_fragment>
+		#include <lights_pars>
+		#include <lights_physical_pars_fragment>
+		#include <shadowmap_pars_fragment>
+		#include <bumpmap_pars_fragment>
+		#include <normalmap_pars_fragment>
+		#include <roughnessmap_pars_fragment>
+		#include <metalnessmap_pars_fragment>
+		#include <logdepthbuf_pars_fragment>
+		#include <clipping_planes_pars_fragment>
+
+		void main() {
+			#include <clipping_planes_fragment>
+
+			vec4 diffuseColor = vec4( diffuse, opacity );
+			ReflectedLight reflectedLight = ReflectedLight( vec3( 0.0 ), vec3( 0.0 ), vec3( 0.0 ), vec3( 0.0 ) );
+			vec3 totalEmissiveRadiance = emissive;
+
+			#include <logdepthbuf_fragment>
+			#include <map_fragment>
+			#include <color_fragment>
+			#include <alphamap_fragment>
+			#include <alphatest_fragment>
+			#include <specularmap_fragment>
+			#include <roughnessmap_fragment>
+			#include <metalnessmap_fragment>
+			#include <normal_flip>
+			#include <normal_fragment>
+			#include <emissivemap_fragment>
+
+			// accumulation
+			#include <lights_physical_fragment>
+			#include <lights_template>
+
+			// modulation
+			#include <aomap_fragment>
+
+			vec3 outgoingLight = reflectedLight.directDiffuse + reflectedLight.indirectDiffuse + reflectedLight.directSpecular + reflectedLight.indirectSpecular + totalEmissiveRadiance;
+		    vec3 c = outgoingLight + vRimColor;
+		    float alpha = diffuseColor.a;
+
+		#ifdef USE_TEXTUREMAP
+		    vec3 col = texture2D(uFullTextureMapTex, vUv).xyz;
+		    c *= pow(clamp(col, vec3(0.0001), vec3(1.0)), vec3(uTextureMapSwitch));
+		#endif
+
+		    //sampling girth ruler texture
+		#ifdef USE_MEASURE
+			vec3 selectedRulerCol = texture2D(uRulerTexSelected, vec2(-vUv.x * uRulerUVScale, -vUv.y)).xyz;
+		    // vec3 selectedRulerCol = texture2D(uRulerTexSelected, vec2(vUv.x * uRulerUVScale, vUv.y)).xyz;
+		    c =  selectedRulerCol * uRulerControl + (vec3(1.0) - uRulerControl);
+		    alpha = clamp(uRulerControl.x, 0.2, 0.6);
+		#endif
+
+			gl_FragColor = vec4( c, alpha);
+			#include <premultiplied_alpha_fragment>
+			#include <tonemapping_fragment>
+			#include <encodings_fragment>
+			#include <fog_fragment>
+		}
+
+</script>
+<script src="./js/swiper-4.3.5.min.js"></script>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/three.min.js"></script>
+<script src="./js/OBJLoader.js"></script>
+<script src="./js/OrbitControls.js"></script>
+<script src="./js/model.js"></script>
+<script src="./js/index.js?v=1.5.3"></script>
+<script>
+  var jsonPath = '';
+  var modelPath = '';
+  function setPeopleModel(jsonPaths, modelPaths) {
+    jsonPath = jsonPaths;
+    modelPath = modelPaths;
+    // 加载模型
+    loadOBJ(modelPath);
+  }
+  //模型加载完成回调
+  function loadOBJOver() {
+    console.log('模型加载完毕');
+    //$('.model-item').css('display', 'inline-block')
+    $('#modelLoad').fadeOut(500)
+    initMeasureCurveFromJSON(jsonPath);
+  }
+</script>

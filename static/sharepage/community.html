@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>帖子详情</title>
+  <link rel="stylesheet" href="./css/base.css?t={vision}">
+  <link rel="stylesheet" href="./css/style.css?t={vision}">
+  <script type="text/javascript" src="./js/pages/getApp.js?t={vision}"></script>
+</head>
+
+<body class="app-container">
+<div class="download-box">
+  <img src="../home/img/group@2x.png" alt="">
+  <div class="down-btn" onclick="window.location.href = 'http://android.myapp.com/myapp/detail.htm?apkName=com.yesfeeling.niulangsport&ADTAG=mobile'">立即下载</div>
+</div>
+<div class="main-container">
+  <div class="detail-content marginbottom10">
+    <div class="user-info">
+      <div class="user-detail">
+        <img src="http://niulang-v2.oss-cn-beijing.aliyuncs.com/default_head.png" id="userAvatar">
+        <span class="rigth-text">
+        <div class="user-name-box">
+          <span class="user-name" id="userName"></span>
+          <span class="sex-logo" id="userSex"></span>
+        </div>
+        <p class="last-time" id="messTime">--</p>
+      </span>
+      </div>
+    </div>
+    <ul class="img-list clearfix" id="imgListBox"></ul>
+    <div class="detail-vicetext" id="userMessDeatil">--</div>
+    <div class="address-btn" style="padding: 0 3px"><i class="dingwei"></i>湖北省，武汉市</div>
+    <div class="other-mess clearfix">
+    <span class="zan flex-center">
+      <img src="./img/detail/yizan@2x.png" alt="">
+      <span class="ligthgray-text" id="likeTotal">0</span>
+    </span>
+      <span class="more-detail flex-center">
+      <img src="./img/detail/pinglunxiangqing@2x.png" alt="">
+      <span class="ligthgray-text" id="replyTotal">0</span>
+    </span>
+    </div>
+  </div>
+  <div class="comment-detail">
+    <div class="detail-head" id="totalReplyNum"></div>
+    <ul id="replyContent"></ul>
+  </div>
+</div>
+<div class="share-box">
+  <div class="user-detail">
+    <img src="http://niulang-v2.oss-cn-beijing.aliyuncs.com/default_head.png" id="shareUserAvatar">
+    <span class="rigth-text">
+      <div>
+        <span class="user-name" id="shareUsername">--</span>
+      </div>
+      <p class="last-time">分享给你</p>
+    </span>
+  </div>
+  <a class="add-follow" href="">“牛啦”内打开</a>
+</div>
+</body>
+
+</html>
+<script type="text/javascript" src="./js/plugins/flexible.js"></script>
+<script type="text/javascript" src="./js/plugins/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="./js/pages/communityDetail.js?t={vision}"></script>

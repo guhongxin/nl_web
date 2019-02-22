@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>运动报告</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/sport.css?t={vision}">
+</head>
+<body>
+<div id="app" style="box-sizing: border-box;padding: 0 10px">
+  <div class="top-info clearfix">
+    <span id="sportTime"></span>
+    <img src="http://niulang-v2.oss-cn-beijing.aliyuncs.com/default_head.png" id="userAvtor">
+  </div>
+  <div class="kcal-info">
+    <span id="calorieData">0</span>
+    <span>消耗（卡）</span>
+  </div>
+  <div class="canvas-box">
+    <p>运动等级</p>
+    <ul class="canvas-list" id="canvasList"></ul>
+  </div>
+  <div class="canvas-box">
+    <p>运动项目</p>
+    <ul class="sportList" id="sportListBox"></ul>
+  </div>
+</div>
+</body>
+</html>
+<script src="./js/jquery-1.9.1.min.js"></script>
+<script src="./js/sport.js?t={vision}"></script>
+<script>
+  var deviceArr = [
+    {
+      "id": 0,
+      "name": "日常步行"
+    },
+    {
+      "id": 17153,
+      "name": "跑步机"
+    },
+    {
+      "id": 17154,
+      "name": "动感单车"
+    },
+    {
+      "id": 17155,
+      "name": "椭圆机"
+    },
+    {
+      "id": 19713,
+      "name": "(迈宝赫串口)跑步机"
+    },
+    {
+      "id": 20481,
+      "name": "高位下拉"
+    },
+    {
+      "id": 20482,
+      "name": "坐姿推肩"
+    },
+    {
+      "id": 20483,
+      "name": "腿部内收"
+    },
+    {
+      "id": 20484,
+      "name": "坐姿夹胸"
+    },
+    {
+      "id": 20485,
+      "name": "坐姿腿弯举"
+    },
+    {
+      "id": 20486,
+      "name": "肩上推举"
+    },
+    {
+      "id": 20487,
+      "name": "肱三头训练"
+    },
+    {
+      "id": 20488,
+      "name": "辅助单双杠"
+    },
+    {
+      "id": 20489,
+      "name": "坐姿挺身"
+    },
+    {
+      "id": 20490,
+      "name": "坐姿转体"
+    },
+    {
+      "id": 20491,
+      "name": "坐姿划船"
+    },
+    {
+      "id": 20492,
+      "name": "坐姿划船A"
+    },
+    {
+      "id": 20493,
+      "name": "坐姿推胸"
+    },
+    {
+      "id": 20494,
+      "name": "肱二头弯举"
+    },
+    {
+      "id": 20495,
+      "name": "高位下拉A"
+    },
+    {
+      "id": 20496,
+      "name": "高位下拉B"
+    },
+    {
+      "id": 20497,
+      "name": "腿部推蹬"
+    },
+    {
+      "id": 20498,
+      "name": "坐姿卷腹"
+    },
+    {
+      "id": 20499,
+      "name": "俯卧腿弯举"
+    },
+    {
+      "id": 20500,
+      "name": "胸肩飞鸟"
+    },
+    {
+      "id": 20501,
+      "name": "坐姿腿屈伸"
+    },
+    {
+      "id": 20502,
+      "name": "大腿伸展"
+    },
+    {
+      "id": 20503,
+      "name": "站姿摆腿"
+    },
+    {
+      "id": 20504,
+      "name": "坐姿提踵"
+    },
+    {
+      "id": 20505,
+      "name": "站姿提踵"
+    },
+    {
+      "id": 20506,
+      "name": "腿部内收外展"
+    },
+    {
+      "id": 20507,
+      "name": "腿部外展"
+    },
+    {
+      "id": 20508,
+      "name": "臀部训练"
+    },
+    {
+      "id": 20509,
+      "name": "坐姿肩外展"
+    },
+    {
+      "id": 20510,
+      "name": "直臂下压"
+    },
+    {
+      "id": 20511,
+      "name": "小飞鸟训练"
+    },
+    {
+      "id": 20512,
+      "name": "缆绳拉力"
+    },
+    {
+      "id": 20513,
+      "name": "上斜卧推"
+    }
+  ]
+</script>

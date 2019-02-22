@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>体测报告</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- <link rel="stylesheet" href="//at.alicdn.com/t/font_812169_qopp761chho.css"> -->
+  <link rel="stylesheet" href="./css/report.css?t={vision}">
+</head>
+
+<body>
+  <button class="no-print" id="close" onclick="CloseWebPage()">关闭窗口</button>
+  <button class="no-print" onclick="window.print()">打印报告</button>
+  <div class="app-container clearfix">
+    <div class="left12">
+      <div class="user-info">
+        <div>
+         <div id="QR"></div>
+          <p>微信扫码看报告</p>
+        </div>
+        <div>
+          <p class="user-id">ID:
+            <span></span>
+          </p>
+          <p class="report-data">日期：
+            <span></span>
+          </p>
+          <p class="report-time">时间：
+            <span></span>
+          </p>
+        </div>
+        <div>
+          <p class="user-age">年龄:
+            <span></span>
+          </p>
+          <p class="user-sex">性别：
+            <span></span>
+          </p>
+          <p class="user-height">身高：
+            <span></span>
+          </p>
+        </div>
+      </div>
+      <div class="item-one every-item">
+        <p class="item-title">
+          <span>1</span>
+          <span>体成分分析</span>
+          <span>BODY COMPOSITION ANALYSIS</span>
+          <span>单位：
+            <strong>KG</strong>
+          </span>
+        </p>
+        <ul class="item1-list clearfix">
+          <li>
+            <div class="left-title">
+              <p>体重</p>
+              <p>WEIGHT</p>
+            </div>
+            <div class="rigth-date" id="weight">
+              <p></p>
+              <p></p>
+            </div>
+          </li>
+          <li>
+            <div class="left-title">
+              <p>去脂体重</p>
+              <p>FAT FREE MASS</p>
+            </div>
+            <div class="rigth-date" id="nofat_weight">
+              <p></p>
+              <p></p>
+            </div>
+          </li>
+          <li>
+            <div class="left-title">
+              <p>肌肉量</p>
+              <p>MUSCLE</p>
+            </div>
+            <div class="rigth-date" id="muscle">
+              <p></p>
+              <p></p>
+            </div>
+          </li>
+          <li>
+            <div class="left-title">
+              <p>脂肪量</p>
+              <p>FAT</p>
+            </div>
+            <div class="rigth-date" id="fat_weight">
+              <p></p>
+              <p></p>
+            </div>
+          </li>
+          <li>
+            <div class="left-title">
+              <p>蛋白质</p>
+              <p>PROTEIN</p>
+            </div>
+            <div class="rigth-date" id="protein">
+              <p></p>
+              <p></p>
+            </div>
+          </li>
+          <li>
+            <div class="left-title">
+              <p>无机盐</p>
+              <p>MINERAL</p>
+            </div>
+            <div class="rigth-date" id="mineral">
+              <p></p>
+              <p></p>
+            </div>
+          </li>
+          <li>
+            <div class="left-title">
+              <p>身体水分</p>
+              <p>BODY WATER</p>
+            </div>
+            <div class="rigth-date" id="water">
+              <p></p>
+              <p></p>
+            </div>
+          </li>
+          <li>
+            <div class="left-title">
+              <p>内脏脂肪</p>
+              <p>VISCERAL FAT(等级)</p>
+            </div>
+            <div class="rigth-date" id="infat">
+              <p></p>
+              <p></p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="item-two every-item">
+        <p class="item-title">
+          <span>2</span>
+          <span>身体围度</span>
+          <span>BODY CIRCUMFERENCE</span>
+          <span>单位：
+            <strong>CM</strong>
+          </span>
+        </p>
+        <ul class="item1-list three-tab clearfix">
+          <li>
+            <div class="left-title">
+              <p>左上臂围</p>
+              <p>LEFT UPPER ARM</p>
+            </div>
+            <div class="rigth-date" id="left_top">
+              <p></p>
+              <p></p>
+            </div>
+            <div class="right-icon">
+              <i class="icon1"></i>
+              
+            </div>
+          </li>
+          <li>
+            <div class="left-title" >
+              <p>右上臂围</p>
+              <p>RIGHT UPPER ARM</p>
+            </div>
+            <div class="rigth-date" id="right_top">
+              <p></p>
+              <p></p>
+            </div>
+            <div class="right-icon">
+              <i class="icon2"></i>
+            </div>
+          </li>
+          <li>
+            <div class="left-title" >
+              <p>胸围</p>
+              <p>CHEST</p>
+            </div>
+            <div class="rigth-date" id="chest">
+              <p></p>
+              <p></p>
+            </div>
+            <div class="right-icon">
+              <i class="icon3"></i>
+            </div>
+          </li>
+          <li>
+            <div class="left-title" >
+              <p>腰围</p>
+              <p>WAIST</p>
+            </div>
+            <div class="rigth-date" id="waistline">
+              <p></p>
+              <p></p>
+            </div>
+            <div class="right-icon">
+              <i class="icon4"></i>
+            </div>
+          </li>
+          <li>
+            <div class="left-title" >
+              <p>臀围</p>
+              <p>HIPLINE</p>
+            </div>
+            <div class="rigth-date" id="hipline">
+              <p></p>
+              <p></p>
+            </div>
+            <div class="right-icon">
+              <i class="icon5"></i>
+            </div>
+          </li>
+          <li>
+            <div class="left-title" >
+              <p>腰臀比</p>
+              <p>WHR(系数)</p>
+            </div>
+            <div class="rigth-date" id="whr">
+              <p></p>
+              <p></p>
+            </div>
+            <div class="right-icon">
+              <i class="icon6"></i>
+            </div>
+          </li>
+          <li>
+            <div class="left-title" >
+              <p>左大腿围</p>
+              <p>LEFT THIGH</p>
+            </div>
+            <div class="rigth-date" id="left_thigh">
+              <p></p>
+              <p></p>
+            </div>
+            <div class="right-icon">
+              <i class="icon7"></i>
+            </div>
+          </li>
+          <li>
+            <div class="left-title" >
+              <p>右大腿围</p>
+              <p>RIGHT THIGH</p>
+            </div>
+            <div class="rigth-date" id="right_thigh">
+              <p></p>
+              <p></p>
+            </div>
+            <div class="right-icon">
+              <i class="icon8"></i>
+            </div>
+          </li>
+          <li>
+            <div class="left-title" >
+              <p>左小腿围</p>
+              <p>LEFT GALF</p>
+            </div>
+            <div class="rigth-date" id="left_crus">
+              <p></p>
+              <p></p>
+            </div>
+            <div class="right-icon">
+              <i class="icon9"></i>
+            </div>
+          </li>
+          <li>
+            <div class="left-title" >
+              <p>右小腿围</p>
+              <p>RIGHT GALF</p>
+            </div>
+            <div class="rigth-date" id="right_crus">
+              <p></p>
+              <p></p>
+            </div>
+            <div class="right-icon">
+              <i class="icon10"></i>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="right345678">
+      <div class="top-logo">
+        <img src="./img/logo.png" alt="">
+      </div>
+      <div class="bottom-content">
+        <div class="content-left-box">
+          <div class="item-three every-item">
+            <p class="item-title">
+              <span>3</span>
+              <span>健康评估</span>
+              <span>HEALTH ASSESSMENT</span>
+              <span></span>
+            </p>
+            <ul class="item3-list clearfix">
+              <li>
+                <p>基础代谢量</p>
+                <p>BASIC METABQLISM</p>
+                <img src="./img/kcal.png" alt="">
+                <div class="assess_score" id="metabolism"></div>
+              </li>
+              <li>
+                <p>总能量消耗</p>
+                <p>TOTAL ENERGY EXPENDITURE</p>
+                <img src="./img/kcal.png" alt="">
+                <div class="assess_score" id="energy"></div>
+              </li>
+              <li>
+                <p>身体年龄</p>
+                <p>PHYSICAL AGE</p>
+                <img src="./img/sui.png" alt="">
+                <div class="assess_score" id="body_age"></div>
+              </li>
+              <li>
+                <p>风险评估</p>
+                <p>RISK ASSESSMENT</p>
+                <img src="./img/fengxian.png" alt="">
+                <div class="assess_score" id="score"></div>
+              </li>
+            </ul>
+          </div>
+          <div class="item-four every-item">
+            <p class="item-title">
+              <span>4</span>
+              <span>身体评估</span>
+              <span>PHYSICAL EVALUATION</span>
+              <span></span>
+            </p>
+            <ul class="item4-list">
+              <li>
+                <span>
+                  <p>项目</p>
+                  <p>PROJECT</p>
+                </span>
+                <span>
+                  <span>
+                    <p>过低</p>
+                    <p>TOO LOW</p>
+                  </span>
+                  <span>
+                    <p>正常</p>
+                    <p>NORMAL</p>
+                  </span>
+                  <span>
+                    <p>过高</p>
+                    <p>TOO HIGH</p>
+                  </span>
+                </span>
+                <span>
+                  <p>正常范围</p>
+                  <p>NORMAL RANGE</p>
+                </span>
+              </li>
+              <li id="body_bmi">
+                <span>
+                  <P>身体质量</P>
+                  <P>BMI(KG/M2)</P>
+                </span>
+                <span class="special">
+                  <ul class="scale">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                  </ul>
+                  <div class="bar" id="bmi_bar"></div>
+                  <div class="bar_text" id="bmi_text"></div>
+                </span>
+                <span></span>
+              </li>
+              <li id="body_weight">
+                <span>
+                  <p>体重</p>
+                  <p>WEIGHT(KG)</p>
+                </span>
+                <span class="special">
+                  <ul class="scale">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                  </ul>
+                  <div class="bar" id="weight_bar"></div>
+                  <div class="bar_text" id="weight_text"></div>
+                </span>
+                <span></span>
+              </li>
+              <li id="body_smm">
+                <span>
+                  <p>骨骼肌</p>
+                  <p>SKELETAL MUSCLE(KG)</p>
+                </span>
+                <span class="special">
+                  <ul class="scale">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                  </ul>
+                  <div class="bar" id="smm_bar"></div>
+                  <div class="bar_text" id="smm_text"></div>
+                </span>
+                <span></span>
+              </li>
+              <li id="body_bfm">
+                <span>
+                  <p>脂肪量</p>
+                  <p>FAT MASS(KG)</p>
+                </span>
+                <span class="special">
+                  <ul class="scale">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                  </ul>
+                  <div class="bar" id="bfm_bar"></div>
+                  <div class="bar_text" id="bfm_text"></div>
+                </span>
+                <span></span>
+              </li>
+              <li id="body_pbf">
+                <span>
+                  <P>体脂率</P>
+                  <p>PERCENT BODY FAT(%)</p>
+                </span>
+                <span class="special">
+                  <ul class="scale">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                  </ul>
+                  <div class="bar" id="pbf_bar"></div>
+                  <div class="bar_text" id="pbf_text"></div>
+                </span>
+                <span></span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="item-five every-item">
+            <p class="item-title">
+              <span>5</span>
+              <span>历史记录</span>
+              <span>HISTORY RECORD</span>
+              <span></span>
+            </p>
+            <ul class="item4-list two-tabs">
+              <li>
+                <span>
+                  <p>项目</p>
+                  <p>PROJECT</p>
+                </span>
+                <span>
+                  <span>
+                    <p>前次</p>
+                    <p>PREVIOUS TIME</p>
+                  </span>
+                  <span>
+                    <p>本次</p>
+                    <p>THIS TIME</p>
+                  </span>
+                  <span>
+                    <p>差值</p>
+                    <p>THE DIFFRENCE</p>
+                  </span>
+                </span>
+              </li>
+              <li>
+                <span>
+                  <P>体重</P>
+                  <P>WEIGHT(KG)</P>
+                </span>
+                <span>
+                  <span id="weight_one"></span>
+                  <span id="weight_two"></span>
+                  <span id="weight_difference"></span>
+                </span>
+              </li>
+              <li>
+                <span>
+                  <P>体脂率</P>
+                  <p>PERCENT BODY FAT(%)</p>
+                </span>
+                <span>
+                  <span id="pbf_one"></span>
+                  <span id="pbf_two"></span>
+                  <span id="pbf_difference"></span>
+                </span>
+              </li>
+              <li>
+                <span>
+                  <p>骨骼肌</p>
+                  <p>SKELETAL MUSCLE(KG)</p>
+                </span>
+                <span>
+                  <span id="smm_one"></span>
+                  <span id="smm_two"></span>
+                  <span id="smm_difference"></span>
+                </span>
+              </li>
+              <li>
+                <span>
+                  <p>时间</p>
+                  <p>TIME</p>
+                </span>
+                <span>
+                  <span id="time_one"></span>
+                  <span id="time_two"></span>
+                  <span id="time_difference"></span>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="content-right-box">
+          <div class="item-six every-item">
+            <p class="item-title">
+              <span>6</span>
+              <span>调节建议</span>
+              <span>ADVICE</span>
+              <span></span>
+            </p>
+            <ul class="item4-list two-tabs">
+              <li>
+                <span>
+                  <p>项目</p>
+                  <p>PROJECT</p>
+                </span>
+                <span>
+                  <span>
+                    <p>当前</p>
+                    <p>PREVIOUS TIME</p>
+                  </span>
+                  <span>
+                    <p>调节</p>
+                    <p>ADJUST</p>
+                  </span>
+                </span>
+              </li>
+              <li>
+                <span>
+                  <P>脂肪量</P>
+                  <P>FAT(KG)</P>
+                </span>
+                <span id="adjust_fat">
+                  <span></span>
+                  <span></span>
+                </span>
+              </li>
+              <li>
+                <span>
+                  <P>肌肉量</P>
+                  <p>MUSCLE(KG)</p>
+                </span>
+                <span id="adjust_muscle">
+                  <span></span>
+                  <span></span>
+                </span>
+              </li>
+            </ul>
+          </div>
+          <div class="item-seven every-item">
+            <p class="item-title">
+              <span>7</span>
+              <span>节段脂肪</span>
+              <span>SEGMENTAL FAT</span>
+              <span>脂肪量评估</span>
+            </p>
+            <div class="segmental-box">
+              <ul class="segment-box">
+                <li class="lt" id="fat_lt">
+                  <p></p>
+                  <p></p>
+                </li>
+                <li class="lb" id="fat_lb">
+                  <p></p>
+                  <p></p>
+                </li>
+                <li class="mid" id="fat_mid">
+                  <p></p>
+                  <p></p>
+                </li>
+                <li class="rt" id="fat_rt">
+                  <p></p>
+                  <p></p>
+                </li>
+                <li class="rb" id="fat_rb">
+                  <p></p>
+                  <p></p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="item-eight every-item">
+            <p class="item-title">
+              <span>8</span>
+              <span>节段肌肉</span>
+              <span>SEGMENTAL MUSCLE</span>
+              <span>肌肉量评估</span>
+            </p>
+            <div class="segmental-box">
+              <ul class="segment-box">
+                <li class="lt" id="smm_lt">
+                  <p></p>
+                  <p></p>
+                </li>
+                <li class="lb" id="smm_lb">
+                  <p></p>
+                  <p></p>
+                </li>
+                <li class="mid" id="smm_mid">
+                  <p></p>
+                  <p></p>
+                </li>
+                <li class="rt" id="smm_rt">
+                  <p></p>
+                  <p></p>
+                </li>
+                <li class="rb" id="smm_rb">
+                  <p></p>
+                  <p></p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+<script src="../bodyExam/js/jquery-1.9.1.min.js"></script>
+<script src="./js/jquery.qrcode.min.js"></script>
+<script src="./js/report.js?t={vision}"></script>
+<script>
+  /*基本函数*/
+  function CloseWebPage() {
+    window.close();
+  }
+
+</script>

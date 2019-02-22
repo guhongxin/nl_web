@@ -1,0 +1,176 @@
+footer {
+    width: 100%;
+    height: 2.229167rem;
+    background: url(./../../../img/bottom_bg.png) no-repeat;
+    background-size: 100% 100%;
+    color: #fff;
+}
+
+footer .foot-name {
+    padding-top: .442708rem;
+    font-size: .197917rem;
+    color: #fff;
+    text-align: center;
+}
+
+footer .list {
+    display: flex;
+    justify-content: center;
+}
+
+footer .list ul {
+    margin-top: .416667rem;
+}
+
+footer .list ul li {
+    font-size: .114583rem;
+}
+
+footer .list ul li:first-child {
+    margin-top: 0;
+}
+
+footer .list ul li {
+    margin-top: .104167rem;
+}
+
+footer .list .code-image {
+    margin-top: .416667rem;
+    margin-left: .989583rem;
+}
+
+.code-image .images {
+    display: inline-block;
+}
+
+footer .list ul li img {
+    width: .125rem;
+    height: .125rem;
+    display: inline-block;
+    margin-right: .072917rem;
+}
+
+footer .code-image {
+    text-align: center;
+    font-size: .104167rem;
+    color: #1bb18e;
+}
+
+footer .code-image img {
+    display: inline-block;
+    width: .598958rem;
+    height: auto;
+}
+
+footer .code-image p {
+    margin-top: .082083rem;
+    font-weight: 700;
+}
+
+footer .code-image .images-ios {
+    margin-right: .3125rem;
+}
+.banquan {
+    width: 100%;
+    background-color: #161616;
+    line-height: 2rem;
+    color: #f4f4f4;
+    text-align: center;
+    font-size: 14px;
+}
+.banquan span:last-child {
+    margin-left: 1.5rem;
+    /* display: block; */
+}
+
+@media screen and (max-width:750px) {
+    footer {
+        height: 8.106667rem;
+    }
+    footer .foot-name {
+        margin-top: 1.133333rem;
+        font-size: .533333rem;
+    }
+    footer .list {
+        position: relative;
+    }
+    footer .list .code-image {
+        margin: 0 auto;
+        padding: 0;
+        position: absolute;
+        top: .8rem;
+        left: 0;
+        right: 0;
+    }
+    footer .list .code-image .images img {
+        width: 1.533333rem;
+        height: auto;
+    }
+     .code-image .down-button {
+        font-size: .3rem;
+        color: #1ab493;
+     }
+     .code-image .down-button .ios {
+         padding: 3px 10px;
+         background-color: #ffffff;
+         border-radius: 5px;
+         margin-top: .2rem;
+         margin-bottom: .2rem;
+     }
+     .code-image .down-button .ios i {
+         display: inline-block;
+         width: .4rem;
+         height: .4rem;
+         background: url(./../../../img/44iphone_logo.png) no-repeat;
+         background-size:80% ;
+         vertical-align: middle;
+     }
+
+     .code-image .down-button .android {
+        padding: 3px 10px;
+        background-color: #1ab493;
+        border-radius: 5px;
+        color: #ffffff;
+    }
+    .code-image .down-button .android i {
+        display: inline-block;
+        width: .4rem;
+        height: .4rem;
+        background: url(./../../../img/45android_logo.png) no-repeat;
+        background-size:80% ;
+        vertical-align: middle;
+    }
+
+
+    footer .list ul {
+        margin-top: 3.2rem;
+    }
+    footer .list ul li {
+        font-size: .4rem;
+    }
+    footer .list ul li:nth-child(2),
+    footer .list ul li:last-child {
+        margin-top: .666667rem;
+    }
+    footer .code-image .images-ios {
+        margin-right: 1.653333rem;
+    }
+    footer .list ul li img {
+        width: .4rem;
+        height: auto;
+    }
+
+    .banquan {
+        width: 100%;
+        background-color: #161616;
+        line-height: 1rem;
+        color: #f4f4f4;
+        text-align: center;
+        font-size: 14px;
+    }
+    .banquan span:last-child {
+        margin-left: 1.5rem;
+        display: block;
+        margin: 0 auto;
+    }
+}

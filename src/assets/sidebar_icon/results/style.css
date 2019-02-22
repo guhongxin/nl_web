@@ -1,0 +1,38 @@
+@font-face {
+  font-family: 'icomoone';
+  src:  url('fonts/icomoon.eot?tvc4hd');
+  src:  url('fonts/icomoon.eot?tvc4hd#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?tvc4hd') format('truetype'),
+    url('fonts/icomoon.woff?tvc4hd') format('woff'),
+    url('fonts/icomoon.svg?tvc4hd#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-i-"], [class*=" icon-i-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoone' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-i-新增开卡:before {
+  content: "\e900";
+}
+.icon-i-新增签到:before {
+  content: "\e901";
+}
+.icon-i-新增潜客:before {
+  content: "\e902";
+}
+.icon-i-新增收入:before {
+  content: "\e903";
+}
